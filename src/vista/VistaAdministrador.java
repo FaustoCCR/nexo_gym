@@ -25,6 +25,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_salir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jmi_registraruser = new javax.swing.JMenuItem();
+        jmi_registrarcargo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -43,6 +44,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_registraruser.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         jmi_registraruser.setText("Registar Usuario");
         jMenu2.add(jmi_registraruser);
+
+        jmi_registrarcargo.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jmi_registrarcargo.setText("Registrar Cargo");
+        jMenu2.add(jmi_registrarcargo);
 
         jMenuBar1.add(jMenu2);
 
@@ -78,7 +83,14 @@ public class VistaAdministrador extends javax.swing.JFrame {
         this.jmi_salir = jmi_salir;
     }
 
-    
+    public JMenuItem getJmi_registrarcargo() {
+        return jmi_registrarcargo;
+    }
+
+    public void setJmi_registrarcargo(JMenuItem jmi_registrarcargo) {
+        this.jmi_registrarcargo = jmi_registrarcargo;
+    }
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -115,6 +127,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jmi_registrarcargo;
     private javax.swing.JMenuItem jmi_registraruser;
     private javax.swing.JMenuItem jmi_salir;
     // End of variables declaration//GEN-END:variables
