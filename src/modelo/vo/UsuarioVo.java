@@ -12,6 +12,9 @@ public class UsuarioVo {
     private String password;
     private boolean estado_cuenta;
 
+    public UsuarioVo() {
+    }
+    
     public UsuarioVo(int id_user, int id_persona, int id_rol, String user_name, String password, boolean estado_cuenta) {
         this.id_user = id_user;
         this.id_persona = id_persona;
