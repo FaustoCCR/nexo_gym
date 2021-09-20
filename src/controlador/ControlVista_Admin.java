@@ -1,8 +1,10 @@
 package controlador;
 
+import modelo.dao.CargoDao;
 import modelo.dao.UsuarioDao;
 import vista.VistaAdministrador;
 import vista.VistaLogin;
+import vista.VistaRegistrarCargo;
 import vista.VistaRegistrar_Usuario;
 
 public class ControlVista_Admin {
@@ -24,6 +26,7 @@ public class ControlVista_Admin {
 
         vista.getJmi_salir().addActionListener(l -> ventanaLogin());
         vista.getJmi_registraruser().addActionListener(l -> ventanaRegistrar_Usuario());
+        vista.getJmi_registrarcargo().addActionListener(l->ventanaRegistrar_Cargo());
 
     }
 
@@ -39,10 +42,18 @@ public class ControlVista_Admin {
 
     private void ventanaRegistrar_Usuario() {
 
-        UsuarioDao user = new UsuarioDao();
+        UsuarioDao modelo_rguser = new UsuarioDao();
         VistaRegistrar_Usuario v_rguser = new VistaRegistrar_Usuario();
-        ControlRegistrar_Usuario controlrg_user = new ControlRegistrar_Usuario(user, v_rguser);
+        ControlRegistrar_Usuario controlrg_user = new ControlRegistrar_Usuario(modelo_rguser, v_rguser);
         controlrg_user.funcionalidad();
+    }
+    private void ventanaRegistrar_Cargo(){
+        
+        CargoDao modelo_rgcargo = new CargoDao();
+        VistaRegistrarCargo v_rgcargo = new VistaRegistrarCargo();
+        ControlRegistrar_Cargo control_rgcargo = new ControlRegistrar_Cargo(modelo_rgcargo, v_rgcargo);
+        control_rgcargo.funcionalidad();
+
     }
 
 }
