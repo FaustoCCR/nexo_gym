@@ -7,6 +7,10 @@ public class RolVo {
     private String nombre;
     private String descripcion;
 
+    public RolVo() {
+        
+    }
+
     public RolVo(int id_rol, String nombre, String descripcion) {
         this.id_rol = id_rol;
         this.nombre = nombre;

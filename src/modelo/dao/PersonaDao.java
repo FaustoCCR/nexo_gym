@@ -22,13 +22,15 @@ public class PersonaDao extends PersonaVo {
     }
 
     public List<PersonaVo> mostrarDatos() {
+        
+        List<PersonaVo> lista_persona = new ArrayList<>();
+        String sql = "select * from persona";
+        ResultSet rs = conecta.consulta(sql);
 
         try {
-            List<PersonaVo> lista_persona = new ArrayList<>();
-            String sql = "select * from persona order by 1";
-            ResultSet rs = conecta.consulta(sql);
+
             while (rs.next()) {
-                
+
                 PersonaVo p = new PersonaVo();
                 p.setId_persona(rs.getInt("id_persona"));
                 p.setDni(rs.getString("dni"));
