@@ -3,17 +3,11 @@ package controlador;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.List;
 import java.util.function.Predicate;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
-import javax.swing.WindowConstants;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EtchedBorder;
 import javax.swing.border.LineBorder;
 import modelo.dao.PersonaDao;
 import modelo.dao.RolDao;
@@ -198,7 +192,7 @@ public class ControlRegistrar_Usuario {
 
     }
 
-    private boolean usuarioMatch() {
+    private boolean verificarUsuario() {
 
         String user = vista.getTxt_user().getText();
         /*si ninguno de la lista, tiene el mismo nombre de usuario = true ,sino = false*/
@@ -216,7 +210,7 @@ public class ControlRegistrar_Usuario {
             if (buscarPersona(vista.getTxt_cedula().getText())) {
 
                 if (contrasenias) {
-                    if (usuarioMatch()) {
+                    if (verificarUsuario()) {
 
                         sentenciaInsert();
                         reiniciarCampos();
