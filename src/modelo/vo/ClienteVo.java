@@ -14,6 +14,9 @@ public class ClienteVo {
     private Date f_vence;
     private double pago;
 
+    public ClienteVo() {
+    }
+
     public ClienteVo(int id_cliente, int id_persona, int id_membresia, Date f_inicio, Date f_vence, double pago) {
         this.id_cliente = id_cliente;
         this.id_persona = id_persona;
