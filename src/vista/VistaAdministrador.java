@@ -1,11 +1,8 @@
-
 package vista;
 
 import javax.swing.JMenuItem;
 
-
 public class VistaAdministrador extends javax.swing.JFrame {
-
 
     public VistaAdministrador() {
         initComponents();
@@ -23,6 +20,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_registraruser = new javax.swing.JMenuItem();
         jmi_registrarcargo = new javax.swing.JMenuItem();
         jmi_rgmembresia = new javax.swing.JMenuItem();
+        jmi_rgcliente = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -52,6 +50,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_rgmembresia.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         jmi_rgmembresia.setText("Membresia");
         jMenu3.add(jmi_rgmembresia);
+
+        jmi_rgcliente.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jmi_rgcliente.setText("Cliente");
+        jMenu3.add(jmi_rgcliente);
 
         jMenu2.add(jMenu3);
 
@@ -104,8 +106,14 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public void setJmi_rgmembresia(JMenuItem jmi_rgmembresia) {
         this.jmi_rgmembresia = jmi_rgmembresia;
     }
-    
-    
+
+    public JMenuItem getJmi_rgcliente() {
+        return jmi_rgcliente;
+    }
+
+    public void setJmi_rgcliente(JMenuItem jmi_rgcliente) {
+        this.jmi_rgcliente = jmi_rgcliente;
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -146,6 +154,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jmi_registrarcargo;
     private javax.swing.JMenuItem jmi_registraruser;
+    private javax.swing.JMenuItem jmi_rgcliente;
     private javax.swing.JMenuItem jmi_rgmembresia;
     private javax.swing.JMenuItem jmi_salir;
     // End of variables declaration//GEN-END:variables
