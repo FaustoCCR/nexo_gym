@@ -50,8 +50,8 @@ public class CargoDao extends CargoVo {
 
     public boolean insertar() {
         String sql = "INSERT INTO cargo(\n"
-                + "	nombre, descripcion)\n"
-                + "	VALUES ('" + getNombre() + "','" + getDescripcion() + "');";
+                + "nombre, descripcion)\n"
+                + "VALUES ('" + getNombre() + "','" + getDescripcion() + "');";
         return conecta.accion(sql);
     }
 
