@@ -1,11 +1,13 @@
 package controlador;
 
 import modelo.dao.CargoDao;
+import modelo.dao.ClienteDao;
 import modelo.dao.MembresiaDao;
 import modelo.dao.UsuarioDao;
 import vista.VistaAdministrador;
 import vista.VistaLogin;
 import vista.VistaRegistrarCargo;
+import vista.VistaRegistrar_Cliente;
 import vista.VistaRegistrar_Membresia;
 import vista.VistaRegistrar_Usuario;
 
@@ -29,6 +31,7 @@ public class ControlVista_Admin {
         vista.getJmi_registraruser().addActionListener(l -> ventanaRegistrar_Usuario());
         vista.getJmi_registrarcargo().addActionListener(l -> ventanaRegistrar_Cargo());
         vista.getJmi_rgmembresia().addActionListener(l->ventanaRegistrar_Membresia());
+        vista.getJmi_rgcliente().addActionListener(l->ventanaRegistrar_Cliente());
         
 
     }
@@ -67,6 +70,14 @@ public class ControlVista_Admin {
         
         ControlRegistrar_Membresia c_rgmembresia = new ControlRegistrar_Membresia(m_rgmembresia, v_rgmembresia);
         c_rgmembresia.funcionalidad();
+    }
+    
+    private void ventanaRegistrar_Cliente(){
+        
+        ClienteDao m_rgcliente = new ClienteDao();
+        VistaRegistrar_Cliente v_rgcliente = new VistaRegistrar_Cliente();
+        ControlRegistrar_Cliente c_rgcliente = new  ControlRegistrar_Cliente(m_rgcliente, v_rgcliente);
+        c_rgcliente.funcionalidad();
     }
 
 }
