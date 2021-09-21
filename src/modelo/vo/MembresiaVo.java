@@ -2,7 +2,7 @@
 package modelo.vo;
 
 
-public class MemebresiaVo {
+public class MembresiaVo {
     
     //atributos
     private int id_membresia;
@@ -10,7 +10,11 @@ public class MemebresiaVo {
     private String descripcion;
     private double descuento;
 
-    public MemebresiaVo(int id_membresia, String nombre, String descripcion, double descuento) {
+    public MembresiaVo() {
+    }
+    
+
+    public MembresiaVo(int id_membresia, String nombre, String descripcion, double descuento) {
         this.id_membresia = id_membresia;
         this.nombre = nombre;
         this.descripcion = descripcion;

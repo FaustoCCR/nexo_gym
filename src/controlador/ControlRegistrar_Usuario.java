@@ -32,7 +32,7 @@ public class ControlRegistrar_Usuario {
         vista.setResizable(false);
         vista.setLocationRelativeTo(null);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
+
         cargarRoles();
 
     }
@@ -57,9 +57,8 @@ public class ControlRegistrar_Usuario {
             public void keyReleased(KeyEvent e) {
                 buscarPersona(vista.getTxt_cedula().getText());
             }
-            
+
         });
-        
 
         vista.getBt_registrar().addActionListener(l -> registrarUsuario());
 
@@ -69,23 +68,23 @@ public class ControlRegistrar_Usuario {
 
         boolean busqueda;
 //        if (!cedula.isEmpty()) {
-            Predicate<PersonaVo> cedula_p = p -> p.getDni().equals(cedula);
+        Predicate<PersonaVo> cedula_p = p -> p.getDni().equals(cedula);
 
-            busqueda = modelo_persona.mostrarDatos().stream().anyMatch(cedula_p);
+        busqueda = modelo_persona.mostrarDatos().stream().anyMatch(cedula_p);
 
-            if (busqueda == true) {
-                System.out.println("Cedula Correcta");
-                vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
-                modelo_persona.mostrarDatos().stream().filter(cedula_p).forEach((t) -> {
-                    vista.getTxt_persona().setText(t.getNombre() + " " + t.getApellido());
+        if (busqueda == true) {
+            System.out.println("Cedula Correcta");
+            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+            modelo_persona.mostrarDatos().stream().filter(cedula_p).forEach((t) -> {
+                vista.getTxt_persona().setText(t.getNombre() + " " + t.getApellido());
 
-                });
-            } else {
-                System.out.println("Cedula Incorrecta");
-                vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
-                vista.getTxt_persona().setText("");
+            });
+        } else {
+            System.out.println("Cedula Incorrecta");
+            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+            vista.getTxt_persona().setText("");
 
-            }
+        }
 
 //        } else {
 //
@@ -94,7 +93,6 @@ public class ControlRegistrar_Usuario {
 //            System.out.println("Ingrese la cédula");
 //            vista.getTxt_cedula().setBorder(vista.getTxt_user().getBorder());
 //        }
-
         return busqueda;
 
     }
@@ -148,7 +146,7 @@ public class ControlRegistrar_Usuario {
     private int campoPersona(String cedula) {
 
         /*Retora el id de la persona de acuerdo a su número de cédula*/
-        int id_persona = modelo_persona.mostrarDatos().stream().findAny().filter(p -> p.getDni().equals(cedula)).get().getId_persona();
+        int id_persona = modelo_persona.mostrarDatos().stream().filter(p -> p.getDni().equals(cedula)).findAny().get().getId_persona();
 
         return id_persona;
 

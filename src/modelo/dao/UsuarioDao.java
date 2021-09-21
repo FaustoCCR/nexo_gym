@@ -53,8 +53,8 @@ public class UsuarioDao extends UsuarioVo {
 
     public boolean insertar() {
         String sql = "INSERT INTO usuario(\n"
-                + "	id_persona, id_rol, user_name, password, estado_cuenta)\n"
-                + "	VALUES ('" + getId_persona() + "','" + getId_rol() + "','" + getUser_name() + "','" + getPassword()
+                + "id_persona, id_rol, user_name, password, estado_cuenta)\n"
+                + "VALUES ('" + getId_persona() + "','" + getId_rol() + "','" + getUser_name() + "','" + getPassword()
                 + "','" + isEstado_cuenta() + "');";
        return conecta.accion(sql);
     }

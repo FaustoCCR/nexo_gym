@@ -15,7 +15,7 @@ public class ControlRegistrar_Cargo {
         this.vista = vista;
 
         vista.setVisible(true);
-        vista.setTitle("Registro de Usuarios - Nexo Gym");
+        vista.setTitle("Registro de Cargos - Nexo Gym");
         vista.setResizable(false);
         vista.setLocationRelativeTo(null);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
