@@ -39,8 +39,6 @@ public class ControlRegistrar_Usuario {
 
     public void funcionalidad() {
 
-        vista.getBt_check().addActionListener(l -> buscarPersona(vista.getTxt_cedula().getText()));
-
         JPasswordField[] claves = {vista.getJpass(), vista.getJconfirm_pass()};
 
         for (JPasswordField clave : claves) {

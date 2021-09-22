@@ -1,4 +1,3 @@
-
 package vista;
 
 import javax.swing.JButton;
@@ -7,7 +6,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 public class VistaRegistrar_Usuario extends javax.swing.JFrame {
-
 
     public VistaRegistrar_Usuario() {
         initComponents();
@@ -33,7 +31,6 @@ public class VistaRegistrar_Usuario extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jconfirm_pass = new javax.swing.JPasswordField();
         bt_registrar = new javax.swing.JButton();
-        bt_check = new javax.swing.JButton();
         jpass = new javax.swing.JPasswordField();
         jLabel7 = new javax.swing.JLabel();
         txt_persona = new javax.swing.JTextField();
@@ -74,10 +71,6 @@ public class VistaRegistrar_Usuario extends javax.swing.JFrame {
         bt_registrar.setText("Registrar Usuario");
         bt_registrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        bt_check.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
-        bt_check.setText("-");
-        bt_check.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-
         jpass.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         jpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
@@ -95,18 +88,15 @@ public class VistaRegistrar_Usuario extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel1)
-                            .addComponent(txt_cedula, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(cb_rol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addComponent(bt_check))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel1)
+                        .addComponent(txt_cedula, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel3)
+                        .addComponent(cb_rol, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jLabel7)
                     .addComponent(txt_persona, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jLabel5)
@@ -138,9 +128,6 @@ public class VistaRegistrar_Usuario extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cb_rol, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(83, 83, 83)
-                        .addComponent(bt_check, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(51, 51, 51)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -160,14 +147,6 @@ public class VistaRegistrar_Usuario extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    public JButton getBt_check() {
-        return bt_check;
-    }
-
-    public void setBt_check(JButton bt_check) {
-        this.bt_check = bt_check;
-    }
 
     public JButton getBt_registrar() {
         return bt_registrar;
@@ -258,7 +237,6 @@ public class VistaRegistrar_Usuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bt_check;
     private javax.swing.JButton bt_registrar;
     private javax.swing.JComboBox<String> cb_rol;
     private javax.swing.JLabel jLabel1;
