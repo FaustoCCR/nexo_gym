@@ -5,6 +5,7 @@ import modelo.dao.ClienteDao;
 import modelo.dao.MembresiaDao;
 import modelo.dao.UsuarioDao;
 import vista.VistaAdministrador;
+import vista.VistaGestion_Clientes;
 import vista.VistaLogin;
 import vista.VistaRegistrarCargo;
 import vista.VistaRegistrar_Cliente;
@@ -32,6 +33,8 @@ public class ControlVista_Admin {
         vista.getJmi_registrarcargo().addActionListener(l -> ventanaRegistrar_Cargo());
         vista.getJmi_rgmembresia().addActionListener(l->ventanaRegistrar_Membresia());
         vista.getJmi_rgcliente().addActionListener(l->ventanaRegistrar_Cliente());
+        vista.getJmi_gclientes().addActionListener(l->ventanaGestion_Clientes());
+        
         
 
     }
@@ -78,6 +81,15 @@ public class ControlVista_Admin {
         VistaRegistrar_Cliente v_rgcliente = new VistaRegistrar_Cliente();
         ControlRegistrar_Cliente c_rgcliente = new  ControlRegistrar_Cliente(m_rgcliente, v_rgcliente);
         c_rgcliente.funcionalidad();
+    }
+    
+    private void ventanaGestion_Clientes(){
+        
+        ClienteDao modelo = new ClienteDao();
+        VistaGestion_Clientes vista = new VistaGestion_Clientes();
+        
+        ControlGestion_Clientes control = new ControlGestion_Clientes(modelo, vista);
+        control.funcionalidad();
     }
 
 }

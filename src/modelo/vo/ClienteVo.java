@@ -13,17 +13,22 @@ public class ClienteVo {
     private Date f_inicio;
     private Date f_vence;
     private double pago;
+    private boolean estado_pago;
+    
+    private String nombrecliente;  // ----> variable extra
+    private String membresia;
 
     public ClienteVo() {
     }
 
-    public ClienteVo(int id_cliente, int id_persona, int id_membresia, Date f_inicio, Date f_vence, double pago) {
+    public ClienteVo(int id_cliente, int id_persona, int id_membresia, Date f_inicio, Date f_vence, double pago, boolean estado_pago) {
         this.id_cliente = id_cliente;
         this.id_persona = id_persona;
         this.id_membresia = id_membresia;
         this.f_inicio = f_inicio;
         this.f_vence = f_vence;
         this.pago = pago;
+        this.estado_pago = estado_pago;
     }
 
     public int getId_cliente() {
@@ -73,8 +78,30 @@ public class ClienteVo {
     public void setPago(double pago) {
         this.pago = pago;
     }
-    
-    
+
+    public boolean isEstado_pago() {
+        return estado_pago;
+    }
+
+    public void setEstado_pago(boolean estado_pago) {
+        this.estado_pago = estado_pago;
+    }
+
+    public String getNombrecliente() {
+        return nombrecliente;
+    }
+
+    public void setNombrecliente(String nombrecliente) {
+        this.nombrecliente = nombrecliente;
+    }
+
+    public String getMembresia() {
+        return membresia;
+    }
+
+    public void setMembresia(String membresia) {
+        this.membresia = membresia;
+    }
     
     
 }

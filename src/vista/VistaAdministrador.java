@@ -21,6 +21,9 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_registrarcargo = new javax.swing.JMenuItem();
         jmi_rgmembresia = new javax.swing.JMenuItem();
         jmi_rgcliente = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
+        jMenu4 = new javax.swing.JMenu();
+        jmi_gclientes = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -56,6 +59,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jMenu3.add(jmi_rgcliente);
 
         jMenu2.add(jMenu3);
+        jMenu2.add(jSeparator2);
+
+        jMenu4.setText("Consultar");
+        jMenu4.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+
+        jmi_gclientes.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jmi_gclientes.setText("Clientes");
+        jMenu4.add(jmi_gclientes);
+
+        jMenu2.add(jMenu4);
 
         jMenuBar1.add(jMenu2);
 
@@ -115,6 +128,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
         this.jmi_rgcliente = jmi_rgcliente;
     }
 
+    public JMenuItem getJmi_gclientes() {
+        return jmi_gclientes;
+    }
+
+    public void setJmi_gclientes(JMenuItem jmi_gclientes) {
+        this.jmi_gclientes = jmi_gclientes;
+    }
+    
+    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -151,7 +174,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
+    private javax.swing.JMenuItem jmi_gclientes;
     private javax.swing.JMenuItem jmi_registrarcargo;
     private javax.swing.JMenuItem jmi_registraruser;
     private javax.swing.JMenuItem jmi_rgcliente;
