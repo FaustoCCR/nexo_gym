@@ -9,6 +9,9 @@ public class Ctg_ProductoVo {
     private String nombre;
     private String descripcion;
 
+    public Ctg_ProductoVo() {
+    }
+
     public Ctg_ProductoVo(int id_ctgp, String nombre, String descripcion) {
         this.id_ctgp = id_ctgp;
         this.nombre = nombre;
