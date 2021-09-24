@@ -8,11 +8,13 @@ public class Main {
 
     public static void main(String[] args) {
 
-        UsuarioDao user = new UsuarioDao();
-        VistaLogin vl = new VistaLogin();
+//        UsuarioDao user = new UsuarioDao();
+//        VistaLogin vl = new VistaLogin();
+//
+//        ControlLogin login = new ControlLogin(user, vl);
+//        login.funcionalidad();
 
-        ControlLogin login = new ControlLogin(user, vl);
-        login.funcionalidad();
+        
 
     }
 

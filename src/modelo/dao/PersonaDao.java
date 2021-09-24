@@ -25,7 +25,7 @@ public class PersonaDao extends PersonaVo {
     public List<PersonaVo> mostrarDatos() {
         
         List<PersonaVo> lista_persona = new ArrayList<>();
-        String sql = "select * from persona";
+        String sql = "select * from persona order by 1";
         ResultSet rs = conecta.consulta(sql);
 
         try {
@@ -55,37 +55,7 @@ public class PersonaDao extends PersonaVo {
         }
     }
     
-    public List<PersonaVo> listarPersonas(String aguja){
-           
-       try {
-           String sql="select * from persona WHERE ";
-            sql+=" UPPER(nombre) like UPPER('%"+aguja+"%') OR";
-            sql+=" UPPER(apellido) like UPPER('%"+aguja+"%') OR";
-            sql+=" id_persona = ("+aguja+") ";
-            ResultSet rs= conecta.consulta(sql);
-            List<PersonaVo> lista=new ArrayList<PersonaVo>();
-           while(rs.next()){
-             PersonaVo p= new PersonaVo();
-             p.setId_persona(rs.getInt("id_persona"));
-                p.setDni(rs.getString("dni"));
-                p.setNombre(rs.getString("nombre"));
-                p.setApellido(rs.getString("apellido"));
-                p.setBirthdate(rs.getDate("birthdate"));
-                p.setCorreo(rs.getString("correo"));
-                p.setGenero(rs.getString("genero").charAt(0));
-                p.setDireccion(rs.getString("direccion"));
-                p.setTelefono(rs.getString("telefono"));
-             
-             lista.add(p);
-           }
-  
-           rs.close();
-           return lista;
-       } catch (SQLException ex) {
-           Logger.getLogger(PersonaDao.class.getName()).log(Level.SEVERE, null, ex);
-           return null;
-       }      
-    }
+   
     
     public boolean grabar(){
     String sql;
@@ -95,24 +65,5 @@ public class PersonaDao extends PersonaVo {
     
     }
     
-    public boolean eliminar(String indentificar){
-        String nsql = "delete from persona where \"idpersona\"='" +indentificar+ "'";
-        if(conecta.accion(nsql)){
-            
-            return true;
-        }
-        else
-        {
-            System.out.println("Error eliminar");
-            return false;
-        }
-    }
-    
-    public boolean modificar(String identificador){
-        //System.out.println(getFechaNacimiento()+"");
-        String nsql = "UPDATE persona set \"nombre\"='"+getNombre()+"',\"apellido\"='"+getApellido()+"',\"birthdate\"='"+getBirthdate()+"',\"correo\"='"+getCorreo()+"',\"genero\"='"+getGenero()+"',\"direccion\"='"+getDireccion()+"',\"telefono\"='"+getTelefono()+"'"
-         + "WHERE \"id_persona\"='"+identificador+"'";
-        return conecta.accion(nsql);
-    
-    }
+   
 }
