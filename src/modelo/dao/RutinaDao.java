@@ -28,7 +28,7 @@ public class RutinaDao extends RutinaVo {
     public RutinaDao(int id_rutina, String nombre, String descripcion) {
         super(id_rutina, nombre, descripcion);
     }
-    
+
     public List<RutinaVo> mostrarDatos() {
 
         List<RutinaVo> lista_rutina = new ArrayList<>();
@@ -60,7 +60,7 @@ public class RutinaDao extends RutinaVo {
     public boolean insertar() {
         String sql = "INSERT INTO rutina(\n"
                 + "nombre, descripcion)\n"
-                + "VALUES ('" + getNombre() + "','" + getDescripcion()+ "');";
+                + "VALUES ('" + getNombre() + "','" + getDescripcion() + "');";
         return conecta.accion(sql);
     }
 

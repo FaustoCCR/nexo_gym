@@ -21,7 +21,7 @@ public class VistaRegistrar_Rutina extends javax.swing.JFrame {
     public VistaRegistrar_Rutina() {
         initComponents();
     }
-
+    
     public JToggleButton getBtnRegistrar() {
         return btnRegistrar;
     }

@@ -9,12 +9,12 @@ import vista.VistaRegistrar_Rutina;
 public class Main {
 
     public static void main(String[] args) {
-
-        UsuarioDao user = new UsuarioDao();
-        VistaLogin vl = new VistaLogin();
-
-        ControlLogin login = new ControlLogin(user, vl);
-        login.funcionalidad();
+//
+//        UsuarioDao user = new UsuarioDao();
+//        VistaLogin vl = new VistaLogin();
+//
+//        ControlLogin login = new ControlLogin(user, vl);
+//        login.funcionalidad();
         
         RutinaDao mode =new RutinaDao();
         VistaRegistrar_Rutina vis = new VistaRegistrar_Rutina();
