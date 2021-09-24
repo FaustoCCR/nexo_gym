@@ -16,10 +16,10 @@ public class Main {
         ControlLogin login = new ControlLogin(user, vl);
         login.funcionalidad();
         
-//        RutinaDao mode =new RutinaDao();
-//        VistaRegistrar_Rutina vis = new VistaRegistrar_Rutina();
-//        ControlRegistrar_Rutina cont =new ControlRegistrar_Rutina(mode, vis);
-//        cont.funcionalidad();
+        RutinaDao mode =new RutinaDao();
+        VistaRegistrar_Rutina vis = new VistaRegistrar_Rutina();
+        ControlRegistrar_Rutina cont =new ControlRegistrar_Rutina(mode, vis);
+        cont.funcionalidad();
 
     }
 
