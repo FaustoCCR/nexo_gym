@@ -9,6 +9,10 @@ public class RutinaVo {
     private String nombre;
     private String descripcion;
 
+    public RutinaVo() {
+    }
+    
+    
     public RutinaVo(int id_rutina, String nombre, String descripcion) {
         this.id_rutina = id_rutina;
         this.nombre = nombre;
