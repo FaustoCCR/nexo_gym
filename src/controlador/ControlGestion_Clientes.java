@@ -47,8 +47,10 @@ public class ControlGestion_Clientes {
         };
 
         vista_cliente.getJtable_clientes().setModel(tb_model);
-        vista_cliente.getJtable_clientes().getTableHeader().setFont(new Font("Trebuchet MS", 1, 14));//fuente que lleve la cabecera
+        vista_cliente.getJtable_clientes().getTableHeader().setFont(new Font("Trebuchet MS", 1, 15));//fuente que lleve la cabecera
         vista_cliente.getJtable_clientes().setShowHorizontalLines(true);//colocar lineas horizontales
+        vista_cliente.getJtable_clientes().getColumnModel().getColumn(0).setPreferredWidth(20);
+        
 
     }
 
@@ -58,7 +60,7 @@ public class ControlGestion_Clientes {
         modelo_cliente.mostrarDatosJoin().stream().forEach((c) -> {
 
             Object[] contenido
-                    = {c.getId_cliente(), c.getNombrecliente(), c.getMembresia(), c.getPago(), c.getF_inicio(), c.getF_vence(), estadoPaga(c.isEstado_pago())};
+                    = {c.getId_cliente(), c.getNombrecliente(), c.getMembresia(),"$"+ c.getPago(), c.getF_inicio(), c.getF_vence(), estadoPaga(c.isEstado_pago())};
 
             tb_model.addRow(contenido);
 

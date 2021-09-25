@@ -31,7 +31,7 @@ public class ClienteDao extends ClienteVo {
 
             while (rs.next()) {
 
-                ClienteVo cl = new ClienteDao();
+                ClienteVo cl = new ClienteVo();
 
                 cl.setId_cliente(rs.getInt("id_cliente"));
                 cl.setId_persona(rs.getInt("id_persona"));

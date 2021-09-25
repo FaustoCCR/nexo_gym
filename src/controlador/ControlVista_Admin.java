@@ -2,6 +2,7 @@ package controlador;
 
 import modelo.dao.CargoDao;
 import modelo.dao.ClienteDao;
+import modelo.dao.Ctg_ProductoDao;
 import modelo.dao.MembresiaDao;
 import modelo.dao.UsuarioDao;
 import vista.VistaAdministrador;
@@ -9,6 +10,7 @@ import vista.VistaGestion_Clientes;
 import vista.VistaLogin;
 import vista.VistaRegistrarCargo;
 import vista.VistaRegistrar_Cliente;
+import vista.VistaRegistrar_CtgProducto;
 import vista.VistaRegistrar_Membresia;
 import vista.VistaRegistrar_Usuario;
 
@@ -34,6 +36,8 @@ public class ControlVista_Admin {
         vista.getJmi_rgmembresia().addActionListener(l->ventanaRegistrar_Membresia());
         vista.getJmi_rgcliente().addActionListener(l->ventanaRegistrar_Cliente());
         vista.getJmi_gclientes().addActionListener(l->ventanaGestion_Clientes());
+        vista.getJmi_rgctgproducto().addActionListener(l->ventanaRg_CtgProducto());
+        
         
         
 
@@ -89,6 +93,14 @@ public class ControlVista_Admin {
         VistaGestion_Clientes vista = new VistaGestion_Clientes();
         
         ControlGestion_Clientes control = new ControlGestion_Clientes(modelo, vista);
+        control.funcionalidad();
+    }
+    
+    private void ventanaRg_CtgProducto(){
+        
+        Ctg_ProductoDao modelo = new Ctg_ProductoDao();
+        VistaRegistrar_CtgProducto vista = new VistaRegistrar_CtgProducto();
+        ControlRegistrar_CtgProducto control = new ControlRegistrar_CtgProducto(modelo, vista);
         control.funcionalidad();
     }
 

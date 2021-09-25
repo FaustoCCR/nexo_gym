@@ -22,7 +22,7 @@ public class VistaGestion_Clientes extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel2.setText("Clientes Registrados");
 
-        jtable_clientes.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jtable_clientes.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         jtable_clientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -35,6 +35,7 @@ public class VistaGestion_Clientes extends javax.swing.JFrame {
             }
         ));
         jtable_clientes.setGridColor(new java.awt.Color(51, 102, 255));
+        jtable_clientes.setRowHeight(20);
         jScrollPane1.setViewportView(jtable_clientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

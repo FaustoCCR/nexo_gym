@@ -21,6 +21,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_registrarcargo = new javax.swing.JMenuItem();
         jmi_rgmembresia = new javax.swing.JMenuItem();
         jmi_rgcliente = new javax.swing.JMenuItem();
+        jmi_rgctgproducto = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu4 = new javax.swing.JMenu();
         jmi_gclientes = new javax.swing.JMenuItem();
@@ -57,6 +58,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_rgcliente.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         jmi_rgcliente.setText("Cliente");
         jMenu3.add(jmi_rgcliente);
+
+        jmi_rgctgproducto.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jmi_rgctgproducto.setText("Categoría Producto");
+        jMenu3.add(jmi_rgctgproducto);
 
         jMenu2.add(jMenu3);
         jMenu2.add(jSeparator2);
@@ -135,6 +140,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public void setJmi_gclientes(JMenuItem jmi_gclientes) {
         this.jmi_gclientes = jmi_gclientes;
     }
+
+    public JMenuItem getJmi_rgctgproducto() {
+        return jmi_rgctgproducto;
+    }
+
+    public void setJmi_rgctgproducto(JMenuItem jmi_rgctgproducto) {
+        this.jmi_rgctgproducto = jmi_rgctgproducto;
+    }
+    
+    
     
     
 
@@ -181,6 +196,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_registrarcargo;
     private javax.swing.JMenuItem jmi_registraruser;
     private javax.swing.JMenuItem jmi_rgcliente;
+    private javax.swing.JMenuItem jmi_rgctgproducto;
     private javax.swing.JMenuItem jmi_rgmembresia;
     private javax.swing.JMenuItem jmi_salir;
     // End of variables declaration//GEN-END:variables
