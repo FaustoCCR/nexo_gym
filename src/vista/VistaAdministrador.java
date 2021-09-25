@@ -1,5 +1,6 @@
 package vista;
 
+import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
 public class VistaAdministrador extends javax.swing.JFrame {
@@ -21,10 +22,13 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_registrarcargo = new javax.swing.JMenuItem();
         jmi_rgmembresia = new javax.swing.JMenuItem();
         jmi_rgcliente = new javax.swing.JMenuItem();
-        jmi_rgctgproducto = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jMenu4 = new javax.swing.JMenu();
         jmi_gclientes = new javax.swing.JMenuItem();
+        JMenu5 = new javax.swing.JMenu();
+        jmi_rgproducto = new javax.swing.JMenuItem();
+        jmi_rgctgproducto = new javax.swing.JMenuItem();
+        jmi_rgproveedor = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -59,10 +63,6 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_rgcliente.setText("Cliente");
         jMenu3.add(jmi_rgcliente);
 
-        jmi_rgctgproducto.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
-        jmi_rgctgproducto.setText("Categoría Producto");
-        jMenu3.add(jmi_rgctgproducto);
-
         jMenu2.add(jMenu3);
         jMenu2.add(jSeparator2);
 
@@ -76,6 +76,23 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jMenu2.add(jMenu4);
 
         jMenuBar1.add(jMenu2);
+
+        JMenu5.setText("Productos");
+        JMenu5.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+
+        jmi_rgproducto.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jmi_rgproducto.setText("Registrar Producto");
+        JMenu5.add(jmi_rgproducto);
+
+        jmi_rgctgproducto.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jmi_rgctgproducto.setText("Registrar Categoría");
+        JMenu5.add(jmi_rgctgproducto);
+
+        jmi_rgproveedor.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jmi_rgproveedor.setText("Registrar Proveedor");
+        JMenu5.add(jmi_rgproveedor);
+
+        jMenuBar1.add(JMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -148,10 +165,22 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public void setJmi_rgctgproducto(JMenuItem jmi_rgctgproducto) {
         this.jmi_rgctgproducto = jmi_rgctgproducto;
     }
-    
-    
-    
-    
+
+    public JMenuItem getJmi_rgproducto() {
+        return jmi_rgproducto;
+    }
+
+    public void setJmi_rgproducto(JMenuItem jmi_rgproducto) {
+        this.jmi_rgproducto = jmi_rgproducto;
+    }
+
+    public JMenuItem getJmi_rgproveedor() {
+        return jmi_rgproveedor;
+    }
+
+    public void setJmi_rgproveedor(JMenuItem jmi_rgproveedor) {
+        this.jmi_rgproveedor = jmi_rgproveedor;
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -186,6 +215,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu JMenu5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
@@ -198,6 +228,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_rgcliente;
     private javax.swing.JMenuItem jmi_rgctgproducto;
     private javax.swing.JMenuItem jmi_rgmembresia;
+    private javax.swing.JMenuItem jmi_rgproducto;
+    private javax.swing.JMenuItem jmi_rgproveedor;
     private javax.swing.JMenuItem jmi_salir;
     // End of variables declaration//GEN-END:variables
 }

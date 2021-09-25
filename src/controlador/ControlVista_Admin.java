@@ -4,6 +4,7 @@ import modelo.dao.CargoDao;
 import modelo.dao.ClienteDao;
 import modelo.dao.Ctg_ProductoDao;
 import modelo.dao.MembresiaDao;
+import modelo.dao.ProveedorDao;
 import modelo.dao.UsuarioDao;
 import vista.VistaAdministrador;
 import vista.VistaGestion_Clientes;
@@ -12,6 +13,7 @@ import vista.VistaRegistrarCargo;
 import vista.VistaRegistrar_Cliente;
 import vista.VistaRegistrar_CtgProducto;
 import vista.VistaRegistrar_Membresia;
+import vista.VistaRegistrar_Proveedor;
 import vista.VistaRegistrar_Usuario;
 
 public class ControlVista_Admin {
@@ -33,13 +35,11 @@ public class ControlVista_Admin {
         vista.getJmi_salir().addActionListener(l -> ventanaLogin());
         vista.getJmi_registraruser().addActionListener(l -> ventanaRegistrar_Usuario());
         vista.getJmi_registrarcargo().addActionListener(l -> ventanaRegistrar_Cargo());
-        vista.getJmi_rgmembresia().addActionListener(l->ventanaRegistrar_Membresia());
-        vista.getJmi_rgcliente().addActionListener(l->ventanaRegistrar_Cliente());
-        vista.getJmi_gclientes().addActionListener(l->ventanaGestion_Clientes());
-        vista.getJmi_rgctgproducto().addActionListener(l->ventanaRg_CtgProducto());
-        
-        
-        
+        vista.getJmi_rgmembresia().addActionListener(l -> ventanaRegistrar_Membresia());
+        vista.getJmi_rgcliente().addActionListener(l -> ventanaRegistrar_Cliente());
+        vista.getJmi_gclientes().addActionListener(l -> ventanaGestion_Clientes());
+        vista.getJmi_rgctgproducto().addActionListener(l -> ventanaRg_CtgProducto());
+        vista.getJmi_rgproveedor().addActionListener(l->ventanaRg_Proveedor());
 
     }
 
@@ -69,38 +69,45 @@ public class ControlVista_Admin {
         control_rgcargo.funcionalidad();
 
     }
-    
-    private void ventanaRegistrar_Membresia(){
-        
+
+    private void ventanaRegistrar_Membresia() {
+
         MembresiaDao m_rgmembresia = new MembresiaDao();
         VistaRegistrar_Membresia v_rgmembresia = new VistaRegistrar_Membresia();
-        
+
         ControlRegistrar_Membresia c_rgmembresia = new ControlRegistrar_Membresia(m_rgmembresia, v_rgmembresia);
         c_rgmembresia.funcionalidad();
     }
-    
-    private void ventanaRegistrar_Cliente(){
-        
+
+    private void ventanaRegistrar_Cliente() {
+
         ClienteDao m_rgcliente = new ClienteDao();
         VistaRegistrar_Cliente v_rgcliente = new VistaRegistrar_Cliente();
-        ControlRegistrar_Cliente c_rgcliente = new  ControlRegistrar_Cliente(m_rgcliente, v_rgcliente);
+        ControlRegistrar_Cliente c_rgcliente = new ControlRegistrar_Cliente(m_rgcliente, v_rgcliente);
         c_rgcliente.funcionalidad();
     }
-    
-    private void ventanaGestion_Clientes(){
-        
+
+    private void ventanaGestion_Clientes() {
+
         ClienteDao modelo = new ClienteDao();
         VistaGestion_Clientes vista = new VistaGestion_Clientes();
-        
+
         ControlGestion_Clientes control = new ControlGestion_Clientes(modelo, vista);
         control.funcionalidad();
     }
-    
-    private void ventanaRg_CtgProducto(){
-        
+
+    private void ventanaRg_CtgProducto() {
+
         Ctg_ProductoDao modelo = new Ctg_ProductoDao();
         VistaRegistrar_CtgProducto vista = new VistaRegistrar_CtgProducto();
         ControlRegistrar_CtgProducto control = new ControlRegistrar_CtgProducto(modelo, vista);
+        control.funcionalidad();
+    }
+    private void ventanaRg_Proveedor(){
+        
+        ProveedorDao modelo = new ProveedorDao();
+        VistaRegistrar_Proveedor vista = new VistaRegistrar_Proveedor();
+        ControlRegistrar_Proveedor control = new ControlRegistrar_Proveedor(modelo, vista);
         control.funcionalidad();
     }
 

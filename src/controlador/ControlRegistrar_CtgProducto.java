@@ -45,7 +45,7 @@ public class ControlRegistrar_CtgProducto {
 
     private boolean verificarCategoria() {
 
-        return modelo.mostrarDatos().stream().noneMatch(c -> c.getNombre().equals(vista.getTxt_nombre().getText()));
+        return modelo.mostrarDatos().stream().noneMatch(c -> c.getNombre().equalsIgnoreCase(vista.getTxt_nombre().getText()));
     }
 
     private void sentenciaInsert() {

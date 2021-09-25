@@ -7,6 +7,10 @@ public class ProveedorVo {
     private String id_proveedor;
     private String nombre;
     private String contacto;
+    
+    public ProveedorVo(){
+        
+    }
 
     public ProveedorVo(String id_proveedor, String nombre, String contacto) {
         this.id_proveedor = id_proveedor;
