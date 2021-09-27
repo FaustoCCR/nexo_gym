@@ -16,6 +16,10 @@ public class ProductoVo {
     private int stock;
     private Image imagen;
 
+    public ProductoVo() {
+    }
+
+
     public ProductoVo(int id_prod, String nombre, int id_ctgp, String id_proveedor, String descripcion, double precio_u, int stock, Image imagen) {
         this.id_prod = id_prod;
         this.nombre = nombre;

@@ -4,6 +4,7 @@ import modelo.dao.CargoDao;
 import modelo.dao.ClienteDao;
 import modelo.dao.Ctg_ProductoDao;
 import modelo.dao.MembresiaDao;
+import modelo.dao.ProductoDao;
 import modelo.dao.ProveedorDao;
 import modelo.dao.UsuarioDao;
 import vista.VistaAdministrador;
@@ -13,6 +14,7 @@ import vista.VistaRegistrarCargo;
 import vista.VistaRegistrar_Cliente;
 import vista.VistaRegistrar_CtgProducto;
 import vista.VistaRegistrar_Membresia;
+import vista.VistaRegistrar_Producto;
 import vista.VistaRegistrar_Proveedor;
 import vista.VistaRegistrar_Usuario;
 
@@ -39,7 +41,8 @@ public class ControlVista_Admin {
         vista.getJmi_rgcliente().addActionListener(l -> ventanaRegistrar_Cliente());
         vista.getJmi_gclientes().addActionListener(l -> ventanaGestion_Clientes());
         vista.getJmi_rgctgproducto().addActionListener(l -> ventanaRg_CtgProducto());
-        vista.getJmi_rgproveedor().addActionListener(l->ventanaRg_Proveedor());
+        vista.getJmi_rgproveedor().addActionListener(l -> ventanaRg_Proveedor());
+        vista.getJmi_rgproducto().addActionListener(l -> ventanaRg_Producto());
 
     }
 
@@ -103,11 +106,19 @@ public class ControlVista_Admin {
         ControlRegistrar_CtgProducto control = new ControlRegistrar_CtgProducto(modelo, vista);
         control.funcionalidad();
     }
-    private void ventanaRg_Proveedor(){
-        
+
+    private void ventanaRg_Proveedor() {
+
         ProveedorDao modelo = new ProveedorDao();
         VistaRegistrar_Proveedor vista = new VistaRegistrar_Proveedor();
         ControlRegistrar_Proveedor control = new ControlRegistrar_Proveedor(modelo, vista);
+        control.funcionalidad();
+    }
+
+    private void ventanaRg_Producto() {
+        ProductoDao modelo = new ProductoDao();
+        VistaRegistrar_Producto vista = new VistaRegistrar_Producto();
+        ControlRegistrar_Producto control = new ControlRegistrar_Producto(modelo, vista);
         control.funcionalidad();
     }
 
