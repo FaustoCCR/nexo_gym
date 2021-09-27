@@ -213,7 +213,7 @@ public class ControlRegistrar_Usuario {
 
                     } else {
                         JOptionPane.showMessageDialog(vista, "Nombre de usuario no disponible", "Advertencia", JOptionPane.ERROR_MESSAGE);
-                        vista.getTxt_cedula().grabFocus();
+                        vista.getTxt_user().grabFocus();
                     }
 
                 } else {
@@ -221,7 +221,7 @@ public class ControlRegistrar_Usuario {
                 }
 
             } else {
-                JOptionPane.showMessageDialog(vista, "Cedula no identificada", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vista, "Cédula no identificada", "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
 
         } else {
