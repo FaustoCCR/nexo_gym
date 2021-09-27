@@ -12,6 +12,9 @@ public class EmpleadoVo {
     private int id_cargo; // ----> FK
     private Date fecha_contrato;
     private double sueldo;
+    
+    public EmpleadoVo() {
+    }
 
     public EmpleadoVo(int id_empleado, int id_persona, int id_cargo, Date fecha_contrato, double sueldo) {
         this.id_empleado = id_empleado;
