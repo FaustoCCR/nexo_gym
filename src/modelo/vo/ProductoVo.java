@@ -1,11 +1,9 @@
-
 package modelo.vo;
 
 import java.awt.Image;
 
-
 public class ProductoVo {
-    
+
     //atributos
     private int id_prod;
     private String nombre;
@@ -14,13 +12,12 @@ public class ProductoVo {
     private String descripcion;
     private double precio_u;
     private int stock;
-    private Image imagen;
+    private byte[] foto;
 
     public ProductoVo() {
     }
 
-
-    public ProductoVo(int id_prod, String nombre, int id_ctgp, String id_proveedor, String descripcion, double precio_u, int stock, Image imagen) {
+    public ProductoVo(int id_prod, String nombre, int id_ctgp, String id_proveedor, String descripcion, double precio_u, int stock, byte[] foto) {
         this.id_prod = id_prod;
         this.nombre = nombre;
         this.id_ctgp = id_ctgp;
@@ -28,7 +25,7 @@ public class ProductoVo {
         this.descripcion = descripcion;
         this.precio_u = precio_u;
         this.stock = stock;
-        this.imagen = imagen;
+        this.foto = foto;
     }
 
     public int getId_prod() {
@@ -87,14 +84,16 @@ public class ProductoVo {
         this.stock = stock;
     }
 
-    public Image getImagen() {
-        return imagen;
+    public byte[] getFoto() {
+        return foto;
     }
 
-    public void setImagen(Image imagen) {
-        this.imagen = imagen;
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
     }
     
     
-    
+
+
+
 }

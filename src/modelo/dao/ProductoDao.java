@@ -18,8 +18,8 @@ public class ProductoDao extends ProductoVo {
     public ProductoDao() {
     }
 
-    public ProductoDao(int id_prod, String nombre, int id_ctgp, String id_proveedor, String descripcion, double precio_u, int stock, Image imagen) {
-        super(id_prod, nombre, id_ctgp, id_proveedor, descripcion, precio_u, stock, imagen);
+    public ProductoDao(int id_prod, String nombre, int id_ctgp, String id_proveedor, String descripcion, double precio_u, int stock, byte[] foto) {
+        super(id_prod, nombre, id_ctgp, id_proveedor, descripcion, precio_u, stock, foto);
     }
 
     public List<ProductoVo> mostrarDatos() {
@@ -41,7 +41,7 @@ public class ProductoDao extends ProductoVo {
                 pr.setDescripcion(rs.getString("descripcion"));
                 pr.setPrecio_u(rs.getDouble("precio_u"));
                 pr.setStock(rs.getInt("stock"));
-                /*falta la fotografía*/
+                pr.setFoto(rs.getBytes("imagen"));
 
                 lista_productos.add(pr);
 
@@ -57,9 +57,9 @@ public class ProductoDao extends ProductoVo {
 
     public boolean insertar() {
         String sql = "INSERT INTO producto(\n"
-                + "nombre, id_ctgp, id_proveedor, descripcion, precio_u,stock)\n"
+                + "nombre, id_ctgp, id_proveedor, descripcion, precio_u, stock, imagen)\n"
                 + "VALUES ('" + getNombre() + "','" + getId_ctgp() + "','" + getId_proveedor() + "','" + getDescripcion()
-                + "','" + getPrecio_u() + "','" + getStock() + "');";
+                + "','" + getPrecio_u() + "','" + getStock() + "','" + getFoto() + "');";
         return conecta.accion(sql);
     }
 
