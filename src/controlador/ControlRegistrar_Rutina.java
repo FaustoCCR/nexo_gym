@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controlador;
 
 import javax.swing.JFrame;
@@ -10,10 +6,7 @@ import javax.swing.JOptionPane;
 import modelo.dao.RutinaDao;
 import vista.VistaRegistrar_Rutina;
 
-/**
- *
- * @author Casa
- */
+
 public class ControlRegistrar_Rutina {
     private RutinaDao modelo;
     private VistaRegistrar_Rutina vista;
@@ -32,7 +25,7 @@ public class ControlRegistrar_Rutina {
 
     public void funcionalidad() {
 
-        vista.getBtnRegistrar().addActionListener(l -> registrarRutina());
+        vista.getBt_registrar().addActionListener(l -> registrarRutina());
 
     }
 
@@ -63,7 +56,7 @@ public class ControlRegistrar_Rutina {
         modelo.setDescripcion(descripcion);
 
         if (modelo.insertar()) {
-            JOptionPane.showMessageDialog(vista, "Rutina Registrado");
+            JOptionPane.showMessageDialog(vista, "Rutina Registrada");
 
         } else {
             JOptionPane.showMessageDialog(vista, "Error al Guardar");
@@ -91,7 +84,7 @@ public class ControlRegistrar_Rutina {
                 reiniciarCampos();
 
             } else {
-                JOptionPane.showMessageDialog(vista, "Rutina ya registrado", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vista, "Rutina ya registrada", "Advertencia", JOptionPane.ERROR_MESSAGE);
                 vista.getTxtNombre().grabFocus();
             }
 

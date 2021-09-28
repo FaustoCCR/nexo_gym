@@ -23,7 +23,7 @@ public class PersonaDao extends PersonaVo {
     }
 
     public List<PersonaVo> mostrarDatos() {
-        
+
         List<PersonaVo> lista_persona = new ArrayList<>();
         String sql = "select * from persona order by 1";
         ResultSet rs = conecta.consulta(sql);
@@ -54,16 +54,13 @@ public class PersonaDao extends PersonaVo {
             return null;
         }
     }
-    
-   
-    
-    public boolean grabar(){
-    String sql;
-        sql="INSERT INTO persona(id_persona,dni,nombre,apellido,birthdate,correo,genero,direccion,telefono) ";
-        sql+=" VALUES ('"+getId_persona()+"','"+getDni()+"','"+getNombre()+"','"+getApellido()+"','"+getBirthdate()+"','"+getCorreo()+"','"+getGenero()+"','"+getDireccion()+"','"+getTelefono()+"')";
+
+    public boolean grabar() {
+        String sql;
+        sql = "INSERT INTO persona(dni,nombre,apellido,birthdate,correo,genero,direccion,telefono) ";
+        sql += " VALUES ('" + getDni() + "','" + getNombre() + "','" + getApellido() + "','" + getBirthdate() + "','" + getCorreo() + "','" + getGenero() + "','" + getDireccion() + "','" + getTelefono() + "')";
         return conecta.accion(sql);
-    
+
     }
-    
-   
+
 }

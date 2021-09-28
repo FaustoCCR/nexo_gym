@@ -71,14 +71,14 @@ public class ControlRegistrar_Usuario {
         busqueda = modelo_persona.mostrarDatos().stream().anyMatch(cedula_p);
 
         if (busqueda == true) {
-            System.out.println("Cedula Correcta");
+
             vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
             modelo_persona.mostrarDatos().stream().filter(cedula_p).forEach((t) -> {
                 vista.getTxt_persona().setText(t.getNombre() + " " + t.getApellido());
 
             });
         } else {
-            System.out.println("Cedula Incorrecta");
+
             vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
             vista.getTxt_persona().setText("");
 

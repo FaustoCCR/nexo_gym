@@ -1,26 +1,20 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.sql.Date;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.Enumeration;
 import java.util.List;
 import java.util.function.Predicate;
+import javax.swing.AbstractButton;
+import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.dao.PersonaDao;
 import modelo.vo.PersonaVo;
 import vista.VistaRegistrar_Persona;
 
-/**
- *
- * @author Usuario
- */
 public class ControlRegistrar_Persona {
 
     private VistaRegistrar_Persona vista_persona;
@@ -36,75 +30,128 @@ public class ControlRegistrar_Persona {
         vista.setLocationRelativeTo(null);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+        vista.getJdnacimiento().getDateEditor().setEnabled(false);
+
     }
 
     public void funcionalidad() {
 
-        vista_persona.getBtnRegistrar().addActionListener(l -> crearPersona());
+        vista_persona.getBt_registrar().addActionListener(l -> registrarPersona());
 
     }
 
-    private boolean buscarPersona(String cedula) {
+    private boolean validarRegistro() {
 
-        boolean busqueda;
-//        if (!cedula.isEmpty()) {
+        String cedula = vista_persona.getTxt_cedula().getText();
+        String nombre = vista_persona.getTxt_nombre().getText();
+        String apellido = vista_persona.getTxt_apellido().getText();
+        String correo = vista_persona.getTxt_correo().getText();
+        String direccion = vista_persona.getTxt_direccion().getText();
+        String telefono = vista_persona.getTxt_telefono().getText();
+
+        boolean validacion = true;
+        if (cedula.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || vista_persona.getJdnacimiento().getDate()==null
+                || correo.isEmpty() || (!vista_persona.getRbt_masculino().isSelected() && !vista_persona.getRbt_femenino().isSelected())
+                || direccion.isEmpty() || telefono.isEmpty()) {
+
+            validacion = false;
+
+        }
+
+        return validacion;
+
+    }
+
+    private boolean verificarCedula(String cedula) {
+
         Predicate<PersonaVo> cedula_p = p -> p.getDni().equals(cedula);
 
-        busqueda = modelo_persona.mostrarDatos().stream().anyMatch(cedula_p);
+        return modelo_persona.mostrarDatos().stream().noneMatch(cedula_p);
 
-        if (busqueda == true) {
-            JOptionPane.showMessageDialog(vista_persona, "Exite un registro con esta cedula", "Mensaje", JOptionPane.ERROR_MESSAGE);
+    }
+
+    private String getSelectedbtgenero(ButtonGroup bt_genero) {
+        for (Enumeration<AbstractButton> buttons = bt_genero.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+
+            if (button.isSelected()) {
+                return button.getText();
+            }
+        }
+
+        return null;
+    }
+
+    private void reiniciarCampos() {
+
+        vista_persona.getTxt_cedula().setText("");
+        vista_persona.getTxt_nombre().setText("");
+        vista_persona.getTxt_apellido().setText("");
+        vista_persona.getJdnacimiento().setDate(null);
+        vista_persona.getTxt_correo().setText("");
+        vista_persona.getBt_genero().clearSelection();
+        vista_persona.getTxt_direccion().setText("");
+        vista_persona.getTxt_telefono().setText("");
+
+    }
+
+    private void sentenciaInsert() {
+
+        String cedula = vista_persona.getTxt_cedula().getText();
+        String nombre = vista_persona.getTxt_nombre().getText();
+        String apellido = vista_persona.getTxt_apellido().getText();
+
+        //------------------------- FECHA -----------------------------//
+        Instant instant = vista_persona.getJdnacimiento().getDate().toInstant();
+        ZoneId zid = ZoneId.of("America/Guayaquil");
+        ZonedDateTime zdt = ZonedDateTime.ofInstant(instant, zid);
+        Date fecha = Date.valueOf(zdt.toLocalDate());
+        //-------------------------      -----------------------------//
+        String correo = vista_persona.getTxt_correo().getText();
+        char genero = getSelectedbtgenero(vista_persona.getBt_genero()).charAt(0);
+        String direccion = vista_persona.getTxt_direccion().getText();
+        String telefono = vista_persona.getTxt_telefono().getText();
+
+        modelo_persona.setDni(cedula);
+        modelo_persona.setNombre(nombre);
+        modelo_persona.setApellido(apellido);
+        modelo_persona.setBirthdate(fecha);
+        modelo_persona.setCorreo(correo);
+        modelo_persona.setGenero(genero);
+        modelo_persona.setDireccion(direccion);
+        modelo_persona.setTelefono(telefono);
+
+        if (modelo_persona.grabar()) {
+
+            JOptionPane.showMessageDialog(vista_persona, "Persona Registrada");
 
         } else {
-            //JOptionPane.showMessageDialog(vista_persona, "Correcto");
-
+            JOptionPane.showMessageDialog(vista_persona, "Error al Guardar");
         }
-
-        return busqueda;
 
     }
 
-    private void crearPersona() {
-        boolean busqueda = buscarPersona(vista_persona.getTxtDni().getText());
-        if (!busqueda) {
-            List<PersonaVo> lista = modelo_persona.mostrarDatos();
-            
-            int id = lista.size();
-            String dni = vista_persona.getTxtDni().getText();
-            String nom = vista_persona.getTxtNombre().getText();
-            String ape = vista_persona.getTxtApellido().getText();
-            String corre = vista_persona.getTxtCorreo().getText();
-            char gene = vista_persona.getCbGenero().getSelectedItem().toString().charAt(0);
-            String direc = vista_persona.getTxtDireccion().getText();
-            String telef = vista_persona.getTxtTeléfono().getText();
+    private void registrarPersona() {
 
-            Instant instant = vista_persona.getDateFecha().getDate().toInstant();
-            ZoneId zid = ZoneId.of("America/Guayaquil");
-            ZonedDateTime zdt = ZonedDateTime.ofInstant(instant, zid);
-            Date fecha = Date.valueOf(zdt.toLocalDate());
+        if (validarRegistro()) {
 
-            PersonaDao perso = new PersonaDao();
-            perso.setId_persona(id+1);
-            perso.setDni(dni);
-            perso.setNombre(nom);
-            perso.setApellido(ape);
-            perso.setBirthdate(fecha);
-            perso.setCorreo(corre);
-            perso.setGenero(gene);
-            perso.setDireccion(direc);
-            perso.setTelefono(telef);
+            if (verificarCedula(vista_persona.getTxt_cedula().getText())) {
 
-            if (perso.grabar()) {
-                JOptionPane.showMessageDialog(vista_persona, "Persona creada");
+                sentenciaInsert();
+                reiniciarCampos();
+
             } else {
-                JOptionPane.showMessageDialog(vista_persona, "error");
+                JOptionPane.showMessageDialog(vista_persona, "Exite un registro con esta cédula", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                vista_persona.getTxt_cedula().grabFocus();
             }
 
+        } else {
+
+            JOptionPane.showMessageDialog(vista_persona, "Rellenar todos los campos", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
-    // Para despues validar la cedula... y tambien el corre
 
+    // Para despues validar la cedula... y tambien el corre
 //    public boolean validadorDeCedula(String cedula) {
 //        boolean cedulaCorrecta = false;
 //

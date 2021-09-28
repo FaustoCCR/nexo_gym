@@ -3,9 +3,12 @@ package controlador;
 import modelo.dao.CargoDao;
 import modelo.dao.ClienteDao;
 import modelo.dao.Ctg_ProductoDao;
+import modelo.dao.EmpleadoDao;
 import modelo.dao.MembresiaDao;
+import modelo.dao.PersonaDao;
 import modelo.dao.ProductoDao;
 import modelo.dao.ProveedorDao;
+import modelo.dao.RutinaDao;
 import modelo.dao.UsuarioDao;
 import vista.VistaAdministrador;
 import vista.VistaGestion_Clientes;
@@ -14,9 +17,12 @@ import vista.VistaLogin;
 import vista.VistaRegistrarCargo;
 import vista.VistaRegistrar_Cliente;
 import vista.VistaRegistrar_CtgProducto;
+import vista.VistaRegistrar_Empleado;
 import vista.VistaRegistrar_Membresia;
+import vista.VistaRegistrar_Persona;
 import vista.VistaRegistrar_Producto;
 import vista.VistaRegistrar_Proveedor;
+import vista.VistaRegistrar_Rutina;
 import vista.VistaRegistrar_Usuario;
 
 public class ControlVista_Admin {
@@ -37,8 +43,11 @@ public class ControlVista_Admin {
 
         vista.getJmi_salir().addActionListener(l -> ventanaLogin());
         vista.getJmi_registraruser().addActionListener(l -> ventanaRegistrar_Usuario());
+        vista.getJmi_rgpersona().addActionListener(l->ventanaRegistrar_Persona());
         vista.getJmi_registrarcargo().addActionListener(l -> ventanaRegistrar_Cargo());
         vista.getJmi_rgmembresia().addActionListener(l -> ventanaRegistrar_Membresia());
+        vista.getJmi_rgrutina().addActionListener(l->ventanaRegistrar_Rutina());
+        vista.getJmi_rgempleado().addActionListener(l->ventanaRegistrar_Empleado());
         vista.getJmi_rgcliente().addActionListener(l -> ventanaRegistrar_Cliente());
         vista.getJmi_gclientes().addActionListener(l -> ventanaGestion_Clientes());
         vista.getJmi_rgctgproducto().addActionListener(l -> ventanaRg_CtgProducto());
@@ -57,6 +66,13 @@ public class ControlVista_Admin {
         ControlLogin login = new ControlLogin(user, vl);
         vista.dispose();
         login.funcionalidad();
+    }
+    
+    private void ventanaRegistrar_Persona(){
+        PersonaDao modelo = new PersonaDao();
+        VistaRegistrar_Persona vista = new VistaRegistrar_Persona();
+        ControlRegistrar_Persona control = new ControlRegistrar_Persona(modelo, vista);
+        control.funcionalidad();
     }
 
     private void ventanaRegistrar_Usuario() {
@@ -84,7 +100,20 @@ public class ControlVista_Admin {
         ControlRegistrar_Membresia c_rgmembresia = new ControlRegistrar_Membresia(m_rgmembresia, v_rgmembresia);
         c_rgmembresia.funcionalidad();
     }
-
+    
+    private void ventanaRegistrar_Rutina(){
+        RutinaDao modelo = new RutinaDao();
+        VistaRegistrar_Rutina vista = new VistaRegistrar_Rutina();
+        ControlRegistrar_Rutina control = new ControlRegistrar_Rutina(modelo, vista);
+        control.funcionalidad();
+    }
+    
+    private  void ventanaRegistrar_Empleado(){
+        EmpleadoDao modelo = new EmpleadoDao();
+        VistaRegistrar_Empleado vista  = new VistaRegistrar_Empleado();
+        ControlRegistrar_Empleado control = new ControlRegistrar_Empleado(modelo, vista);
+        control.funcionalidad();
+    }
     private void ventanaRegistrar_Cliente() {
 
         ClienteDao m_rgcliente = new ClienteDao();

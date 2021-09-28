@@ -36,7 +36,7 @@
                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="txt_persona" alignment="0" min="-2" pref="242" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="133" max="32767" attributes="0"/>
+              <EmptySpace pref="132" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                       <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
@@ -99,7 +99,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="16" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cedula:"/>
+        <Property name="text" type="java.lang.String" value="C&#xe9;dula:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_cedula">
