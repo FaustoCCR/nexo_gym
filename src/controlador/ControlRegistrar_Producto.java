@@ -6,6 +6,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.function.Predicate;
@@ -34,7 +35,6 @@ public class ControlRegistrar_Producto {
     private ProveedorDao modelo_proveedor = new ProveedorDao();
     private Ctg_ProductoDao modelo_categoria = new Ctg_ProductoDao();
     private Border origin_border = new LineBorder(Color.gray, 1);
-    private File file;
 
     public ControlRegistrar_Producto(ProductoDao modelo_producto, VistaRegistrar_Producto vista_producto) {
         this.modelo_producto = modelo_producto;
@@ -131,10 +131,8 @@ public class ControlRegistrar_Producto {
 
         if (seleccion == JFileChooser.APPROVE_OPTION) {
 
-            file = jfc.getSelectedFile();
-
             try {
-                Image miImagen = ImageIO.read(file).getScaledInstance(
+                Image miImagen = ImageIO.read(jfc.getSelectedFile()).getScaledInstance(
                         vista_producto.getJlfoto().getWidth(), vista_producto.getJlfoto().getHeight(),
                         Image.SCALE_DEFAULT);
                 Icon icon = new ImageIcon(miImagen);
@@ -162,14 +160,8 @@ public class ControlRegistrar_Producto {
         modelo_producto.setDescripcion(descripcion);
         modelo_producto.setPrecio_u(precio_u);
         modelo_producto.setStock(stock);
-        try {
-            byte[] icono = new byte[(int) file.length()];
-            InputStream input = new FileInputStream(file);
-            input.read(icono);
-            modelo_producto.setFoto(icono);
-        } catch (Exception ex) {
-            modelo_producto.setFoto(null);
-        }
+        ImageIcon ic = (ImageIcon) vista_producto.getJlfoto().getIcon();
+        modelo_producto.setFoto(ic.getImage());
 
         if (modelo_producto.insertar()) {
             JOptionPane.showMessageDialog(vista_producto, "Producto Registrado");
@@ -190,7 +182,6 @@ public class ControlRegistrar_Producto {
         vista_producto.getTxt_preciou().setText("");
         vista_producto.getJspinner_stock().setValue(0);
         vista_producto.getJlfoto().setIcon(null);
-        
 
         vista_producto.getTxt_ruc().setBorder(origin_border);
     }

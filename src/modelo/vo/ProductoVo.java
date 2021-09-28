@@ -12,12 +12,12 @@ public class ProductoVo {
     private String descripcion;
     private double precio_u;
     private int stock;
-    private byte[] foto;
+    private Image foto;
 
     public ProductoVo() {
     }
 
-    public ProductoVo(int id_prod, String nombre, int id_ctgp, String id_proveedor, String descripcion, double precio_u, int stock, byte[] foto) {
+    public ProductoVo(int id_prod, String nombre, int id_ctgp, String id_proveedor, String descripcion, double precio_u, int stock, Image foto) {
         this.id_prod = id_prod;
         this.nombre = nombre;
         this.id_ctgp = id_ctgp;
@@ -84,16 +84,14 @@ public class ProductoVo {
         this.stock = stock;
     }
 
-    public byte[] getFoto() {
+    public Image getFoto() {
         return foto;
     }
 
-    public void setFoto(byte[] foto) {
+    public void setFoto(Image foto) {
         this.foto = foto;
     }
     
     
-
-
 
 }

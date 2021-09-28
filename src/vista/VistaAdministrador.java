@@ -29,6 +29,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_rgproducto = new javax.swing.JMenuItem();
         jmi_rgctgproducto = new javax.swing.JMenuItem();
         jmi_rgproveedor = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        jmi_gproductos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +93,11 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_rgproveedor.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         jmi_rgproveedor.setText("Registrar Proveedor");
         JMenu5.add(jmi_rgproveedor);
+        JMenu5.add(jSeparator1);
+
+        jmi_gproductos.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jmi_gproductos.setText("Mostrar Productos");
+        JMenu5.add(jmi_gproductos);
 
         jMenuBar1.add(JMenu5);
 
@@ -182,6 +189,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
         this.jmi_rgproveedor = jmi_rgproveedor;
     }
 
+    public JMenuItem getJmi_gproductos() {
+        return jmi_gproductos;
+    }
+
+    public void setJmi_gproductos(JMenuItem jmi_gproductos) {
+        this.jmi_gproductos = jmi_gproductos;
+    }
+    
+    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -221,8 +238,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem jmi_gclientes;
+    private javax.swing.JMenuItem jmi_gproductos;
     private javax.swing.JMenuItem jmi_registrarcargo;
     private javax.swing.JMenuItem jmi_registraruser;
     private javax.swing.JMenuItem jmi_rgcliente;
