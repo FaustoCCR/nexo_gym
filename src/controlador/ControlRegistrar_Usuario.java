@@ -57,26 +57,54 @@ public class ControlRegistrar_Usuario {
             }
 
         });
+        vista.getTxt_user().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                verificarUsuario();
+            }
+
+        });
 
         vista.getBt_registrar().addActionListener(l -> registrarUsuario());
 
     }
 
+    private boolean verificarPersonaRegistrada(String cedula) {
+
+        /*Si ya exite una persona con la cedula 
+        indicada, ya no se puede registrar*/
+        boolean respuesta = modelo_usuario.mostrarDatosJoin("").stream().noneMatch(u -> u.getCedula().equals(cedula));
+//        if (!cedula.isEmpty()) {
+        if (respuesta) {
+
+            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+        } else {
+            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+
+        }
+        return respuesta;
+
+//        } else {
+//            return false;
+//        }
+    }
+
     private boolean buscarPersona(String cedula) {
 
         boolean busqueda;
-//        if (!cedula.isEmpty()) {
+
         Predicate<PersonaVo> cedula_p = p -> p.getDni().equals(cedula);
 
         busqueda = modelo_persona.mostrarDatos().stream().anyMatch(cedula_p);
 
         if (busqueda == true) {
 
-            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+//            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
             modelo_persona.mostrarDatos().stream().filter(cedula_p).forEach((t) -> {
                 vista.getTxt_persona().setText(t.getNombre() + " " + t.getApellido());
 
             });
+            verificarPersonaRegistrada(cedula);
         } else {
 
             vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
@@ -84,13 +112,6 @@ public class ControlRegistrar_Usuario {
 
         }
 
-//        } else {
-//
-//            busqueda = false;
-//            JOptionPane.showMessageDialog(vista, "Ingrese la cédula");
-//            System.out.println("Ingrese la cédula");
-//            vista.getTxt_cedula().setBorder(vista.getTxt_user().getBorder());
-//        }
         return busqueda;
 
     }
@@ -100,16 +121,23 @@ public class ControlRegistrar_Usuario {
         String password = String.valueOf(vista.getJpass().getPassword());
         String confirm_password = String.valueOf(vista.getJconfirm_pass().getPassword());
 
-        if (confirm_password.equals(password)) {
+        if (!password.isEmpty()) {
 
-            System.out.println("Contraseñas coinciden");
-            vista.getJconfirm_pass().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+            if (confirm_password.equals(password)) {
 
-            return true;
+                System.out.println("Contraseñas coinciden");
+                vista.getJconfirm_pass().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+
+                return true;
+
+            } else {
+                vista.getJconfirm_pass().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+                System.out.println("No conciden las contraseñas");
+                return false;
+            }
 
         } else {
             vista.getJconfirm_pass().setBorder(new LineBorder(Color.decode("#C33529"), 2));
-            System.out.println("No conciden las contraseñas");
             return false;
         }
 
@@ -178,12 +206,14 @@ public class ControlRegistrar_Usuario {
     private void reiniciarCampos() {
 
         vista.getTxt_cedula().setText("");
+        vista.getTxt_persona().setText("");
         vista.getCb_rol().setSelectedIndex(0);
         vista.getTxt_user().setText("");
         vista.getJpass().setText("");
         vista.getJconfirm_pass().setText("");
 
         vista.getTxt_cedula().setBorder(origin_border);
+        vista.getTxt_user().setBorder(origin_border);
         vista.getJconfirm_pass().setBorder(origin_border);
 
     }
@@ -193,7 +223,20 @@ public class ControlRegistrar_Usuario {
         String user = vista.getTxt_user().getText();
         /*si ninguno de la lista, tiene el mismo nombre de usuario = true ,sino = false*/
         boolean respuesta = modelo_usuario.mostrarDatos().stream().noneMatch(u -> u.getUser_name().equals(user));
-        return respuesta;
+        if (!user.isEmpty()) {
+
+            if (respuesta) {
+                vista.getTxt_user().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+            } else {
+                vista.getTxt_user().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+            }
+            return respuesta;
+
+        } else {
+            vista.getTxt_user().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+            return false;
+        }
+
     }
 
     private void registrarUsuario() {
@@ -205,19 +248,26 @@ public class ControlRegistrar_Usuario {
 
             if (buscarPersona(vista.getTxt_cedula().getText())) {
 
-                if (contrasenias) {
-                    if (verificarUsuario()) {
+                if (verificarPersonaRegistrada(vista.getTxt_cedula().getText())) {
 
-                        sentenciaInsert();
-                        reiniciarCampos();
+                    if (contrasenias) {
+                        if (verificarUsuario()) {
+
+                            sentenciaInsert();
+                            reiniciarCampos();
+
+                        } else {
+                            JOptionPane.showMessageDialog(vista, "Nombre de usuario no disponible", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                            vista.getTxt_user().grabFocus();
+                        }
 
                     } else {
-                        JOptionPane.showMessageDialog(vista, "Nombre de usuario no disponible", "Advertencia", JOptionPane.ERROR_MESSAGE);
-                        vista.getTxt_user().grabFocus();
+                        JOptionPane.showMessageDialog(vista, "Revise la contraseña", "Mensaje", JOptionPane.ERROR_MESSAGE);
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(vista, "No conciden las contraseñas", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(vista, "Ya se encuentra registrada esta persona", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                    vista.getTxt_cedula().grabFocus();
                 }
 
             } else {

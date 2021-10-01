@@ -59,7 +59,8 @@ public class ClienteDao extends ClienteVo {
         String sql = "select c.id_cliente, p.nombre||' '||p.apellido \"Persona\",m.nombre,c.pago,c.f_inicio,c.f_vence,c.estado_pago\n"
                 + "from cliente c\n"
                 + "join persona p using(id_persona)\n"
-                + "join membresia m using (id_membresia)";
+                + "join membresia m using (id_membresia)"
+                + "order by 1";
         ResultSet rs = conecta.consulta(sql);
 
         try {

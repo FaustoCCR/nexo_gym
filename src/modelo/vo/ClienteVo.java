@@ -15,7 +15,7 @@ public class ClienteVo {
     private double pago;
     private boolean estado_pago;
     
-    private String nombrecliente;  // ----> variable extra
+    private String nombrecliente;  // ----> variables extra
     private String membresia;
 
     public ClienteVo() {

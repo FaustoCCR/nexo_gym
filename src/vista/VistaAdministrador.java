@@ -13,6 +13,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jToolBar1 = new javax.swing.JToolBar();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_salir = new javax.swing.JMenuItem();
@@ -23,6 +24,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_rgcliente = new javax.swing.JMenuItem();
         jmi_rgempleado = new javax.swing.JMenuItem();
         jSeparator3 = new javax.swing.JPopupMenu.Separator();
+        jmi_gusers = new javax.swing.JMenuItem();
         jmi_gclientes = new javax.swing.JMenuItem();
         JMenu5 = new javax.swing.JMenu();
         jmi_rgproducto = new javax.swing.JMenuItem();
@@ -35,6 +37,9 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_rgrutina = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jToolBar1.setFloatable(false);
+        jToolBar1.setRollover(true);
 
         jMenu1.setText("Opciones");
         jMenu1.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
@@ -68,6 +73,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_rgempleado.setText("Registrar Empleado");
         jm_personas.add(jmi_rgempleado);
         jm_personas.add(jSeparator3);
+
+        jmi_gusers.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jmi_gusers.setText("Mostrar Usuarios");
+        jm_personas.add(jmi_gusers);
 
         jmi_gclientes.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
         jmi_gclientes.setText("Mostrar Clientes");
@@ -116,11 +125,13 @@ public class VistaAdministrador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 574, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 542, Short.MAX_VALUE))
         );
 
         pack();
@@ -230,6 +241,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
         this.jmi_rgrutina = jmi_rgrutina;
     }
 
+    public JMenuItem getJmi_gusers() {
+        return jmi_gusers;
+    }
+
+    public void setJmi_gusers(JMenuItem jmi_gusers) {
+        this.jmi_gusers = jmi_gusers;
+    }
+    
+    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -269,9 +290,11 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JToolBar jToolBar1;
     private javax.swing.JMenu jm_personas;
     private javax.swing.JMenuItem jmi_gclientes;
     private javax.swing.JMenuItem jmi_gproductos;
+    private javax.swing.JMenuItem jmi_gusers;
     private javax.swing.JMenuItem jmi_registrarcargo;
     private javax.swing.JMenuItem jmi_registraruser;
     private javax.swing.JMenuItem jmi_rgcliente;

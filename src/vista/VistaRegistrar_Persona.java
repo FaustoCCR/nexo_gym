@@ -4,7 +4,6 @@ import com.toedter.calendar.JDateChooser;
 import java.util.Date;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 

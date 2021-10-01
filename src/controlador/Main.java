@@ -1,6 +1,5 @@
 package controlador;
 
-
 import modelo.dao.UsuarioDao;
 import vista.VistaLogin;
 
@@ -13,7 +12,6 @@ public class Main {
 
         ControlLogin login = new ControlLogin(user, vl);
         login.funcionalidad();
-
 
     }
 

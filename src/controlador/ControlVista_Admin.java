@@ -13,6 +13,7 @@ import modelo.dao.UsuarioDao;
 import vista.VistaAdministrador;
 import vista.VistaGestion_Clientes;
 import vista.VistaGestion_Productos;
+import vista.VistaGestion_Users;
 import vista.VistaLogin;
 import vista.VistaRegistrarCargo;
 import vista.VistaRegistrar_Cliente;
@@ -54,6 +55,8 @@ public class ControlVista_Admin {
         vista.getJmi_rgproveedor().addActionListener(l -> ventanaRg_Proveedor());
         vista.getJmi_rgproducto().addActionListener(l -> ventanaRg_Producto());
         vista.getJmi_gproductos().addActionListener(l->ventanaGestion_Productos());
+        vista.getJmi_gusers().addActionListener(l->ventanaGestion_Users());
+        
         
 
     }
@@ -161,5 +164,11 @@ public class ControlVista_Admin {
         ControlGestion_Productos control = new ControlGestion_Productos(modelo, vista);
         control.funcionalidad();
     }
-
+    
+    private void ventanaGestion_Users(){
+        UsuarioDao modelo = new UsuarioDao();
+        VistaGestion_Users vista = new VistaGestion_Users();
+        ControlGestion_Users control = new ControlGestion_Users(modelo, vista);
+        control.funcionalidad();
+    }
 }

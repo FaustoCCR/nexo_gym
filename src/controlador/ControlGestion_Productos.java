@@ -86,7 +86,7 @@ public class ControlGestion_Productos {
 
         modelo.mostrarDatos().stream().forEach((pr) -> {
 
-            Object[] contenido = {pr.getId_ctgp(), pr.getNombre(), pr.getDescripcion(), pr.getPrecio_u(), pr.getStock(), revelarFoto(pr.getFoto())};
+            Object[] contenido = {pr.getId_prod(), pr.getNombre(), pr.getDescripcion(), pr.getPrecio_u(), pr.getStock(), revelarFoto(pr.getFoto())};
 
             tb_model.addRow(contenido);
 

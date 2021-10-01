@@ -11,6 +11,13 @@ public class UsuarioVo {
     private String user_name;
     private String password;
     private boolean estado_cuenta;
+    
+    /*variables extras  */
+    private String nombres_usuario;
+    private String nombre_rol;
+    private String cedula;
+    private String estado;
+    
 
     public UsuarioVo() {
     }
@@ -71,6 +78,40 @@ public class UsuarioVo {
     public void setEstado_cuenta(boolean estado_cuenta) {
         this.estado_cuenta = estado_cuenta;
     }
+
+    public String getNombres_usuario() {
+        return nombres_usuario;
+    }
+
+    public void setNombres_usuario(String nombres_usuario) {
+        this.nombres_usuario = nombres_usuario;
+    }
+
+    public String getNombre_rol() {
+        return nombre_rol;
+    }
+
+    public void setNombre_rol(String nombre_rol) {
+        this.nombre_rol = nombre_rol;
+    }
+
+    public String getCedula() {
+        return cedula;
+    }
+
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+    
+    
     
     
     
