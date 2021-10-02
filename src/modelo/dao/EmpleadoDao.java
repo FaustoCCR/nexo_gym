@@ -60,4 +60,35 @@ public class EmpleadoDao extends EmpleadoVo{
         return conecta.accion(sql);
     }
     
+    
+    //Muestra Datos
+    public List<EmpleadoVo> mostrarDatosJoin() {
+
+        List<EmpleadoVo> lista_clientes = new ArrayList<>();
+        String sql = "select e.id_empleado, p.nombre||' '||p.apellido \"Persona\",c.nombre,e.fecha_contrato,e.sueldo\n"
+                + "from empleado e\n"
+                + "join persona p using(id_persona)\n"
+                + "join cargo c using (id_cargo)";
+        ResultSet rs = conecta.consulta(sql);
+
+        try {
+            while (rs.next()) {
+                EmpleadoVo em = new EmpleadoDao();
+                
+                em.setId_empleado(rs.getInt(1));
+                em.setNombrecliente(rs.getString(2));
+                em.setNombreCargo(rs.getString(3));
+                em.setFecha_contrato(rs.getDate(4));
+                em.setSueldo(rs.getDouble(5));
+                lista_clientes.add(em);
+            }
+            
+            rs.close();//cerramos conexion base.
+            return lista_clientes;
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
 }

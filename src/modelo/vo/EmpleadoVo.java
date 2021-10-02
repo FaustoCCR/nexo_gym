@@ -13,6 +13,11 @@ public class EmpleadoVo {
     private Date fecha_contrato;
     private double sueldo;
     
+     //----> variables Adicionales
+    private String nombrecliente;  
+    private String ncargo;
+
+    
     public EmpleadoVo() {
     }
 
@@ -64,6 +69,19 @@ public class EmpleadoVo {
         this.sueldo = sueldo;
     }
     
-    
+        public String getNombrecliente() {
+        return nombrecliente;
+    }
+
+    public void setNombrecliente(String nombrecliente) {
+        this.nombrecliente = nombrecliente;
+    }
+     public String getNombreCargo() {
+        return ncargo;
+    }
+
+    public void setNombreCargo(String ncargo) {
+        this.ncargo = ncargo;
+    }
     
 }
