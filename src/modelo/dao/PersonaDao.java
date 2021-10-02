@@ -54,6 +54,39 @@ public class PersonaDao extends PersonaVo {
             return null;
         }
     }
+    
+    public List<PersonaVo> mostrarDatosJoin() {
+
+        List<PersonaVo> lista_clientes = new ArrayList<>();
+        String sql = "select id_persona, nombre, apellido, birthdate, correo, direccion, telefono"
+                + " from persona;";
+        ResultSet rs = conecta.consulta(sql);
+
+        try {
+
+            while (rs.next()) {
+
+                PersonaVo pl = new PersonaDao();
+
+                pl.setId_persona(rs.getInt(1));
+                pl.setNombre(rs.getString(2));
+                pl.setApellido(rs.getString(3));
+                pl.setBirthdate(rs.getDate(4));
+                pl.setCorreo(rs.getString(5));
+                pl.setDireccion(rs.getString(6));
+                pl.setTelefono(rs.getString(7));
+
+                lista_clientes.add(pl);
+
+            }
+
+            rs.close();//cerramos conexion base.
+            return lista_clientes;
+        } catch (SQLException ex) {
+            Logger.getLogger(ClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
     public boolean grabar() {
         String sql;

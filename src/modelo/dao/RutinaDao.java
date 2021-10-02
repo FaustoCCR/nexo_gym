@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.conexion.PGConexion;
+import modelo.vo.ClienteVo;
 import modelo.vo.RutinaVo;
 
 /**
@@ -49,6 +50,33 @@ public class RutinaDao extends RutinaVo {
 
             }
 
+            rs.close();//cerramos conexion base.
+            return lista_rutina;
+        } catch (SQLException ex) {
+            Logger.getLogger(RutinaDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public List<RutinaVo> mostrarDatosJoin() {
+
+        List<RutinaVo> lista_rutina = new ArrayList<>();
+        String sql = "select * "
+                + "from rutina ";
+        ResultSet rs = conecta.consulta(sql);
+
+        try {
+
+            while (rs.next()) {
+
+                RutinaVo ru = new RutinaDao();
+
+                ru.setId_rutina(rs.getInt(1));
+                ru.setNombre(rs.getString(2));
+                ru.setDescripcion(rs.getString(3));
+                lista_rutina.add(ru);
+
+            }
             rs.close();//cerramos conexion base.
             return lista_rutina;
         } catch (SQLException ex) {
