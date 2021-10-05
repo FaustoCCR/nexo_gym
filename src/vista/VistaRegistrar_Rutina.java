@@ -34,7 +34,7 @@ public class VistaRegistrar_Rutina extends javax.swing.JFrame {
         txtNombre.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
-        jLabel3.setText("Descripcion:");
+        jLabel3.setText("Descripción:");
 
         txtDescripcion.setColumns(20);
         txtDescripcion.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
