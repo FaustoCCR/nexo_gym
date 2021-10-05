@@ -18,7 +18,7 @@ public class Main {
         EmpleadoDao mode = new EmpleadoDao();
         VistaGestion_Empleado vista = new VistaGestion_Empleado();
         ControlGestion_Empleados control = new ControlGestion_Empleados(mode, vista);
-
+        control.funcionalidad();
     }
 
 }

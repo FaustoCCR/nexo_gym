@@ -91,4 +91,9 @@ public class EmpleadoDao extends EmpleadoVo{
         }
     }
     
+    public boolean eliminar(int identificador) {
+        String sql = "delete from empleado where \"id_empleado\"='" + identificador + "'";
+    return conecta.accion(sql);
+    }
+    
 }

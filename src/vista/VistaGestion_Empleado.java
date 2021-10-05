@@ -1,8 +1,10 @@
 
 package vista;
 
+import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 
 /**
  *
@@ -32,6 +34,30 @@ public class VistaGestion_Empleado extends javax.swing.JFrame {
     public void setJtable_empleados(JTable jtable_empleados) {
         this.jtable_empleados = jtable_empleados;
     }
+
+    public JButton getBt_eliminar() {
+        return bt_eliminar;
+    }
+
+    public void setBt_eliminar(JButton bt_eliminar) {
+        this.bt_eliminar = bt_eliminar;
+    }
+
+    public JButton getBt_verificar() {
+        return bt_verificar;
+    }
+
+    public void setBt_verificar(JButton bt_verificar) {
+        this.bt_verificar = bt_verificar;
+    }
+
+    public JTextField getTxt_buscar() {
+        return txt_buscar;
+    }
+
+    public void setTxt_buscar(JTextField txt_buscar) {
+        this.txt_buscar = txt_buscar;
+    }
     
     
 
@@ -47,6 +73,10 @@ public class VistaGestion_Empleado extends javax.swing.JFrame {
         lblTitulo = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable_empleados = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        txt_buscar = new javax.swing.JTextField();
+        bt_verificar = new javax.swing.JButton();
+        bt_eliminar = new javax.swing.JButton();
         lblFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,7 +102,25 @@ public class VistaGestion_Empleado extends javax.swing.JFrame {
         jtable_empleados.setRowHeight(20);
         jScrollPane1.setViewportView(jtable_empleados);
 
-        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 570, 230));
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 160, 610, 230));
+
+        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
+        jLabel1.setText("Buscar:");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, 130, 20));
+
+        txt_buscar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        txt_buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        getContentPane().add(txt_buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 100, 300, 40));
+
+        bt_verificar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_verificar.setText("Verificar");
+        bt_verificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(bt_verificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 100, 110, 40));
+
+        bt_eliminar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_eliminar.setText("Eliminar");
+        bt_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(bt_eliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 100, 100, 40));
         getContentPane().add(lblFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 711, 424));
 
         pack();
@@ -115,9 +163,13 @@ public class VistaGestion_Empleado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_eliminar;
+    private javax.swing.JButton bt_verificar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jtable_empleados;
     private javax.swing.JLabel lblFondo;
     private javax.swing.JLabel lblTitulo;
+    private javax.swing.JTextField txt_buscar;
     // End of variables declaration//GEN-END:variables
 }

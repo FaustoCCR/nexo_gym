@@ -107,7 +107,7 @@ public class ControlRegistrar_Empleado {
         modelo.setSueldo(sueldo);
 
         if (modelo.grabar()) {
-            JOptionPane.showMessageDialog(vista, "Producto Registrado");
+            JOptionPane.showMessageDialog(vista, "Empleado Registrado");
         } else {
             JOptionPane.showMessageDialog(vista, "Error al Guardar");
         }
