@@ -1,11 +1,9 @@
-
 package modelo.vo;
 
 import java.sql.Date;
 
-
 public class ClienteVo {
-    
+
     //atributos
     private int id_cliente;
     private int id_persona; // ----> FK
@@ -14,9 +12,14 @@ public class ClienteVo {
     private Date f_vence;
     private double pago;
     private boolean estado_pago;
-    
+
     private String nombrecliente;  // ----> variables extra
     private String membresia;
+    private String cedulapersona;
+    private String estadop;
+    private int dias_faltantes;
+    private double desc;
+    private int n_meses;
 
     public ClienteVo() {
     }
@@ -102,6 +105,49 @@ public class ClienteVo {
     public void setMembresia(String membresia) {
         this.membresia = membresia;
     }
+
+    public String getCedulapersona() {
+        return cedulapersona;
+    }
+
+    public void setCedulapersona(String cedulapersona) {
+        this.cedulapersona = cedulapersona;
+    }
+
+    public String getEstadop() {
+        return estadop;
+    }
+
+    public void setEstadop(String estadop) {
+        this.estadop = estadop;
+    }
+
+    public int getDias_faltantes() {
+        return dias_faltantes;
+    }
+
+    public void setDias_faltantes(int dias_faltantes) {
+        this.dias_faltantes = dias_faltantes;
+    }
+
+    public double getDesc() {
+        return desc;
+    }
+
+    public void setDesc(double desc) {
+        this.desc = desc;
+    }
+
+    public int getN_meses() {
+        return n_meses;
+    }
+
+    public void setN_meses(int n_meses) {
+        this.n_meses = n_meses;
+    }
     
     
+    
+    
+
 }

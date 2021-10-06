@@ -54,12 +54,12 @@ public class PersonaDao extends PersonaVo {
             return null;
         }
     }
-    
+
     public List<PersonaVo> mostrarDatosJoin() {
 
         List<PersonaVo> lista_clientes = new ArrayList<>();
-        String sql = "select id_persona, nombre, apellido, birthdate, correo, direccion, telefono"
-                + " from persona;";
+        String sql = "select id_persona,dni, nombre, apellido, birthdate, correo, direccion, telefono"
+                + " from persona order by 1;";
         ResultSet rs = conecta.consulta(sql);
 
         try {
@@ -69,12 +69,13 @@ public class PersonaDao extends PersonaVo {
                 PersonaVo pl = new PersonaDao();
 
                 pl.setId_persona(rs.getInt(1));
-                pl.setNombre(rs.getString(2));
-                pl.setApellido(rs.getString(3));
-                pl.setBirthdate(rs.getDate(4));
-                pl.setCorreo(rs.getString(5));
-                pl.setDireccion(rs.getString(6));
-                pl.setTelefono(rs.getString(7));
+                pl.setDni(rs.getString(2));
+                pl.setNombre(rs.getString(3));
+                pl.setApellido(rs.getString(4));
+                pl.setBirthdate(rs.getDate(5));
+                pl.setCorreo(rs.getString(6));
+                pl.setDireccion(rs.getString(7));
+                pl.setTelefono(rs.getString(8));
 
                 lista_clientes.add(pl);
 

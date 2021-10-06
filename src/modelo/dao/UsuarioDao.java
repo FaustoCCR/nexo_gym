@@ -106,7 +106,7 @@ public class UsuarioDao extends UsuarioVo {
             while (rs.next()) {
 
                 UsuarioVo u = new UsuarioDao();
-                u.setId_persona(rs.getInt(1));
+                u.setId_user(rs.getInt(1));
                 u.setCedula(rs.getString(2));
                 u.setNombres_usuario(rs.getString(3));
                 u.setUser_name(rs.getString(4));

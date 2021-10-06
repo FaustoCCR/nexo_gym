@@ -1,9 +1,13 @@
 package controlador;
 
 import java.awt.Font;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.ClienteDao;
+import vista.VistaActualizar_Cliente;
 import vista.VistaGestion_Clientes;
 
 public class ControlGestion_Clientes {
@@ -11,7 +15,8 @@ public class ControlGestion_Clientes {
     private ClienteDao modelo_cliente;
     private VistaGestion_Clientes vista_cliente;
     private DefaultTableModel tb_model;
-    private Object[] columnas = {"ID", "Nombre", "Membresia", "Precio", "Inicia", "Termina", "Estado Pago"};
+    private Object[] columnas = {"ID", "DNI", "Nombre", "Membresia", "Precio", "Inicia", "Termina", "Estado Pago"};
+    public static int id_cliente;
 
     public ControlGestion_Clientes(ClienteDao modelo_cliente, VistaGestion_Clientes vista_cliente) {
         this.modelo_cliente = modelo_cliente;
@@ -24,11 +29,24 @@ public class ControlGestion_Clientes {
         vista_cliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
 
-        mostrarDatosTabla();
+        mostrarDatosTabla("");
 
     }
 
     public void funcionalidad() {
+
+        vista_cliente.getTxt_buscar().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+
+                mostrarDatosTabla(vista_cliente.getTxt_buscar().getText());
+
+            }
+
+        });
+
+        vista_cliente.getBt_verificar().addActionListener(l -> ventanaActualizar());
+        vista_cliente.getBt_eliminar().addActionListener(l -> sentenciaDelete());
 
     }
 
@@ -36,12 +54,8 @@ public class ControlGestion_Clientes {
         tb_model = new DefaultTableModel(columnas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                if (column == 7) {
-                    return true;
 
-                } else {
-                    return false;
-                }
+                return true;
             }
 
         };
@@ -49,18 +63,19 @@ public class ControlGestion_Clientes {
         vista_cliente.getJtable_clientes().setModel(tb_model);
         vista_cliente.getJtable_clientes().getTableHeader().setFont(new Font("Trebuchet MS", 1, 15));//fuente que lleve la cabecera
         vista_cliente.getJtable_clientes().setShowHorizontalLines(true);//colocar lineas horizontales
-        vista_cliente.getJtable_clientes().getColumnModel().getColumn(0).setPreferredWidth(20);
-        
+        vista_cliente.getJtable_clientes().getColumnModel().getColumn(0).setPreferredWidth(15);
+        vista_cliente.getJtable_clientes().getColumnModel().getColumn(1).setPreferredWidth(70);
+        vista_cliente.getJtable_clientes().getColumnModel().getColumn(2).setPreferredWidth(80);
 
     }
 
-    private void mostrarDatosTabla() {
+    private void mostrarDatosTabla(String aguja) {
 
         tb_model.setRowCount(0);
-        modelo_cliente.mostrarDatosJoin().stream().forEach((c) -> {
+        modelo_cliente.mostrarDatosJoin(aguja).stream().forEach((c) -> {
 
             Object[] contenido
-                    = {c.getId_cliente(), c.getNombrecliente(), c.getMembresia(),"$"+ c.getPago(), c.getF_inicio(), c.getF_vence(), estadoPaga(c.isEstado_pago())};
+                    = {c.getId_cliente(),c.getCedulapersona() ,c.getNombrecliente(), c.getMembresia(), "$" + c.getPago(), c.getF_inicio(), c.getF_vence(), estadoPaga(c.isEstado_pago())};
 
             tb_model.addRow(contenido);
 
@@ -78,6 +93,48 @@ public class ControlGestion_Clientes {
             mensaje = "Sin Pagar";
         }
         return mensaje;
+    }
+
+    private void ventanaActualizar() {
+
+        int fila = vista_cliente.getJtable_clientes().getSelectedRow();
+        final int columna = 0;
+
+        if (fila != -1) {
+
+            id_cliente = (int) vista_cliente.getJtable_clientes().getValueAt(fila, columna);
+            vista_cliente.dispose();
+            VistaActualizar_Cliente vista = new VistaActualizar_Cliente();
+            ControlActualizar_Cliente control = new ControlActualizar_Cliente(modelo_cliente, vista);
+            control.funcionalidad();
+
+        } else {
+            JOptionPane.showMessageDialog(vista_cliente, "Seleccione el registro a verificar");
+        }
+
+    }
+
+    private void sentenciaDelete() {
+
+        int fila = vista_cliente.getJtable_clientes().getSelectedRow();
+        final int columna = 0;
+        if (fila != -1) {
+
+            int id_cliente = (int) vista_cliente.getJtable_clientes().getValueAt(fila, columna);
+            String cliente = modelo_cliente.mostrarDatosJoin(id_cliente).stream().filter(u -> u.getId_cliente() == id_cliente).findAny().get().getNombrecliente();
+
+            int resp = JOptionPane.showConfirmDialog(vista_cliente, "Seguro desea eliminar al cliente: " + cliente, "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (resp == 0) {
+
+                modelo_cliente.eliminar(id_cliente);
+                JOptionPane.showMessageDialog(vista_cliente, "Registro Eliminado");
+                mostrarDatosTabla("");
+
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(vista_cliente, "Seleccione el registro a eliminar");
+        }
     }
 
 }

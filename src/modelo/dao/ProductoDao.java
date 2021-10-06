@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,7 +19,6 @@ import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 import modelo.conexion.PGConexion;
 import modelo.vo.ProductoVo;
-import modelo.vo.UsuarioVo;
 import org.postgresql.util.Base64;
 
 public class ProductoDao extends ProductoVo {
@@ -48,10 +46,13 @@ public class ProductoDao extends ProductoVo {
 
     }
 
-    public List<ProductoVo> mostrarDatos() {
+    public List<ProductoVo> mostrarDatos(String aguja) {
 
         List<ProductoVo> lista_productos = new ArrayList<>();
-        String sql = "select * from producto order by 1";
+        String sql = "select * from producto where upper(nombre) like upper('%" + aguja + "%')or\n"
+                + "upper(descripcion) like upper('%" + aguja + "%') or\n"
+                + "to_char(stock,'9999') like '%" + aguja + "%' \n"
+                + "order by 1";
         ResultSet rs = conecta.consulta(sql);
 
         try {
@@ -80,6 +81,86 @@ public class ProductoDao extends ProductoVo {
                     }
 
                 }
+
+                lista_productos.add(pr);
+
+            }
+
+            rs.close();//cerramos conexion base.
+            return lista_productos;
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public List<ProductoVo> mostrarDatosJoin(int id) {
+
+        List<ProductoVo> lista_productos = new ArrayList<>();
+        String sql = "select p.id_prod , p.nombre \"Producto\", c.nombre \"Categoria\", \n"
+                + "pr.id_proveedor, pr.nombre \"Proveedor\",p.descripcion,p.precio_u,p.stock,p.imagen\n"
+                + "from producto p\n"
+                + "join ctg_producto c using(id_ctgp)\n"
+                + "join proveedor pr using(id_proveedor)\n"
+                + "where p.id_prod = " + id + ";";
+        ResultSet rs = conecta.consulta(sql);
+
+        try {
+
+            byte[] bf;
+            while (rs.next()) {
+
+                ProductoVo pr = new ProductoVo();
+
+                pr.setId_prod(rs.getInt(1));
+                pr.setNombre(rs.getString(2));
+                pr.setNombre_catgoria(rs.getString(3));
+                pr.setRUC_proveedor(rs.getString(4));
+                pr.setNombre_proveedor(rs.getString(5));
+                pr.setDescripcion(rs.getString(6));
+                pr.setPrecio_u(rs.getDouble(7));
+                pr.setStock(rs.getInt(8));
+                //Decodificacion de los bytes
+                bf = rs.getBytes(9);
+                if (bf != null) {
+                    bf = Base64.decode(bf, 0, bf.length);
+
+                    try {
+                        pr.setFoto(obtenerImagen(bf));
+                    } catch (IOException ex) {
+                        Logger.getLogger(ProveedorDao.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                }
+
+                lista_productos.add(pr);
+
+            }
+
+            rs.close();//cerramos conexion base.
+            return lista_productos;
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+
+    public List<ProductoVo> mostrarDatosJoin(String nombre, int id) {
+
+        List<ProductoVo> lista_productos = new ArrayList<>();
+        String sql = "select id_prod, nombre\n"
+                + "from producto \n"
+                + "where upper(nombre) = upper('" + nombre + "') and not id_prod = " + id;
+        ResultSet rs = conecta.consulta(sql);
+
+        try {
+
+            while (rs.next()) {
+
+                ProductoVo pr = new ProductoVo();
+
+                pr.setId_prod(rs.getInt(1));
+                pr.setNombre(rs.getString(2));
 
                 lista_productos.add(pr);
 
@@ -133,10 +214,53 @@ public class ProductoDao extends ProductoVo {
     }
 
     public boolean insertar() {
-        String sql = "INSERT INTO producto(\n"
-                + "nombre, id_ctgp, id_proveedor, descripcion, precio_u, stock, imagen)\n"
-                + "VALUES ('" + getNombre() + "','" + getId_ctgp() + "','" + getId_proveedor() + "','" + getDescripcion()
-                + "','" + getPrecio_u() + "','" + getStock() + "','" + grabarFoto() + "');";
+        String sql;
+        if (getFoto() != null) {
+            sql = "INSERT INTO producto(\n"
+                    + "nombre, id_ctgp, id_proveedor, descripcion, precio_u, stock, imagen)\n"
+                    + "VALUES ('" + getNombre() + "','" + getId_ctgp() + "','" + getId_proveedor() + "','" + getDescripcion()
+                    + "','" + getPrecio_u() + "','" + getStock() + "','" + grabarFoto() + "');";
+        } else {
+            sql = "INSERT INTO producto(\n"
+                    + "nombre, id_ctgp, id_proveedor, descripcion, precio_u, stock)\n"
+                    + "VALUES ('" + getNombre() + "','" + getId_ctgp() + "','" + getId_proveedor() + "','" + getDescripcion()
+                    + "','" + getPrecio_u() + "','" + getStock() + "');";
+
+        }
+        return conecta.accion(sql);
+    }
+
+    public boolean modificar(int identificador) {
+
+        String sql;
+        if (getFoto() != null) {
+            sql = "UPDATE producto set \"nombre\"='" + getNombre() + "',\"id_ctgp\"='" + getId_ctgp()
+                    + "',\"id_proveedor\"='" + getId_proveedor() + "',\"descripcion\"='" + getDescripcion() + "',\"precio_u\"='" + getPrecio_u()
+                    + "',\"stock\"='" + getStock() + "',\"imagen\"='" + grabarFoto() + "'"
+                    + "WHERE \"id_prod\"='" + identificador + "'";
+        } else {
+            sql = "UPDATE producto set \"nombre\"='" + getNombre() + "',\"id_ctgp\"='" + getId_ctgp()
+                    + "',\"id_proveedor\"='" + getId_proveedor() + "',\"descripcion\"='" + getDescripcion() + "',\"precio_u\"='" + getPrecio_u()
+                    + "',\"stock\"='" + getStock() + "'"
+                    + "WHERE \"id_prod\"='" + identificador + "'";
+        }
+
+        return conecta.accion(sql);
+    }
+
+    public boolean modificarStock(int newstock, int id_prod) {
+
+        String sql;
+        sql = "UPDATE producto set \"stock\"='" + newstock + "'"
+                + "WHERE \"id_prod\"='" + id_prod + "'";
+
+        return conecta.accion(sql);
+    }
+
+    public boolean eliminar(int identificador) {
+
+        String sql = "delete from producto where \"id_prod\"='" + identificador + "'";
+
         return conecta.accion(sql);
     }
 

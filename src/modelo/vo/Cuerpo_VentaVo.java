@@ -4,12 +4,15 @@ package modelo.vo;
 
 public class Cuerpo_VentaVo {
     
-    //atributos7
+    //atributos
     private int id_cp;
     private int id_ecb; // ----> FK
     private int id_producto; // ----> FK
     private int cantidad;
     private double costo_final;
+    
+    public Cuerpo_VentaVo(){
+    }
 
     public Cuerpo_VentaVo(int id_cp, int id_ecb, int id_producto, int cantidad, double costo_final) {
         this.id_cp = id_cp;

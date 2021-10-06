@@ -2,17 +2,16 @@ package controlador;
 
 import java.awt.Font;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import javax.imageio.ImageIO;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.ProductoDao;
+import vista.VistaActualizar_Producto;
 import vista.VistaGestion_Productos;
 
 public class ControlGestion_Productos {
@@ -21,21 +20,33 @@ public class ControlGestion_Productos {
     private VistaGestion_Productos vista;
     private DefaultTableModel tb_model;
     private Object[] columnas = {"ID", "Nombre", "Descripción", "Precio U", "Stock", "Imagen"};
+    public static int id_prod;
 
     public ControlGestion_Productos(ProductoDao modelo, VistaGestion_Productos vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
-        vista.setTitle("Clientes Registrados - Nexo Gym");
+        vista.setTitle("Productos Registrados - Nexo Gym");
         vista.setResizable(false);
         vista.setLocationRelativeTo(null);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
 
-        mostrarDatosTabla();
+        mostrarDatosTabla("");
     }
 
     public void funcionalidad() {
+
+        vista.getTxt_buscar().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                mostrarDatosTabla(vista.getTxt_buscar().getText());
+
+            }
+
+        });
+        vista.getBt_verificar().addActionListener(l -> ventanaActualizar());
+        vista.getBt_eliminar().addActionListener(l -> sentenciaDelete());
 
     }
 
@@ -74,23 +85,63 @@ public class ControlGestion_Productos {
 
         } else {
             JLabel lb = new JLabel("No Imagen");
-          lb.setHorizontalAlignment(SwingConstants.CENTER);
-           lb.setVerticalAlignment(SwingConstants.CENTER);
+            lb.setHorizontalAlignment(SwingConstants.CENTER);
+            lb.setVerticalAlignment(SwingConstants.CENTER);
             return lb;
         }
     }
 
-    private void mostrarDatosTabla() {
+    private void mostrarDatosTabla(String aguja) {
 
         tb_model.setRowCount(0);
 
-        modelo.mostrarDatos().stream().forEach((pr) -> {
+        modelo.mostrarDatos(aguja).stream().forEach((pr) -> {
 
             Object[] contenido = {pr.getId_prod(), pr.getNombre(), pr.getDescripcion(), pr.getPrecio_u(), pr.getStock(), revelarFoto(pr.getFoto())};
 
             tb_model.addRow(contenido);
 
         });
+    }
+
+    private void ventanaActualizar() {
+        int fila = vista.getJtable_productos().getSelectedRow();
+        final int columna = 0;
+
+        if (fila != -1) {
+
+            id_prod = (int) vista.getJtable_productos().getValueAt(fila, columna);
+            vista.dispose();
+            VistaActualizar_Producto vista = new VistaActualizar_Producto();
+            ControlActualizar_Producto control = new ControlActualizar_Producto(modelo, vista);
+            control.funcionalidad();
+
+        } else {
+            JOptionPane.showMessageDialog(vista, "Seleccione el registro a verificar");
+        }
+    }
+
+    private void sentenciaDelete() {
+
+        int fila = vista.getJtable_productos().getSelectedRow();
+        final int columna = 0;
+        if (fila != -1) {
+
+            int id_producto = (int) vista.getJtable_productos().getValueAt(fila, columna);
+            String producto = modelo.mostrarDatos("").stream().filter(u -> u.getId_prod() == id_producto).findAny().get().getNombre();
+
+            int resp = JOptionPane.showConfirmDialog(vista, "Seguro desea eliminar el producto: " + producto, "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (resp == 0) {
+
+                modelo.eliminar(id_producto);
+                JOptionPane.showMessageDialog(vista, "Registro Eliminado");
+                mostrarDatosTabla("");
+
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(vista, "Seleccione el registro a eliminar");
+        }
     }
 
 }

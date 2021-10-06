@@ -3,6 +3,7 @@ package controlador;
 import modelo.dao.CargoDao;
 import modelo.dao.ClienteDao;
 import modelo.dao.Ctg_ProductoDao;
+import modelo.dao.Cuerpo_VentaDao;
 import modelo.dao.EmpleadoDao;
 import modelo.dao.MembresiaDao;
 import modelo.dao.PersonaDao;
@@ -10,6 +11,7 @@ import modelo.dao.ProductoDao;
 import modelo.dao.ProveedorDao;
 import modelo.dao.RutinaDao;
 import modelo.dao.UsuarioDao;
+import modelo.dao.Ecb_VentaDao;
 import vista.VistaAdministrador;
 import vista.VistaGestion_Clientes;
 import vista.VistaGestion_Persona;
@@ -17,6 +19,7 @@ import vista.VistaGestion_Productos;
 import vista.VistaGestion_Rutina;
 import vista.VistaGestion_Users;
 import vista.VistaLogin;
+import vista.VistaRealizar_Venta;
 import vista.VistaRegistrarCargo;
 import vista.VistaRegistrar_Cliente;
 import vista.VistaRegistrar_CtgProducto;
@@ -31,14 +34,27 @@ import vista.VistaRegistrar_Usuario;
 public class ControlVista_Admin {
 
     private VistaAdministrador vista;
+    private int id_user;
+    private String usuario;
+
+    private UsuarioDao modelo_user = new UsuarioDao();
 
     public ControlVista_Admin(VistaAdministrador vista) {
         this.vista = vista;
 
+        id_user = ControlLogin.id_user;
         vista.setVisible(true);
-        vista.setTitle("Administrador - Nexo Gym");
+        vista.setTitle("Sesión de " + userName() + " - Nexo Gym");
         vista.setResizable(false);
         vista.setLocationRelativeTo(null);
+
+    }
+
+    private String userName() {
+
+        return modelo_user.mostrarDatos().stream()
+                .filter(u -> u.getId_user() == id_user).
+                findAny().get().getUser_name();
 
     }
 
@@ -60,6 +76,7 @@ public class ControlVista_Admin {
         vista.getJmi_gusers().addActionListener(l -> ventanaGestion_Users());
         vista.getJmi_gpersonas().addActionListener(l -> ventanaGestion_Personas());
         vista.getJmi_grutinas().addActionListener(l -> ventanaGestion_Rutinas());
+        vista.getJmi_realizarventa().addActionListener(l -> ventanaRealizarVenta());
 
     }
 
@@ -201,6 +218,15 @@ public class ControlVista_Admin {
         UsuarioDao modelo = new UsuarioDao();
         VistaGestion_Users vista = new VistaGestion_Users();
         ControlGestion_Users control = new ControlGestion_Users(modelo, vista);
+        control.funcionalidad();
+    }
+
+    private void ventanaRealizarVenta() {
+
+        Ecb_VentaDao modelo = new Ecb_VentaDao();
+        Cuerpo_VentaDao modelo2 = new Cuerpo_VentaDao();
+        VistaRealizar_Venta vista = new VistaRealizar_Venta();
+        ControlRealizar_Venta control = new ControlRealizar_Venta(modelo, modelo2, vista);
         control.funcionalidad();
     }
 

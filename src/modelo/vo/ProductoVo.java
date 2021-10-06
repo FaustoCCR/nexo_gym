@@ -14,6 +14,11 @@ public class ProductoVo {
     private int stock;
     private Image foto;
 
+    //variables extras
+    private String RUC_proveedor;
+    private String nombre_catgoria;
+    private String nombre_proveedor;
+
     public ProductoVo() {
     }
 
@@ -91,7 +96,29 @@ public class ProductoVo {
     public void setFoto(Image foto) {
         this.foto = foto;
     }
-    
-    
+
+    public String getNombre_catgoria() {
+        return nombre_catgoria;
+    }
+
+    public void setNombre_catgoria(String nombre_catgoria) {
+        this.nombre_catgoria = nombre_catgoria;
+    }
+
+    public String getNombre_proveedor() {
+        return nombre_proveedor;
+    }
+
+    public void setNombre_proveedor(String nombre_proveedor) {
+        this.nombre_proveedor = nombre_proveedor;
+    }
+
+    public String getRUC_proveedor() {
+        return RUC_proveedor;
+    }
+
+    public void setRUC_proveedor(String RUC_proveedor) {
+        this.RUC_proveedor = RUC_proveedor;
+    }
 
 }

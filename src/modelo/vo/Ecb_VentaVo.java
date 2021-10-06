@@ -1,16 +1,17 @@
-
 package modelo.vo;
 
 import java.sql.Date;
 
-
 public class Ecb_VentaVo {
-    
+
     //atributos
     private int id_ecb;
     private int id_cliente; // ----> FK
     private int id_user; // ----> FK
     private Date fecha_venta; // ----> FK
+
+    public Ecb_VentaVo() {
+    }
 
     public Ecb_VentaVo(int id_ecb, int id_cliente, int id_user, Date fecha_venta) {
         this.id_ecb = id_ecb;
@@ -50,6 +51,5 @@ public class Ecb_VentaVo {
     public void setFecha_venta(Date fecha_venta) {
         this.fecha_venta = fecha_venta;
     }
-    
-    
+
 }

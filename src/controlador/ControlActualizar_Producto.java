@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -21,28 +22,32 @@ import modelo.dao.Ctg_ProductoDao;
 import modelo.dao.ProductoDao;
 import modelo.dao.ProveedorDao;
 import modelo.vo.ProveedorVo;
-import vista.VistaRegistrar_Producto;
+import vista.VistaActualizar_Producto;
 
-public class ControlRegistrar_Producto {
+public class ControlActualizar_Producto {
 
     private ProductoDao modelo_producto;
-    private VistaRegistrar_Producto vista_producto;
+    private VistaActualizar_Producto vista_producto;
 
     private ProveedorDao modelo_proveedor = new ProveedorDao();
     private Ctg_ProductoDao modelo_categoria = new Ctg_ProductoDao();
     private Border origin_border = new LineBorder(Color.gray, 1);
+    private int id_prod;
 
-    public ControlRegistrar_Producto(ProductoDao modelo_producto, VistaRegistrar_Producto vista_producto) {
+    public ControlActualizar_Producto(ProductoDao modelo_producto, VistaActualizar_Producto vista) {
         this.modelo_producto = modelo_producto;
-        this.vista_producto = vista_producto;
+        this.vista_producto = vista;
 
-        vista_producto.setVisible(true);
-        vista_producto.setTitle("Registro de Productos - Nexo Gym");
-        vista_producto.setResizable(false);
-        vista_producto.setLocationRelativeTo(null);
-        vista_producto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        id_prod = ControlGestion_Productos.id_prod;
+
+        vista.setVisible(true);
+        vista.setTitle("Actualizar Productos - Nexo Gym");
+        vista.setResizable(false);
+        vista.setLocationRelativeTo(null);
+        vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         cargarCategorias();
+        cargarDatosProducto();
     }
 
     public void funcionalidad() {
@@ -54,9 +59,64 @@ public class ControlRegistrar_Producto {
             }
 
         });
+        vista_producto.getTxt_producto().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                verificarProductorRegistrado(vista_producto.getTxt_producto().getText(), id_prod);
+            }
 
-        vista_producto.getBt_registrar().addActionListener(l -> registrarProducto());
+        });
+
         vista_producto.getBt_cargar().addActionListener(l -> buscarFoto());
+        vista_producto.getBt_actualizar().addActionListener(l -> actualizarProducto());
+    }
+
+    private void cargarDatosProducto() {
+
+        modelo_producto.mostrarDatosJoin(id_prod).forEach((pr) -> {
+
+            vista_producto.getTxt_ruc().setText(pr.getRUC_proveedor());
+            vista_producto.getTxt_proveedor().setText(pr.getNombre_proveedor());
+            vista_producto.getTxt_producto().setText(pr.getNombre());
+            vista_producto.getCb_categoria().setSelectedItem(pr.getNombre_catgoria());
+            vista_producto.getTxt_descripcion().setText(pr.getDescripcion());
+            vista_producto.getTxt_preciou().setText(String.valueOf(pr.getPrecio_u()));
+            vista_producto.getJspinner_stock().setValue(pr.getStock());
+            Image img = pr.getFoto();
+            if (img != null) {
+                Image nimg = img.getScaledInstance(vista_producto.getJlfoto().getWidth(), vista_producto.getJlfoto().getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon icon = new ImageIcon(nimg);
+                vista_producto.getJlfoto().setIcon(icon);
+
+            } else {
+                vista_producto.getJlfoto().setText("No Imagen");
+                vista_producto.getJlfoto().setHorizontalAlignment(SwingConstants.CENTER);
+                vista_producto.getJlfoto().setVerticalAlignment(SwingConstants.CENTER);
+//                vista_producto.getJlfoto().setIcon(null);
+            }
+
+        });
+
+    }
+
+    private boolean verificarProductorRegistrado(String nombre, int id) {
+
+        /*Si ya exite un producto con el mismo nombre
+        indicada, ya no se puede registrar otro*/
+        if (!nombre.isEmpty()) {
+            boolean respuesta = modelo_producto.mostrarDatosJoin(nombre, id).isEmpty();
+            if (respuesta) {
+
+                vista_producto.getTxt_producto().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+            } else {
+                vista_producto.getTxt_producto().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+
+            }
+            return respuesta;
+        }else{
+            vista_producto.getTxt_producto().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+            return false;
+        }
 
     }
 
@@ -81,12 +141,6 @@ public class ControlRegistrar_Producto {
         }
 
         return busqueda;
-
-    }
-
-    private boolean verificarProducto() {
-
-        return modelo_producto.mostrarDatos("").stream().noneMatch(pr -> pr.getNombre().equalsIgnoreCase(vista_producto.getTxt_producto().getText()));
 
     }
 
@@ -141,20 +195,22 @@ public class ControlRegistrar_Producto {
         }
     }
 
-    private void sentenciaInsert() {
+    private void sentenciaUpdate() {
 
-        String producto = vista_producto.getTxt_producto().getText();
-        int id_categoria = modelo_categoria.mostrarDatos().get(vista_producto.getCb_categoria().getSelectedIndex()).getId_ctgp();
-        String ruc = vista_producto.getTxt_ruc().getText();
-        String descripcion = vista_producto.getTxt_descripcion().getText().trim();
+        String nombre = vista_producto.getTxt_producto().getText();
+        int indexcb = vista_producto.getCb_categoria().getSelectedIndex();
+        int id_ctgp = modelo_categoria.mostrarDatos().get(indexcb).getId_ctgp();
+        String id_proveedor = vista_producto.getTxt_ruc().getText();
+        String descripcion = vista_producto.getTxt_descripcion().getText();
         double precio_u = Double.parseDouble(vista_producto.getTxt_preciou().getText());
-        int stock = (int) vista_producto.getJspinner_stock().getValue();
+        int stock = Integer.parseInt(vista_producto.getJspinner_stock().getValue().toString());
 
-        modelo_producto.setNombre(producto);
-        modelo_producto.setId_ctgp(id_categoria);
-        modelo_producto.setId_proveedor(ruc);
+        modelo_producto.setNombre(nombre);
+        modelo_producto.setId_ctgp(id_ctgp);
+        modelo_producto.setId_proveedor(id_proveedor);
         modelo_producto.setDescripcion(descripcion);
         modelo_producto.setPrecio_u(precio_u);
+        modelo_producto.setStock(stock);
         modelo_producto.setStock(stock);
 
         //foto
@@ -163,40 +219,32 @@ public class ControlRegistrar_Producto {
             ImageIcon ic = (ImageIcon) icon;
             modelo_producto.setFoto(ic.getImage());
         }
+        if (modelo_producto.modificar(id_prod)) {
 
-        if (modelo_producto.insertar()) {
-            JOptionPane.showMessageDialog(vista_producto, "Producto Registrado");
+            JOptionPane.showMessageDialog(vista_producto, "Producto Actualizado");
 
         } else {
-            JOptionPane.showMessageDialog(vista_producto, "Error al Guardar");
+            JOptionPane.showMessageDialog(vista_producto, "Error al Actualizar");
         }
 
     }
 
-    private void reiniciarCampos() {
-
-        vista_producto.getTxt_ruc().setText("");
-        vista_producto.getTxt_proveedor().setText("");
-        vista_producto.getTxt_producto().setText("");
-        vista_producto.getCb_categoria().setSelectedIndex(0);
-        vista_producto.getTxt_descripcion().setText("");
-        vista_producto.getTxt_preciou().setText("");
-        vista_producto.getJspinner_stock().setValue(0);
-        vista_producto.getJlfoto().setIcon(null);
+    private void restaurarBordes() {
 
         vista_producto.getTxt_ruc().setBorder(origin_border);
+        vista_producto.getTxt_producto().setBorder(origin_border);
     }
 
-    private void registrarProducto() {
+    private void actualizarProducto() {
 
         if (validarRegistro()) {
 
             if (buscarProveedor(vista_producto.getTxt_ruc().getText())) {
 
-                if (verificarProducto()) {
+                if (verificarProductorRegistrado(vista_producto.getTxt_producto().getText(), id_prod)) {
 
-                    sentenciaInsert();
-                    reiniciarCampos();
+                    sentenciaUpdate();
+                    restaurarBordes();
 
                 } else {
                     JOptionPane.showMessageDialog(vista_producto, "El producto ya se encuentra registrado", "Advertencia", JOptionPane.ERROR_MESSAGE);

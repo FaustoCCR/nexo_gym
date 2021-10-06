@@ -14,6 +14,7 @@ public class ControlLogin {
     //objetos de la vista y controlador
     private UsuarioDao modelo;
     private VistaLogin vista;
+    public static int id_user;
 
     public ControlLogin(UsuarioDao modelo, VistaLogin vista) {
         this.modelo = modelo;
@@ -58,6 +59,8 @@ public class ControlLogin {
                 boolean estado = filtro_login.stream().anyMatch(checkestado);
 
                 if (estado) {
+                    
+                    id_user = filtro_login.stream().filter(checkpass).findAny().get().getId_user();
 
                     filtro_login.stream().forEach((t) -> {
                         if (t.getId_rol() == 1) {

@@ -41,10 +41,12 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jmi_gmembresias = new javax.swing.JMenuItem();
         jmi_grutinas = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
+        jmi_realizarventa = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToolBar1.setBackground(new java.awt.Color(153, 153, 255));
+        jToolBar1.setBackground(new java.awt.Color(102, 102, 255));
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
@@ -146,6 +148,15 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jMenu6.add(jmi_grutinas);
 
         jMenuBar1.add(jMenu6);
+
+        jMenu7.setText("Ventas");
+        jMenu7.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+
+        jmi_realizarventa.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jmi_realizarventa.setText("Realizar Venta");
+        jMenu7.add(jmi_realizarventa);
+
+        jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
 
@@ -324,11 +335,14 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public void setJmi_grutinas(JMenuItem jmi_grutinas) {
         this.jmi_grutinas = jmi_grutinas;
     }
-    
-    
-    
-    
-    
+
+    public JMenuItem getJmi_realizarventa() {
+        return jmi_realizarventa;
+    }
+
+    public void setJmi_realizarventa(JMenuItem jmi_realizarventa) {
+        this.jmi_realizarventa = jmi_realizarventa;
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -366,6 +380,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenu JMenu5;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
@@ -380,6 +395,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_gproductos;
     private javax.swing.JMenuItem jmi_grutinas;
     private javax.swing.JMenuItem jmi_gusers;
+    private javax.swing.JMenuItem jmi_realizarventa;
     private javax.swing.JMenuItem jmi_registrarcargo;
     private javax.swing.JMenuItem jmi_registraruser;
     private javax.swing.JMenuItem jmi_rgcliente;

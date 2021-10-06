@@ -21,7 +21,7 @@ public class ControlRegistrar_Usuario {
     private VistaRegistrar_Usuario vista;
     private PersonaDao modelo_persona = new PersonaDao();
     private RolDao modelo_rol = new RolDao();
-    private Border origin_border = new LineBorder(Color.gray, 1);
+    private Border origin_border = new LineBorder(new Color(204,204,204), 1);
 
     public ControlRegistrar_Usuario(UsuarioDao modelo_usuario, VistaRegistrar_Usuario vista) {
         this.modelo_usuario = modelo_usuario;

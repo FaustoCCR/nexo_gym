@@ -254,7 +254,8 @@ public class ControlActualizar_User {
                     }
 
                 } else {
-                    JOptionPane.showMessageDialog(vista, "Revise la contraseña", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(vista, "Ya se encuentra registrada esta persona", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                    vista.getTxt_cedula().grabFocus();
                 }
 
             } else {
