@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import static controlador.ControlGestion_Users.id_user;
@@ -16,10 +11,6 @@ import modelo.dao.RutinaDao;
 import vista.VistaActualizar_Rutina;
 import vista.VistaGestion_Rutina;
 
-/**
- *
- * @author Casa
- */
 public class ControlGestion_Rutina {
 
     private RutinaDao modelo_rutina;
@@ -43,7 +34,7 @@ public class ControlGestion_Rutina {
     }
 
     public void funcionalidad() {
-      vista_rutina.getTxt_buscar().addKeyListener(new KeyAdapter() {
+        vista_rutina.getTxt_buscar().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
 
@@ -54,8 +45,8 @@ public class ControlGestion_Rutina {
         });
 
         vista_rutina.getBt_verificar().addActionListener(l -> ventanaActualizar());
-        vista_rutina.getBt_eliminar().addActionListener(l->sentenciaDelete());
-        
+        vista_rutina.getBt_eliminar().addActionListener(l -> sentenciaDelete());
+
     }
 
     private void disenioTabla() {
@@ -91,7 +82,7 @@ public class ControlGestion_Rutina {
 
         });
     }
-    
+
     private void ventanaActualizar() {
 
         int fila = vista_rutina.getJtable_rutinas().getSelectedRow();
@@ -106,18 +97,19 @@ public class ControlGestion_Rutina {
             control.funcionalidad();
 
         } else {
-            JOptionPane.showMessageDialog(vista_rutina , "Seleccione el registro a verificar");
+            JOptionPane.showMessageDialog(vista_rutina, "Seleccione el registro a verificar");
         }
 
     }
-     private void sentenciaDelete() {
+
+    private void sentenciaDelete() {
 
         int fila = vista_rutina.getJtable_rutinas().getSelectedRow();
         final int columna = 0;
         if (fila != -1) {
 
             int id_rutina = (int) vista_rutina.getJtable_rutinas().getValueAt(fila, columna);
-            String nombre = modelo_rutina.mostrarDatos().stream().filter(u -> u.getId_rutina()== id_rutina).findAny().get().getNombre();
+            String nombre = modelo_rutina.mostrarDatos().stream().filter(u -> u.getId_rutina() == id_rutina).findAny().get().getNombre();
 
             int resp = JOptionPane.showConfirmDialog(vista_rutina, "Seguro desea eliminar la rutina : " + nombre, "Confirmación", JOptionPane.YES_NO_OPTION);
             if (resp == 0) {
@@ -132,6 +124,5 @@ public class ControlGestion_Rutina {
             JOptionPane.showMessageDialog(vista_rutina, "Seleccione el registro a eliminar");
         }
     }
-    
-    
+
 }

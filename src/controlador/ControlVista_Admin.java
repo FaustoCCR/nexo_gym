@@ -15,6 +15,7 @@ import modelo.dao.Ecb_VentaDao;
 import vista.VistaAdministrador;
 import vista.VistaGestion_Clientes;
 import vista.VistaGestion_Empleado;
+import vista.VistaGestion_Membresias;
 import vista.VistaGestion_Persona;
 import vista.VistaGestion_Productos;
 import vista.VistaGestion_Rutina;
@@ -78,8 +79,8 @@ public class ControlVista_Admin {
         vista.getJmi_gpersonas().addActionListener(l -> ventanaGestion_Personas());
         vista.getJmi_grutinas().addActionListener(l -> ventanaGestion_Rutinas());
         vista.getJmi_realizarventa().addActionListener(l -> ventanaRealizarVenta());
-        vista.getJmi_gempleados().addActionListener(l->ventanaGestion_Empleados());
-        
+        vista.getJmi_gempleados().addActionListener(l -> ventanaGestion_Empleados());
+        vista.getJmi_gmembresias().addActionListener(l -> ventanaGestion_Membresias());
 
     }
 
@@ -202,7 +203,7 @@ public class ControlVista_Admin {
     }
 
     private void ventanaGestion_Empleados() {
-        
+
         EmpleadoDao modelo = new EmpleadoDao();
         VistaGestion_Empleado vista = new VistaGestion_Empleado();
         ControlGestion_Empleados control = new ControlGestion_Empleados(modelo, vista);
@@ -211,6 +212,11 @@ public class ControlVista_Admin {
     }
 
     private void ventanaGestion_Membresias() {
+
+        MembresiaDao modelo = new MembresiaDao();
+        VistaGestion_Membresias vista = new VistaGestion_Membresias();
+        ControlGestion_Membresia control = new ControlGestion_Membresia(modelo, vista);
+        control.funcionalidad();
 
     }
 

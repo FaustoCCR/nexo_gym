@@ -136,7 +136,7 @@ public class ControlRegistrar_Cliente {
 
     private void cargarMembresias() {
 
-        modelo_membresia.mostrarDatos().stream().forEach((m) -> {
+        modelo_membresia.mostrarDatos("").stream().forEach((m) -> {
 
             vista.getCb_membresia().addItem(m.getNombre());
 
@@ -167,7 +167,7 @@ public class ControlRegistrar_Cliente {
     private double cargarDescuento() {
 
         int seleccion = vista.getCb_membresia().getSelectedIndex();
-        double descuento = (modelo_membresia.mostrarDatos().get(seleccion).getDescuento());
+        double descuento = (modelo_membresia.mostrarDatos("").get(seleccion).getDescuento());
         return descuento;
     }
 
@@ -216,7 +216,7 @@ public class ControlRegistrar_Cliente {
     private void sentenciaInsert() {
 
         int id_persona = campoPersona(vista.getTxt_cedula().getText());
-        int id_membresia = modelo_membresia.mostrarDatos().get(vista.getCb_membresia().getSelectedIndex()).getId_membresia();
+        int id_membresia = modelo_membresia.mostrarDatos("").get(vista.getCb_membresia().getSelectedIndex()).getId_membresia();
 
         modelo_cliente.setId_persona(id_persona);
         modelo_cliente.setId_membresia(id_membresia);

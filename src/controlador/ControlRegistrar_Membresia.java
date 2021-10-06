@@ -1,7 +1,10 @@
 package controlador;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import modelo.dao.MembresiaDao;
 import vista.VistaRegistrar_Membresia;
 
@@ -9,6 +12,7 @@ public class ControlRegistrar_Membresia {
 
     private MembresiaDao modelo;
     private VistaRegistrar_Membresia vista;
+    private Border origin_border = new LineBorder(Color.gray, 1);
 
     public ControlRegistrar_Membresia(MembresiaDao modelo, VistaRegistrar_Membresia vista) {
         this.modelo = modelo;
@@ -46,7 +50,7 @@ public class ControlRegistrar_Membresia {
 
     private boolean verificarMembresia() {
 
-        return modelo.mostrarDatos().stream().noneMatch(c -> c.getNombre().equalsIgnoreCase(vista.getTxt_nombre().getText()));
+        return modelo.mostrarDatos("").stream().noneMatch(c -> c.getNombre().equalsIgnoreCase(vista.getTxt_nombre().getText()));
     }
 
     private double valorDescuento(String porcentaje) {
@@ -62,6 +66,8 @@ public class ControlRegistrar_Membresia {
         vista.getTxt_nombre().setText("");
         vista.getTxt_descripcion().setText("");
         vista.getTxt_descuento().setText("");
+        vista.getTxt_nombre().setBorder(origin_border);
+        
 
     }
 
@@ -95,7 +101,8 @@ public class ControlRegistrar_Membresia {
                 reiniciarCampos();
 
             } else {
-                JOptionPane.showMessageDialog(vista, "Membresía ya registrado", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vista, "Membresía ya registrada", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                vista.getTxt_nombre().setBorder(new LineBorder(Color.decode("#C33529"), 2));
                 vista.getTxt_nombre().grabFocus();
             }
 

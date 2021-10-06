@@ -97,7 +97,7 @@ public class ControlGestion_Persona {
         if (fila != -1) {
 
             id_persona = (int) vista_persona.getJtable_persona().getValueAt(fila, columna);
-            System.out.println("funciona");
+//            System.out.println("funciona");
             vista_persona.dispose();
             VistaActualizar_Persona vista = new VistaActualizar_Persona();
             ControlActualizar_Persona control = new ControlActualizar_Persona(modelo_persona, vista);

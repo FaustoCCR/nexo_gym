@@ -59,6 +59,11 @@ public class PGConexion {
             st = con.createStatement();//crear sentencia
             boolean rb = st.execute(sqla); //metodo devuelve un booleano de acuerdo a la ejecucion de la consulta
             st.close(); //cerramos la conexion
+            try {
+                super.finalize();//ayuda a gestionar los recursos de la base de datos
+            } catch (Throwable ex) {
+                Logger.getLogger(PGConexion.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return true;//rb;
             
         } catch (SQLException ex) {

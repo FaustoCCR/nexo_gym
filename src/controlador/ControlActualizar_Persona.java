@@ -1,4 +1,3 @@
-
 package controlador;
 
 import java.awt.Color;
@@ -9,6 +8,7 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Enumeration;
+import java.util.function.Predicate;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
@@ -16,6 +16,7 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import modelo.dao.PersonaDao;
+import modelo.vo.PersonaVo;
 import vista.VistaActualizar_Persona;
 
 public class ControlActualizar_Persona {
@@ -45,6 +46,7 @@ public class ControlActualizar_Persona {
             @Override
             public void keyReleased(KeyEvent e) {
                 verificarCedulaIngresada(vista_persona.getTxt_cedula().getText());
+
             }
 
         });
@@ -166,11 +168,13 @@ public class ControlActualizar_Persona {
 
         if (validarRegistro()) {
             if (verificarCedulaIngresada(vista_persona.getTxt_cedula().getText())) {
-                if (saber_NoHayOtraCedula()) {
+
+                /*Saber si hay otra cedula*/
+                if (verificarCedulaRepetida(vista_persona.getTxt_cedula().getText())) {
                     sentenciaUpdate();
                     restaurarBordes();
                 } else {
-                    JOptionPane.showMessageDialog(vista_persona, "La cedula ya existe en otro registro", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(vista_persona, "La cédula ya existe en otro registro", "Mensaje", JOptionPane.ERROR_MESSAGE);
                 }
 
             } else {
@@ -183,12 +187,14 @@ public class ControlActualizar_Persona {
         }
     }
 
-    //---------- Referente a la cedula -----------------
-    private boolean verificarCedulaIngresada(String cedula) {
+    private boolean verificarCedulaRepetida(String cedula) {
 
-        /*Si la cedula tiene 10 caracteres
-            y verificar que sea correcta la cedula*/
-        boolean respuesta = longitudCedula(cedula);
+        /*Analiza si la cedula a ser cambiada pertenece a otra persona ya registrada, por lo que no podrá si es el caso
+         */
+        Predicate<PersonaVo> condicion = p -> p.getDni().equals(cedula);
+        Predicate<PersonaVo> condicion2 = p -> p.getId_persona() != id_persona;
+
+        boolean respuesta = modelo_persona.mostrarDatos().stream().noneMatch(condicion.and(condicion2));
         if (respuesta) {
 
             vista_persona.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
@@ -197,6 +203,28 @@ public class ControlActualizar_Persona {
 
         }
         return respuesta;
+    }
+
+    //---------- Referente a la cedula -----------------
+    private boolean verificarCedulaIngresada(String cedula) {
+
+        /*Si la cedula tiene 10 caracteres
+            y verificar que sea correcta la cedula*/
+        if (!cedula.isEmpty()) {
+            boolean respuesta = longitudCedula(cedula);
+            if (respuesta) {
+
+//                vista_persona.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+                verificarCedulaRepetida(cedula);
+
+            } else {
+                vista_persona.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+
+            }
+            return respuesta;
+        } else {
+            return false;
+        }
 
     }
 
@@ -207,30 +235,29 @@ public class ControlActualizar_Persona {
         return id_persona;
 
     }
+//
+//    private int verificarCedula2(String cedula) {
+//        int cont = modelo_persona.contadorPer(cedula);
+//        System.out.println(cont);
+//        return cont;
+//
+//    }
 
-    private int verificarCedula2(String cedula) {
-        int cont = modelo_persona.contadorPer(cedula);
-        System.out.println(cont);
-        return cont;
-
-    }
-
-    private boolean saber_NoHayOtraCedula() {
-        String cedula1 = vista_persona.getTxt_cedula().getText();
-
-        if (verificarCedula2(cedula1) >= 1) {
-            int id1 = campoId(cedula1);
-            if (id1 == id_persona) {
-                return true;
-            } else {
-                return false;
-            }
-        } else {
-            return true;
-        }
-
-    }
-
+//    private boolean saber_NoHayOtraCedula() {
+//        String cedula1 = vista_persona.getTxt_cedula().getText();
+//
+//        if (verificarCedula2(cedula1) >= 1) {
+//            int id1 = campoId(cedula1);
+//            if (id1 == id_persona) {
+//                return true;
+//            } else {
+//                return false;
+//            }
+//        } else {
+//            return true;
+//        }
+//
+//    }
     private boolean longitudCedula(String cedula) {
         int log = cedula.length();
         if (log >= 10) {

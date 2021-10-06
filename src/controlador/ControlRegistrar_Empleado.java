@@ -52,22 +52,22 @@ public class ControlRegistrar_Empleado {
         vista.getBt_registrar().addActionListener(l -> registrarEmpleado());
 
     }
-    
-//    private boolean verificarPersonaRegistrada(String cedula) {
-//
-//        /*Si ya exite una persona con la cedula 
-//        indicada, ya no se puede registrar*/
-//        boolean respuesta = modelo.mostrarDatosJoin("").stream().noneMatch(c -> c.getCedulapersona().equals(cedula));
-//        if (respuesta) {
-//
-//            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
-//        } else {
-//            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
-//
-//        }
-//        return respuesta;
-//
-//    }
+
+    private boolean verificarPersonaRegistrada(String cedula) {
+
+        /*Si ya exite una persona con la cedula 
+        indicada, ya no se puede registrar*/
+        boolean respuesta = modelo.mostrarDatosJoin("").stream().noneMatch(c -> c.getDni_persona().equals(cedula));
+        if (respuesta) {
+
+            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+        } else {
+            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+
+        }
+        return respuesta;
+
+    }
 
     private boolean buscarPersona(String cedula) {
         boolean busqueda;
@@ -75,14 +75,14 @@ public class ControlRegistrar_Empleado {
         busqueda = modelo_persona.mostrarDatos().stream().anyMatch(cedula_p);
         if (busqueda == true) {
 
-            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
             modelo_persona.mostrarDatos().stream().filter(cedula_p).forEach((t) -> {
                 vista.getTxt_persona().setText(t.getNombre() + " " + t.getApellido());
 
             });
+            verificarPersonaRegistrada(cedula);
         } else {
 
-            vista.getTxt_persona().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
             vista.getTxt_persona().setText("");
         }
         return busqueda;
@@ -156,8 +156,15 @@ public class ControlRegistrar_Empleado {
 
             if (buscarPersona(vista.getTxt_cedula().getText())) {
 
-                sentenciaInsert();
-                reiniciarCampos();
+                if (verificarPersonaRegistrada(vista.getTxt_cedula().getText())) {
+
+                    sentenciaInsert();
+                    reiniciarCampos();
+
+                } else {
+                    JOptionPane.showMessageDialog(vista, "Ya se encuentra registrada esta persona", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                    vista.getTxt_cedula().grabFocus();
+                }
 
             } else {
                 JOptionPane.showMessageDialog(vista, "Cédula no identificada", "Mensaje", JOptionPane.ERROR_MESSAGE);

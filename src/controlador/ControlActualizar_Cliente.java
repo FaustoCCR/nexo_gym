@@ -154,7 +154,7 @@ public class ControlActualizar_Cliente {
 
     private void cargarMembresias() {
 
-        modelo_membresia.mostrarDatos().stream().forEach((m) -> {
+        modelo_membresia.mostrarDatos("").stream().forEach((m) -> {
             vista.getCb_membresia().addItem(m.getNombre());
 
         });
@@ -190,9 +190,9 @@ public class ControlActualizar_Cliente {
 //            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
             modelo_persona.mostrarDatos().stream().filter(cedula_p).forEach((t) -> {
                 vista.getTxt_persona().setText(t.getNombre() + " " + t.getApellido());
-                verificarPersonaRegistrada(cedula, id_cliente);
 
             });
+            verificarPersonaRegistrada(cedula, id_cliente);
         } else {
             vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
             vista.getTxt_persona().setText("");
@@ -246,7 +246,7 @@ public class ControlActualizar_Cliente {
     private double cargarDescuento() {
 
         int seleccion = vista.getCb_membresia().getSelectedIndex();
-        double descuento = (modelo_membresia.mostrarDatos().get(seleccion).getDescuento());
+        double descuento = (modelo_membresia.mostrarDatos("").get(seleccion).getDescuento());
         return descuento;
     }
 
@@ -310,7 +310,7 @@ public class ControlActualizar_Cliente {
     private void sentenciaUpdate() {
 
         int id_persona = campoPersona(vista.getTxt_cedula().getText());
-        int id_membresia = modelo_membresia.mostrarDatos().get(vista.getCb_membresia().getSelectedIndex()).getId_membresia();
+        int id_membresia = modelo_membresia.mostrarDatos("").get(vista.getCb_membresia().getSelectedIndex()).getId_membresia();
 
         modelo_cliente.setId_persona(id_persona);
         modelo_cliente.setId_membresia(id_membresia);

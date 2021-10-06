@@ -1,20 +1,23 @@
-
 package controlador;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import modelo.dao.RutinaDao;
 import vista.VistaRegistrar_Rutina;
 
-
 public class ControlRegistrar_Rutina {
+
     private RutinaDao modelo;
     private VistaRegistrar_Rutina vista;
+    private Border origin_border = new LineBorder(Color.gray, 1);
 
-    public ControlRegistrar_Rutina(RutinaDao modelo, VistaRegistrar_Rutina vista){
+    public ControlRegistrar_Rutina(RutinaDao modelo, VistaRegistrar_Rutina vista) {
         this.vista = vista;
-        this.modelo=modelo;
-        
+        this.modelo = modelo;
+
         vista.setVisible(true);
         vista.setTitle("Registro de Rutina - Nexo Gym");
         vista.setResizable(false);
@@ -44,7 +47,7 @@ public class ControlRegistrar_Rutina {
 
     private boolean verificarRutina() {
 
-        return modelo.mostrarDatos().stream().noneMatch(c -> c.getNombre().equals(vista.getTxtNombre().getText()));
+        return modelo.mostrarDatos().stream().noneMatch(c -> c.getNombre().equalsIgnoreCase(vista.getTxtNombre().getText()));
     }
 
     private void sentenciaInsert() {
@@ -66,6 +69,7 @@ public class ControlRegistrar_Rutina {
     private void reiniciarCampos() {
 
         vista.getTxtNombre().setText("");
+        vista.getTxtNombre().setBorder(origin_border);
         vista.getTxtDescripcion().setText("");
 
     }
@@ -85,6 +89,7 @@ public class ControlRegistrar_Rutina {
 
             } else {
                 JOptionPane.showMessageDialog(vista, "Rutina ya registrada", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                vista.getTxtNombre().setBorder(new LineBorder(Color.decode("#C33529"), 2));
                 vista.getTxtNombre().grabFocus();
             }
 

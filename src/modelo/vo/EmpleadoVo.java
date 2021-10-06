@@ -1,23 +1,21 @@
-
 package modelo.vo;
 
 import java.sql.Date;
 
-
 public class EmpleadoVo {
-    
+
     //atributos
     private int id_empleado;
     private int id_persona; // ----> FK
     private int id_cargo; // ----> FK
     private Date fecha_contrato;
     private double sueldo;
-    
-     //----> variables Adicionales
-    private String nombrecliente;  
+
+    //----> variables Adicionales
+    private String dni_persona;
+    private String nombrecliente;
     private String ncargo;
 
-    
     public EmpleadoVo() {
     }
 
@@ -68,20 +66,29 @@ public class EmpleadoVo {
     public void setSueldo(double sueldo) {
         this.sueldo = sueldo;
     }
-    
-        public String getNombrecliente() {
+
+    public String getNombrecliente() {
         return nombrecliente;
     }
 
     public void setNombrecliente(String nombrecliente) {
         this.nombrecliente = nombrecliente;
     }
-     public String getNombreCargo() {
+
+    public String getNombreCargo() {
         return ncargo;
     }
 
     public void setNombreCargo(String ncargo) {
         this.ncargo = ncargo;
     }
-    
+
+    public String getDni_persona() {
+        return dni_persona;
+    }
+
+    public void setDni_persona(String dni_persona) {
+        this.dni_persona = dni_persona;
+    }
+
 }

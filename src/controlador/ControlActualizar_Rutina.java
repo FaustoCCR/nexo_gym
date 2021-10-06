@@ -1,27 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.function.Predicate;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import modelo.dao.RutinaDao;
-import modelo.vo.RutinaVo;
-import modelo.vo.UsuarioVo;
 import vista.VistaActualizar_Rutina;
 
-/**
- *
- * @author Casa
- */
 public class ControlActualizar_Rutina {
 
     private RutinaDao modelo_rutina;
@@ -45,7 +33,13 @@ public class ControlActualizar_Rutina {
     }
 
     public void funcionalidad() {
+        vista_rutina.getTxt_nombre().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                verificRutina(vista_rutina.getTxt_nombre().getText());
+            }
 
+        });
         vista_rutina.getBt_actualizar().addActionListener(l -> actualizarRutina());
     }
 
@@ -57,20 +51,6 @@ public class ControlActualizar_Rutina {
             vista_rutina.getTxt_descripcion().setText(us.getDescripcion());
 
         });
-
-    }
-
-    private boolean verificarRutina(String cedula, int id) {
-
-        boolean respuesta = modelo_rutina.mostrarDatosJoin(id_rutina).isEmpty();
-        if (respuesta) {
-
-            vista_rutina.getTxt_nombre().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
-        } else {
-            vista_rutina.getTxt_descripcion().setBorder(new LineBorder(Color.decode("#C33529"), 2));
-
-        }
-        return respuesta;
 
     }
 
@@ -127,7 +107,6 @@ public class ControlActualizar_Rutina {
     private void restaurarBordes() {
 
         vista_rutina.getTxt_nombre().setBorder(origin_border);
-        vista_rutina.getTxt_descripcion().setBorder(origin_border);
     }
 
     private void actualizarRutina() {
@@ -143,14 +122,16 @@ public class ControlActualizar_Rutina {
                 JOptionPane.showMessageDialog(vista_rutina, " Rutina no disponible", "Advertencia", JOptionPane.ERROR_MESSAGE);
                 vista_rutina.getTxt_nombre().grabFocus();
             }
+        }else {
+            JOptionPane.showMessageDialog(vista_rutina, "Rellenar todos los campos ", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
 
     }
 
     private int verificRutina(String nombre) {
-        
+
         int cont = modelo_rutina.contadorPer(nombre);
-        System.out.println(cont);
+//        System.out.println(cont);
         return cont;
 
     }
