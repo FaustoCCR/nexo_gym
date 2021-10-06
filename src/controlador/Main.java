@@ -12,7 +12,7 @@ public class Main {
 
         ControlLogin login = new ControlLogin(user, vl);
         login.funcionalidad();
-
+        
     }
 
 }

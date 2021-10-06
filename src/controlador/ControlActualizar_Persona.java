@@ -1,3 +1,4 @@
+
 package controlador;
 
 import java.awt.Color;
@@ -8,8 +9,6 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.Enumeration;
-import java.util.List;
-import java.util.function.Predicate;
 import javax.swing.AbstractButton;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
@@ -17,28 +16,27 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import modelo.dao.PersonaDao;
-import modelo.vo.PersonaVo;
-import vista.VistaRegistrar_Persona;
+import vista.VistaActualizar_Persona;
 
-public class ControlRegistrar_Persona {
+public class ControlActualizar_Persona {
 
-    private VistaRegistrar_Persona vista_persona;
     private PersonaDao modelo_persona;
+    private VistaActualizar_Persona vista_persona;
+    private int id_persona;
     private Border origin_border = new LineBorder(Color.gray, 1);
 
-    public ControlRegistrar_Persona(PersonaDao modelo_persona, VistaRegistrar_Persona vista) {
+    public ControlActualizar_Persona(PersonaDao modelo_persona, VistaActualizar_Persona vista_persona) {
         this.modelo_persona = modelo_persona;
-        this.vista_persona = vista;
+        this.vista_persona = vista_persona;
 
-        vista.setVisible(true);
-        vista.setTitle("Registro de Persona - Nexo Gym");
-        vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
-        vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
-        vista.getJdnacimiento().getDateEditor().setEnabled(false);
-        vista.getJdnacimiento().setDate(new java.util.Date());
-
+        id_persona = ControlGestion_Persona.id_persona;
+        vista_persona.setVisible(true);
+        vista_persona.setTitle("Actualizar Persona - Nexo Gym");
+        vista_persona.setResizable(false);
+        vista_persona.setLocationRelativeTo(null);
+        vista_persona.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        vista_persona.getJdnacimiento().getDateEditor().setEnabled(false);
+        cargarDatosPersona();
     }
 
     public void funcionalidad() {
@@ -51,10 +49,44 @@ public class ControlRegistrar_Persona {
 
         });
 
-        vista_persona.getBt_registrar().addActionListener(l -> registrarPersona());
+        vista_persona.getBt_actualizar().addActionListener(l -> actualizarPersona());
 
     }
 
+    private void cargarDatosPersona() {
+
+        modelo_persona.mostrarDatosJoin(id_persona).stream().forEach((pe) -> {
+
+            vista_persona.getTxt_cedula().setText(pe.getDni());
+            vista_persona.getTxt_nombre().setText(pe.getNombre());
+            vista_persona.getTxt_apellido().setText(pe.getApellido());
+            vista_persona.getTxt_correo().setText(pe.getCorreo());
+            vista_persona.getTxt_direccion().setText(pe.getDireccion());
+            vista_persona.getTxt_telefono().setText(pe.getTelefono());
+            vista_persona.getJdnacimiento().setDate(pe.getBirthdate());
+            vista_persona.getRbt_masculino().setSelected(seleccionarRadioM(pe.getGenero()));
+            vista_persona.getRbt_femenino().setSelected(seleccionarRadioF(pe.getGenero()));
+        });
+    }
+
+    private boolean seleccionarRadioM(char ge) {
+        if (ge == 'M') {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private boolean seleccionarRadioF(char ge) {
+        if (ge == 'F') {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
+    //--------- metodos para modificar ---------- 
     private boolean validarRegistro() {
 
         String cedula = vista_persona.getTxt_cedula().getText();
@@ -89,33 +121,8 @@ public class ControlRegistrar_Persona {
         return null;
     }
 
-    private void reiniciarCampos() {
+    private void sentenciaUpdate() {
 
-        vista_persona.getTxt_cedula().setText("");
-        vista_persona.getTxt_nombre().setText("");
-        vista_persona.getTxt_apellido().setText("");
-        vista_persona.getJdnacimiento().setDate(null);
-        vista_persona.getTxt_correo().setText("");
-        vista_persona.getBt_genero().clearSelection();
-        vista_persona.getTxt_direccion().setText("");
-        vista_persona.getTxt_telefono().setText("");
-
-    }
-
-    private int campoId() {
-        List<PersonaVo> lista = modelo_persona.mostrarDatos();
-        int id = 1;
-        for (int i = 0; i < lista.size(); i++) {
-            if (id != lista.get(i).getId_persona()) {
-                break;
-            }
-            id++;
-        }
-        return id;
-    }
-
-    private void sentenciaInsert() {
-        int id_persona = campoId();
         String cedula = vista_persona.getTxt_cedula().getText();
         String nombre = vista_persona.getTxt_nombre().getText();
         String apellido = vista_persona.getTxt_apellido().getText();
@@ -131,7 +138,6 @@ public class ControlRegistrar_Persona {
         String direccion = vista_persona.getTxt_direccion().getText();
         String telefono = vista_persona.getTxt_telefono().getText();
 
-        modelo_persona.setId_persona(id_persona);
         modelo_persona.setDni(cedula);
         modelo_persona.setNombre(nombre);
         modelo_persona.setApellido(apellido);
@@ -141,32 +147,34 @@ public class ControlRegistrar_Persona {
         modelo_persona.setDireccion(direccion);
         modelo_persona.setTelefono(telefono);
 
-        if (modelo_persona.grabar()) {
+        if (modelo_persona.modificar1(id_persona)) {
 
-            JOptionPane.showMessageDialog(vista_persona, "Persona Registrada");
+            JOptionPane.showMessageDialog(vista_persona, "Usuario Actualizado");
 
         } else {
-            JOptionPane.showMessageDialog(vista_persona, "Error al Guardar");
+            JOptionPane.showMessageDialog(vista_persona, "Error al Actualizar");
         }
 
     }
 
-    private void registrarPersona() {
+    private void restaurarBordes() {
+
+        vista_persona.getTxt_cedula().setBorder(origin_border);
+    }
+
+    private void actualizarPersona() {
 
         if (validarRegistro()) {
             if (verificarCedulaIngresada(vista_persona.getTxt_cedula().getText())) {
-                if (verificarCedula(vista_persona.getTxt_cedula().getText())) {
-
-                    sentenciaInsert();
-                    reiniciarCampos();
+                if (saber_NoHayOtraCedula()) {
+                    sentenciaUpdate();
                     restaurarBordes();
-
                 } else {
-                    JOptionPane.showMessageDialog(vista_persona, "Exite un registro con esta cédula", "Mensaje", JOptionPane.ERROR_MESSAGE);
-                    vista_persona.getTxt_cedula().grabFocus();
+                    JOptionPane.showMessageDialog(vista_persona, "La cedula ya existe en otro registro", "Mensaje", JOptionPane.ERROR_MESSAGE);
                 }
+
             } else {
-                JOptionPane.showMessageDialog(vista_persona, "La cédula es Incorrecta", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(vista_persona, "Cedúla Incorrecta", "Mensaje", JOptionPane.ERROR_MESSAGE);
             }
 
         } else {
@@ -175,12 +183,7 @@ public class ControlRegistrar_Persona {
         }
     }
 
-    private void restaurarBordes() {
-
-        vista_persona.getTxt_cedula().setBorder(origin_border);
-    }
-
-    //--------- Metodos referente a la cédula -----
+    //---------- Referente a la cedula -----------------
     private boolean verificarCedulaIngresada(String cedula) {
 
         /*Si la cedula tiene 10 caracteres
@@ -197,6 +200,37 @@ public class ControlRegistrar_Persona {
 
     }
 
+    private int campoId(String cedula) {
+        int id_persona;
+        /*Retora el id de la persona de acuerdo a su número de cédula*/
+        id_persona = modelo_persona.mostrarDatos().stream().filter(p -> p.getDni().equals(cedula)).findAny().get().getId_persona();
+        return id_persona;
+
+    }
+
+    private int verificarCedula2(String cedula) {
+        int cont = modelo_persona.contadorPer(cedula);
+        System.out.println(cont);
+        return cont;
+
+    }
+
+    private boolean saber_NoHayOtraCedula() {
+        String cedula1 = vista_persona.getTxt_cedula().getText();
+
+        if (verificarCedula2(cedula1) >= 1) {
+            int id1 = campoId(cedula1);
+            if (id1 == id_persona) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return true;
+        }
+
+    }
+
     private boolean longitudCedula(String cedula) {
         int log = cedula.length();
         if (log >= 10) {
@@ -206,14 +240,6 @@ public class ControlRegistrar_Persona {
         }
 
         return false;
-
-    }
-
-    private boolean verificarCedula(String cedula) {
-
-        Predicate<PersonaVo> cedula_p = p -> p.getDni().equals(cedula);
-
-        return modelo_persona.mostrarDatos().stream().noneMatch(cedula_p);
 
     }
 
@@ -256,4 +282,11 @@ public class ControlRegistrar_Persona {
         return false;
     }
 
+    //    private boolean verificarCedula(String cedula) {
+//
+//        Predicate<PersonaVo> cedula_p = p -> p.getDni().equals(cedula);
+//
+//        return modelo_persona.mostrarDatos().stream().noneMatch(cedula_p);
+//
+//    }
 }

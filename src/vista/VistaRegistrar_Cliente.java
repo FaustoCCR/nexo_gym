@@ -82,6 +82,7 @@ public class VistaRegistrar_Cliente extends javax.swing.JFrame {
         jspinner_meses.setModel(new javax.swing.SpinnerNumberModel(0, 0, null, 1));
 
         jdate_inicio.setForeground(new java.awt.Color(153, 153, 255));
+        jdate_inicio.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
 
         txt_subtotal.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         txt_subtotal.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));

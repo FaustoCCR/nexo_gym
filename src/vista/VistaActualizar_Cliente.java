@@ -67,6 +67,7 @@ public class VistaActualizar_Cliente extends javax.swing.JFrame {
         bt_actualzar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jdate_inicio.setForeground(new java.awt.Color(153, 153, 255));
+        jdate_inicio.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel1.setText("Cedula:");

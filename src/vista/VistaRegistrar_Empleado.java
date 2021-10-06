@@ -50,11 +50,14 @@ public class VistaRegistrar_Empleado extends javax.swing.JFrame {
         lblSueldo.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         lblSueldo.setText("Sueldo:");
 
+        txtSueldo.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         txtSueldo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtSueldoActionPerformed(evt);
             }
         });
+
+        jd_fechacontrato.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
 
         cb_cargo.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         cb_cargo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));

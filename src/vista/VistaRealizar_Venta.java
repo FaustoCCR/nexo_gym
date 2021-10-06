@@ -155,6 +155,7 @@ public class VistaRealizar_Venta extends javax.swing.JFrame {
         jLabel12.setText("Vendedor:");
 
         jdate_venta.setForeground(new java.awt.Color(153, 153, 255));
+        jdate_venta.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel4.setText("Fecha de venta:");

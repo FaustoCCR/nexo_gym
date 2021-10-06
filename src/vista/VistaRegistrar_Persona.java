@@ -65,6 +65,7 @@ public class VistaRegistrar_Persona extends javax.swing.JFrame {
         jLabel4.setText("F.Nacimiento:");
 
         jdnacimiento.setForeground(new java.awt.Color(153, 153, 255));
+        jdnacimiento.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         jdnacimiento.setMaxSelectableDate(new Date());
 
         txt_correo.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N

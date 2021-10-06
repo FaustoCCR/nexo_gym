@@ -1,6 +1,8 @@
 package controlador;
 
 import java.awt.Color;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.sql.Date;
 import java.time.Instant;
 import java.time.ZoneId;
@@ -40,10 +42,32 @@ public class ControlRegistrar_Empleado {
     }
 
     public void funcionalidad() {
+        vista.getTxt_cedula().addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                buscarPersona(vista.getTxt_cedula().getText());
+            }
 
+        });
         vista.getBt_registrar().addActionListener(l -> registrarEmpleado());
 
     }
+    
+//    private boolean verificarPersonaRegistrada(String cedula) {
+//
+//        /*Si ya exite una persona con la cedula 
+//        indicada, ya no se puede registrar*/
+//        boolean respuesta = modelo.mostrarDatosJoin("").stream().noneMatch(c -> c.getCedulapersona().equals(cedula));
+//        if (respuesta) {
+//
+//            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+//        } else {
+//            vista.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+//
+//        }
+//        return respuesta;
+//
+//    }
 
     private boolean buscarPersona(String cedula) {
         boolean busqueda;
@@ -59,7 +83,7 @@ public class ControlRegistrar_Empleado {
         } else {
 
             vista.getTxt_persona().setBorder(new LineBorder(Color.decode("#C33529"), 2));
-            vista.getTxt_cedula().setText("");
+            vista.getTxt_persona().setText("");
         }
         return busqueda;
     }
@@ -107,7 +131,7 @@ public class ControlRegistrar_Empleado {
         modelo.setSueldo(sueldo);
 
         if (modelo.grabar()) {
-            JOptionPane.showMessageDialog(vista, "Producto Registrado");
+            JOptionPane.showMessageDialog(vista, "Empleado Registrado");
         } else {
             JOptionPane.showMessageDialog(vista, "Error al Guardar");
         }
@@ -131,7 +155,7 @@ public class ControlRegistrar_Empleado {
         if (validarRegistro()) {
 
             if (buscarPersona(vista.getTxt_cedula().getText())) {
-                
+
                 sentenciaInsert();
                 reiniciarCampos();
 

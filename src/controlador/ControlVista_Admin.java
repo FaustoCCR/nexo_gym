@@ -14,6 +14,7 @@ import modelo.dao.UsuarioDao;
 import modelo.dao.Ecb_VentaDao;
 import vista.VistaAdministrador;
 import vista.VistaGestion_Clientes;
+import vista.VistaGestion_Empleado;
 import vista.VistaGestion_Persona;
 import vista.VistaGestion_Productos;
 import vista.VistaGestion_Rutina;
@@ -77,6 +78,8 @@ public class ControlVista_Admin {
         vista.getJmi_gpersonas().addActionListener(l -> ventanaGestion_Personas());
         vista.getJmi_grutinas().addActionListener(l -> ventanaGestion_Rutinas());
         vista.getJmi_realizarventa().addActionListener(l -> ventanaRealizarVenta());
+        vista.getJmi_gempleados().addActionListener(l->ventanaGestion_Empleados());
+        
 
     }
 
@@ -199,6 +202,11 @@ public class ControlVista_Admin {
     }
 
     private void ventanaGestion_Empleados() {
+        
+        EmpleadoDao modelo = new EmpleadoDao();
+        VistaGestion_Empleado vista = new VistaGestion_Empleado();
+        ControlGestion_Empleados control = new ControlGestion_Empleados(modelo, vista);
+        control.funcionalidad();
 
     }
 
