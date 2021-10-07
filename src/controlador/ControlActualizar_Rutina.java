@@ -139,7 +139,7 @@ public class ControlActualizar_Rutina {
     private int campoId_Rutina(String nombre) {
 
         int id_rutina;
-        id_rutina = modelo_rutina.mostrarDatos().stream().filter(p -> p.getNombre().equals(nombre)).findAny().get().getId_rutina();
+        id_rutina = modelo_rutina.mostrarDatos().stream().filter(p -> p.getNombre().equalsIgnoreCase(nombre)).findAny().get().getId_rutina();
         return id_rutina;
 
     }

@@ -7,8 +7,10 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.ClienteDao;
+import modelo.dao.ProgramaClienteDao;
 import vista.VistaActualizar_Cliente;
 import vista.VistaGestion_Clientes;
+import vista.VistaPrograma_Cliente;
 
 public class ControlGestion_Clientes {
 
@@ -47,6 +49,7 @@ public class ControlGestion_Clientes {
 
         vista_cliente.getBt_verificar().addActionListener(l -> ventanaActualizar());
         vista_cliente.getBt_eliminar().addActionListener(l -> sentenciaDelete());
+        vista_cliente.getBt_asignarRutina().addActionListener(l -> ventanaAsignarRutina());
 
     }
 
@@ -75,7 +78,7 @@ public class ControlGestion_Clientes {
         modelo_cliente.mostrarDatosJoin(aguja).stream().forEach((c) -> {
 
             Object[] contenido
-                    = {c.getId_cliente(),c.getCedulapersona() ,c.getNombrecliente(), c.getMembresia(), "$" + c.getPago(), c.getF_inicio(), c.getF_vence(), estadoPaga(c.isEstado_pago())};
+                    = {c.getId_cliente(), c.getCedulapersona(), c.getNombrecliente(), c.getMembresia(), "$" + c.getPago(), c.getF_inicio(), c.getF_vence(), estadoPaga(c.isEstado_pago())};
 
             tb_model.addRow(contenido);
 
@@ -135,6 +138,25 @@ public class ControlGestion_Clientes {
         } else {
             JOptionPane.showMessageDialog(vista_cliente, "Seleccione el registro a eliminar");
         }
+    }
+
+    private void ventanaAsignarRutina() {
+
+        int fila = vista_cliente.getJtable_clientes().getSelectedRow();
+        final int columna = 0;
+
+        if (fila != -1) {
+
+            id_cliente = (int) vista_cliente.getJtable_clientes().getValueAt(fila, columna);
+            ProgramaClienteDao modelo_pgcliente = new ProgramaClienteDao();
+            VistaPrograma_Cliente vista = new VistaPrograma_Cliente();
+            ControlPrograma_Cliente control = new ControlPrograma_Cliente(modelo_pgcliente, vista);
+            control.funcionalidad();
+
+        } else {
+            JOptionPane.showMessageDialog(vista_cliente, "Seleccione el registro a asignar");
+        }
+
     }
 
 }

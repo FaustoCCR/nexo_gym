@@ -8,6 +8,7 @@ import modelo.dao.UsuarioDao;
 import modelo.vo.UsuarioVo;
 import vista.VistaAdministrador;
 import vista.VistaLogin;
+import vista.placeholder.TextPrompt;
 
 public class ControlLogin {
 
@@ -15,6 +16,7 @@ public class ControlLogin {
     private UsuarioDao modelo;
     private VistaLogin vista;
     public static int id_user;
+    private TextPrompt placeholder;
 
     public ControlLogin(UsuarioDao modelo, VistaLogin vista) {
         this.modelo = modelo;
@@ -24,6 +26,8 @@ public class ControlLogin {
         vista.setTitle("Login");
         vista.setResizable(false);
         vista.setLocationRelativeTo(null);
+        placeholder = new TextPrompt("Nombre de usuario", vista.getTxt_user());
+        placeholder = new TextPrompt("Contraseña", vista.getJpassword());
 
     }
 

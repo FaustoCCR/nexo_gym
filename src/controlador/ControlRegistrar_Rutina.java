@@ -83,7 +83,7 @@ public class ControlRegistrar_Rutina {
             boolean checkrutina = verificarRutina();
 
             if (checkrutina) {
-
+                vista.getTxtNombre().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
                 sentenciaInsert();
                 reiniciarCampos();
 

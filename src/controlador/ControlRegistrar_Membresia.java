@@ -23,14 +23,12 @@ public class ControlRegistrar_Membresia {
         vista.setResizable(false);
         vista.setLocationRelativeTo(null);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
 
     }
 
     public void funcionalidad() {
-        
-        vista.getBt_registrar().addActionListener(l-> registrarMembresia());
-        
+
+        vista.getBt_registrar().addActionListener(l -> registrarMembresia());
 
     }
 
@@ -67,7 +65,6 @@ public class ControlRegistrar_Membresia {
         vista.getTxt_descripcion().setText("");
         vista.getTxt_descuento().setText("");
         vista.getTxt_nombre().setBorder(origin_border);
-        
 
     }
 
@@ -96,7 +93,7 @@ public class ControlRegistrar_Membresia {
         if (validacion()) {
 
             if (verificarMembresia()) {
-
+                vista.getTxt_nombre().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
                 sentenciaInsert();
                 reiniciarCampos();
 

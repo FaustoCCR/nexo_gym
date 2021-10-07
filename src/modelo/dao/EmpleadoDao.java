@@ -76,7 +76,7 @@ public class EmpleadoDao extends EmpleadoVo {
 
                 em.setId_empleado(rs.getInt(1));
                 em.setDni_persona(rs.getString(2));
-                em.setNombrecliente(rs.getString(3));
+                em.setNombreempleado(rs.getString(3));
                 em.setNombreCargo(rs.getString(4));
                 em.setFecha_contrato(rs.getDate(5));
                 em.setSueldo(rs.getDouble(6));
@@ -109,7 +109,7 @@ public class EmpleadoDao extends EmpleadoVo {
 
                 em.setId_empleado(rs.getInt(1));
                 em.setDni_persona(rs.getString(2));
-                em.setNombrecliente(rs.getString(3));
+                em.setNombreempleado(rs.getString(3));
                 em.setNombreCargo(rs.getString(4));
                 em.setFecha_contrato(rs.getDate(5));
                 em.setSueldo(rs.getDouble(6));

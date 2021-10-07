@@ -13,7 +13,7 @@ public class EmpleadoVo {
 
     //----> variables Adicionales
     private String dni_persona;
-    private String nombrecliente;
+    private String nombreempleado;
     private String ncargo;
 
     public EmpleadoVo() {
@@ -67,12 +67,12 @@ public class EmpleadoVo {
         this.sueldo = sueldo;
     }
 
-    public String getNombrecliente() {
-        return nombrecliente;
+    public String getNombreempleado() {
+        return nombreempleado;
     }
 
-    public void setNombrecliente(String nombrecliente) {
-        this.nombrecliente = nombrecliente;
+    public void setNombreempleado(String nombreempleado) {
+        this.nombreempleado = nombreempleado;
     }
 
     public String getNombreCargo() {

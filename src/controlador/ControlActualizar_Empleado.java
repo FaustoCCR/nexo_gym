@@ -62,7 +62,7 @@ public class ControlActualizar_Empleado {
         modelo_empleado.mostrarDatosJoin(id_empleado).forEach((em) -> {
 
             vista.getTxt_cedula().setText(em.getDni_persona());
-            vista.getTxt_persona().setText(em.getNombrecliente());
+            vista.getTxt_persona().setText(em.getNombreempleado());
             vista.getCb_cargo().setSelectedItem(em.getNombreCargo());
             vista.getJd_fechacontrato().setDate(em.getFecha_contrato());
             vista.getTxtSueldo().setText(String.valueOf(em.getSueldo()));

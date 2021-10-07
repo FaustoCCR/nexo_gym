@@ -12,14 +12,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.conexion.PGConexion;
-import modelo.vo.ClienteVo;
 import modelo.vo.RutinaVo;
-import modelo.vo.UsuarioVo;
 
-/**
- *
- * @author Casa
- */
 public class RutinaDao extends RutinaVo {
 
     private PGConexion conecta = new PGConexion();
@@ -62,10 +56,10 @@ public class RutinaDao extends RutinaVo {
     public List<RutinaVo> mostrarDatosJoin(String aguja) {
 
         List<RutinaVo> lista_rutina = new ArrayList<>();
-        String sql = "select * "
+        String sql = "select id_rutina,nombre,replace(descripcion,chr(10),' | ')"
                 + " from rutina "
                 + " Where "
-                + " UPPER(nombre) like UPPER('%"+aguja+"%')";
+                + " UPPER(nombre) like UPPER('%" + aguja + "%')";
         ResultSet rs = conecta.consulta(sql);
 
         try {
@@ -87,13 +81,14 @@ public class RutinaDao extends RutinaVo {
             return null;
         }
     }
+
     public List<RutinaVo> mostrarDatosJoin(int id_rutina) {
 
         List<RutinaVo> lista_rutina = new ArrayList<>();
         String sql = "select *  "
                 + " from rutina "
                 + " Where "
-                + " id_rutina = "+id_rutina+""
+                + " id_rutina = " + id_rutina + ""
                 + " order by 1;";
         ResultSet rs = conecta.consulta(sql);
 
@@ -116,45 +111,45 @@ public class RutinaDao extends RutinaVo {
             return null;
         }
     }
+
     public boolean insertar() {
         String sql = "INSERT INTO rutina(\n"
                 + "nombre, descripcion)\n"
                 + "VALUES ('" + getNombre() + "','" + getDescripcion() + "');";
         return conecta.accion(sql);
     }
-    
-    public int contadorPer(String nombre){
-        int con=0;
-    String sql="SELECT COUNT(nombre) "
-            + " FROM rutina"
-            + " where UPPER(nombre) = UPPER('"+nombre+"')";
-          ResultSet rs = conecta.consulta(sql);
+
+    public int contadorPer(String nombre) {
+        int con = 0;
+        String sql = "SELECT COUNT(nombre) "
+                + " FROM rutina"
+                + " where UPPER(nombre) = UPPER('" + nombre + "')";
+        ResultSet rs = conecta.consulta(sql);
         try {
-            while (rs.next()) {                
-                con=rs.getInt(1);
+            while (rs.next()) {
+                con = rs.getInt(1);
             }
-           
+
         } catch (SQLException ex) {
             Logger.getLogger(RutinaDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    return con;
+        return con;
     }
-    
+
     public boolean modificar1(int identificador) {
 
         String sql;
-        sql = "UPDATE rutina set \"nombre\"='" + getNombre()+ "',\"descripcion\"='" + getDescripcion()+"'"
-                + "WHERE \"id_rutina\"='" + identificador +"'";
+        sql = "UPDATE rutina set \"nombre\"='" + getNombre() + "',\"descripcion\"='" + getDescripcion() + "'"
+                + "WHERE \"id_rutina\"='" + identificador + "'";
 
         return conecta.accion(sql);
     }
-    
-     public boolean eliminar(int identificador) {
+
+    public boolean eliminar(int identificador) {
 
         String sql = "delete from rutina where \"id_rutina\"='" + identificador + "'";
 
         return conecta.accion(sql);
     }
-
 
 }

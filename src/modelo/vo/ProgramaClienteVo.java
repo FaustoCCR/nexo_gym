@@ -1,16 +1,24 @@
-
 package modelo.vo;
 
 import java.sql.Date;
 
 public class ProgramaClienteVo {
-    
+
     //atributos
     private int id_pgcliente;
     private int id_cliente; // ----> FK
     private int id_rutina; // ----> FK
     private int id_empleado; // ----> FK
     private Date fecha;
+
+    /*varibles extras*/
+    private String nombreCliente;
+    private String nombreRutina;
+    private String descripcion_rutina;
+    private String nombreInstructor;
+
+    public ProgramaClienteVo() {
+    }
 
     public ProgramaClienteVo(int id_pgcliente, int id_cliente, int id_rutina, int id_empleado, Date fecha) {
         this.id_pgcliente = id_pgcliente;
@@ -59,7 +67,39 @@ public class ProgramaClienteVo {
     public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
+
+    public String getNombreCliente() {
+        return nombreCliente;
+    }
+
+    public void setNombreCliente(String nombreCliente) {
+        this.nombreCliente = nombreCliente;
+    }
+
+    public String getNombreRutina() {
+        return nombreRutina;
+    }
+
+    public void setNombreRutina(String nombreRutina) {
+        this.nombreRutina = nombreRutina;
+    }
+
+    public String getDescripcion_rutina() {
+        return descripcion_rutina;
+    }
+
+    public void setDescripcion_rutina(String descripcion_rutina) {
+        this.descripcion_rutina = descripcion_rutina;
+    }
+
+    public String getNombreInstructor() {
+        return nombreInstructor;
+    }
+
+    public void setNombreInstructor(String nombreInstructor) {
+        this.nombreInstructor = nombreInstructor;
+    }
     
     
-    
+
 }

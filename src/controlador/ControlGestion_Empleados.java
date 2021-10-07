@@ -67,7 +67,7 @@ public class ControlGestion_Empleados {
         tb_model.setRowCount(0);
         modelo_empleado.mostrarDatosJoin(aguja).stream().forEach((c) -> {
             Object[] contenido
-                    = {c.getId_empleado(), c.getDni_persona(), c.getNombrecliente(), c.getNombreCargo(), c.getFecha_contrato(), c.getSueldo()};
+                    = {c.getId_empleado(), c.getDni_persona(), c.getNombreempleado(), c.getNombreCargo(), c.getFecha_contrato(), c.getSueldo()};
             tb_model.addRow(contenido);
         });
     }
@@ -97,7 +97,7 @@ public class ControlGestion_Empleados {
         if (fila != -1) {
 
             int id_emp = (int) vista_empleado.getJtable_empleados().getValueAt(fila, columna);
-            String emp = modelo_empleado.mostrarDatosJoin("").stream().filter(u -> u.getId_empleado() == id_emp).findAny().get().getNombrecliente();
+            String emp = modelo_empleado.mostrarDatosJoin("").stream().filter(u -> u.getId_empleado() == id_emp).findAny().get().getNombreempleado();
 
             int resp = JOptionPane.showConfirmDialog(vista_empleado, "Seguro desea eliminar al Empleado : " + emp, "Confirmación", JOptionPane.YES_NO_OPTION);
             if (resp == 0) {
