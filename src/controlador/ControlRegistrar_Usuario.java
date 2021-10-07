@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.cifrado.Hash;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -21,7 +22,7 @@ public class ControlRegistrar_Usuario {
     private VistaRegistrar_Usuario vista;
     private PersonaDao modelo_persona = new PersonaDao();
     private RolDao modelo_rol = new RolDao();
-    private Border origin_border = new LineBorder(new Color(204,204,204), 1);
+    private Border origin_border = new LineBorder(new Color(204, 204, 204), 1);
 
     public ControlRegistrar_Usuario(UsuarioDao modelo_usuario, VistaRegistrar_Usuario vista) {
         this.modelo_usuario = modelo_usuario;
@@ -125,14 +126,12 @@ public class ControlRegistrar_Usuario {
 
             if (confirm_password.equals(password)) {
 
-                System.out.println("Contraseñas coinciden");
                 vista.getJconfirm_pass().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
 
                 return true;
 
             } else {
                 vista.getJconfirm_pass().setBorder(new LineBorder(Color.decode("#C33529"), 2));
-                System.out.println("No conciden las contraseñas");
                 return false;
             }
 
@@ -184,13 +183,14 @@ public class ControlRegistrar_Usuario {
         int id_rol = modelo_rol.mostrarDatos().get(vista.getCb_rol().getSelectedIndex()).getId_rol();
         String user = vista.getTxt_user().getText();
         String password = String.valueOf(vista.getJpass().getPassword());
+        String password_cifrada = Hash.sha1(password);
         boolean estado_cuenta = true;
-        /* cuando se registra, queda habilitado */
 
+        /* cuando se registra, queda habilitado */
         modelo_usuario.setId_persona(id_persona);
         modelo_usuario.setId_rol(id_rol);
         modelo_usuario.setUser_name(user);
-        modelo_usuario.setPassword(password);
+        modelo_usuario.setPassword(password_cifrada);
         modelo_usuario.setEstado_cuenta(estado_cuenta);
 
         if (modelo_usuario.insertar()) {

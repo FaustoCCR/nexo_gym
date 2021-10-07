@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.cifrado.Hash;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -314,8 +315,9 @@ public class ControlActualizar_User {
     private void upadatePassword() {
 
         String password = String.valueOf(vista.getJpass().getPassword());
+        String password_cifrada = Hash.sha1(password);
 
-        modelo_user.setPassword(password);
+        modelo_user.setPassword(password_cifrada);
 
         if (modelo_user.modificarPassword(id_user)) {
 

@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.cifrado.Hash;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -46,11 +47,12 @@ public class ControlLogin {
         o realizar una consulta sql mas especifica
          */
         String password = String.valueOf(pass);
+        String password_cifrada = Hash.sha1(password);
 
         if (!user.isEmpty() && !password.isEmpty()) {
 
             Predicate<UsuarioVo> checkuser = u -> u.getUser_name().equals(user);
-            Predicate<UsuarioVo> checkpass = u -> u.getPassword().equals(password);
+            Predicate<UsuarioVo> checkpass = u -> u.getPassword().equals(password_cifrada);
 
             List<UsuarioVo> filtro_login
                     = modelo.mostrarDatos().stream()
