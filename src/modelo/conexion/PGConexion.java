@@ -11,16 +11,13 @@ import java.util.logging.Logger;
 public class PGConexion {
 
     /* conexion a la base de datos Postgresql*/
- 
     Connection con; //conexion
     Statement st;//comandos sql
     ResultSet rs;//resultados de consulta.
-    
+
     String CadenaConexion = "jdbc:postgresql://localhost:5432/nexo_gym"; //cadena de conección
     String usuarioBD = "postgres";
     String contraBD = "tres4";//contraseña de la BD
-    
- 
 
     public PGConexion() {
 
@@ -44,6 +41,11 @@ public class PGConexion {
 
             st = con.createStatement();//crear sentencia
             rs = st.executeQuery(sqlc);//resultado de la consulta
+            try {
+                super.finalize();
+            } catch (Throwable ex) {
+                Logger.getLogger(PGConexion.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return rs;
 
         } catch (SQLException ex) {
@@ -65,7 +67,7 @@ public class PGConexion {
                 Logger.getLogger(PGConexion.class.getName()).log(Level.SEVERE, null, ex);
             }
             return true;//rb;
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(PGConexion.class.getName()).log(Level.SEVERE, null, ex);
             return false;
@@ -80,7 +82,5 @@ public class PGConexion {
     public void setCon(Connection con) {
         this.con = con;
     }
-    
-    
 
 }

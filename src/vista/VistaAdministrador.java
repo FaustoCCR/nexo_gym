@@ -1,5 +1,7 @@
 package vista;
 
+import javax.swing.JDesktopPane;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 
@@ -14,6 +16,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
+        jlfooter = new javax.swing.JLabel();
+        jDesktopPanePrincipal = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_salir = new javax.swing.JMenuItem();
@@ -46,9 +50,23 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jToolBar1.setBackground(new java.awt.Color(102, 102, 255));
+        jToolBar1.setBackground(new java.awt.Color(102, 102, 102));
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
+
+        jlfooter.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
+        jlfooter.setText("  Sistema Nexo - Gym v1.0.0");
+
+        javax.swing.GroupLayout jDesktopPanePrincipalLayout = new javax.swing.GroupLayout(jDesktopPanePrincipal);
+        jDesktopPanePrincipal.setLayout(jDesktopPanePrincipalLayout);
+        jDesktopPanePrincipalLayout.setHorizontalGroup(
+            jDesktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jDesktopPanePrincipalLayout.setVerticalGroup(
+            jDesktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 476, Short.MAX_VALUE)
+        );
 
         jMenu1.setText("Opciones");
         jMenu1.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
@@ -165,12 +183,17 @@ public class VistaAdministrador extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(jlfooter, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(jDesktopPanePrincipal)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 542, Short.MAX_VALUE))
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDesktopPanePrincipal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jlfooter, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -344,6 +367,24 @@ public class VistaAdministrador extends javax.swing.JFrame {
         this.jmi_realizarventa = jmi_realizarventa;
     }
 
+    public JDesktopPane getjDesktopPanePrincipal() {
+        return jDesktopPanePrincipal;
+    }
+
+    public void setjDesktopPanePrincipal(JDesktopPane jDesktopPanePrincipal) {
+        this.jDesktopPanePrincipal = jDesktopPanePrincipal;
+    }
+
+    public JLabel getJlfooter() {
+        return jlfooter;
+    }
+
+    public void setJlfooter(JLabel jlfooter) {
+        this.jlfooter = jlfooter;
+    }
+    
+    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -378,6 +419,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMenu5;
+    private javax.swing.JDesktopPane jDesktopPanePrincipal;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
@@ -386,6 +428,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel jlfooter;
     private javax.swing.JMenu jm_personas;
     private javax.swing.JMenuItem jmi_gcargos;
     private javax.swing.JMenuItem jmi_gclientes;

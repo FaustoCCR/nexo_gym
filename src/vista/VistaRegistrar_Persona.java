@@ -7,7 +7,7 @@ import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
-public class VistaRegistrar_Persona extends javax.swing.JFrame {
+public class VistaRegistrar_Persona extends javax.swing.JInternalFrame{
 
     public VistaRegistrar_Persona() {
         initComponents();

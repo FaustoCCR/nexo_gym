@@ -33,8 +33,8 @@ public class ControlRegistrar_Persona {
         vista.setVisible(true);
         vista.setTitle("Registro de Persona - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        vista.setClosable(true);
 
         vista.getJdnacimiento().getDateEditor().setEnabled(false);
         vista.getJdnacimiento().setDate(new java.util.Date());

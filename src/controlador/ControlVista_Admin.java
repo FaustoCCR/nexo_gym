@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Frame;
 import modelo.dao.CargoDao;
 import modelo.dao.ClienteDao;
 import modelo.dao.Ctg_ProductoDao;
@@ -35,20 +36,21 @@ import vista.VistaRegistrar_Usuario;
 
 public class ControlVista_Admin {
 
-    private VistaAdministrador vista;
+    private VistaAdministrador vp;
     private int id_user;
     private String usuario;
 
     private UsuarioDao modelo_user = new UsuarioDao();
 
-    public ControlVista_Admin(VistaAdministrador vista) {
-        this.vista = vista;
+    public ControlVista_Admin(VistaAdministrador vp) {
+        this.vp = vp;
 
         id_user = ControlLogin.id_user;
-        vista.setVisible(true);
-        vista.setTitle("Sesión de " + userName() + " - Nexo Gym");
-        vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
+        vp.setVisible(true);
+        vp.setTitle("Sesión de " + userName() + " - Nexo Gym");
+//        vista.setResizable(false);
+        vp.setLocationRelativeTo(null);
+        vp.setExtendedState(Frame.MAXIMIZED_BOTH);//acopla el frame a toda la pantalla
 
     }
 
@@ -62,25 +64,25 @@ public class ControlVista_Admin {
 
     public void funcionalidad() {
 
-        vista.getJmi_salir().addActionListener(l -> ventanaLogin());
-        vista.getJmi_registraruser().addActionListener(l -> ventanaRegistrar_Usuario());
-        vista.getJmi_rgpersona().addActionListener(l -> ventanaRegistrar_Persona());
-        vista.getJmi_registrarcargo().addActionListener(l -> ventanaRegistrar_Cargo());
-        vista.getJmi_rgmembresia().addActionListener(l -> ventanaRegistrar_Membresia());
-        vista.getJmi_rgrutina().addActionListener(l -> ventanaRegistrar_Rutina());
-        vista.getJmi_rgempleado().addActionListener(l -> ventanaRegistrar_Empleado());
-        vista.getJmi_rgcliente().addActionListener(l -> ventanaRegistrar_Cliente());
-        vista.getJmi_gclientes().addActionListener(l -> ventanaGestion_Clientes());
-        vista.getJmi_rgctgproducto().addActionListener(l -> ventanaRg_CtgProducto());
-        vista.getJmi_rgproveedor().addActionListener(l -> ventanaRg_Proveedor());
-        vista.getJmi_rgproducto().addActionListener(l -> ventanaRg_Producto());
-        vista.getJmi_gproductos().addActionListener(l -> ventanaGestion_Productos());
-        vista.getJmi_gusers().addActionListener(l -> ventanaGestion_Users());
-        vista.getJmi_gpersonas().addActionListener(l -> ventanaGestion_Personas());
-        vista.getJmi_grutinas().addActionListener(l -> ventanaGestion_Rutinas());
-        vista.getJmi_realizarventa().addActionListener(l -> ventanaRealizarVenta());
-        vista.getJmi_gempleados().addActionListener(l -> ventanaGestion_Empleados());
-        vista.getJmi_gmembresias().addActionListener(l -> ventanaGestion_Membresias());
+        vp.getJmi_salir().addActionListener(l -> ventanaLogin());
+        vp.getJmi_registraruser().addActionListener(l -> ventanaRegistrar_Usuario());
+        vp.getJmi_rgpersona().addActionListener(l -> ventanaRegistrar_Persona());
+        vp.getJmi_registrarcargo().addActionListener(l -> ventanaRegistrar_Cargo());
+        vp.getJmi_rgmembresia().addActionListener(l -> ventanaRegistrar_Membresia());
+        vp.getJmi_rgrutina().addActionListener(l -> ventanaRegistrar_Rutina());
+        vp.getJmi_rgempleado().addActionListener(l -> ventanaRegistrar_Empleado());
+        vp.getJmi_rgcliente().addActionListener(l -> ventanaRegistrar_Cliente());
+        vp.getJmi_gclientes().addActionListener(l -> ventanaGestion_Clientes());
+        vp.getJmi_rgctgproducto().addActionListener(l -> ventanaRg_CtgProducto());
+        vp.getJmi_rgproveedor().addActionListener(l -> ventanaRg_Proveedor());
+        vp.getJmi_rgproducto().addActionListener(l -> ventanaRg_Producto());
+        vp.getJmi_gproductos().addActionListener(l -> ventanaGestion_Productos());
+        vp.getJmi_gusers().addActionListener(l -> ventanaGestion_Users());
+        vp.getJmi_gpersonas().addActionListener(l -> ventanaGestion_Personas());
+        vp.getJmi_grutinas().addActionListener(l -> ventanaGestion_Rutinas());
+        vp.getJmi_realizarventa().addActionListener(l -> ventanaRealizarVenta());
+        vp.getJmi_gempleados().addActionListener(l -> ventanaGestion_Empleados());
+        vp.getJmi_gmembresias().addActionListener(l -> ventanaGestion_Membresias());
 
     }
 
@@ -90,13 +92,14 @@ public class ControlVista_Admin {
         VistaLogin vl = new VistaLogin();
 
         ControlLogin login = new ControlLogin(user, vl);
-        vista.dispose();
+        vp.dispose();
         login.funcionalidad();
     }
 
     private void ventanaRegistrar_Persona() {
         PersonaDao modelo = new PersonaDao();
         VistaRegistrar_Persona vista = new VistaRegistrar_Persona();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlRegistrar_Persona control = new ControlRegistrar_Persona(modelo, vista);
         control.funcionalidad();
     }
