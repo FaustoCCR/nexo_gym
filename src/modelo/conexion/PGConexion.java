@@ -18,7 +18,7 @@ public class PGConexion {
     
     String CadenaConexion = "jdbc:postgresql://localhost:5432/nexo_gym"; //cadena de conección
     String usuarioBD = "postgres";
-    String contraBD = "tres4";//contraseña de la BD
+    String contraBD = "1989";//contraseña de la BD tres4
     
  
 
