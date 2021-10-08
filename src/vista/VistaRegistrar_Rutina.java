@@ -5,7 +5,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class VistaRegistrar_Rutina extends javax.swing.JFrame {
+public class VistaRegistrar_Rutina extends javax.swing.JInternalFrame{
 
     public VistaRegistrar_Rutina() {
         initComponents();

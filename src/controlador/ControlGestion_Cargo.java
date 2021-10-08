@@ -28,7 +28,8 @@ public class ControlGestion_Cargo {
         vista_cargo.setVisible(true);
         vista_cargo.setTitle("Cargos Registrados - Nexo Gym");
         vista_cargo.setResizable(false);
-        vista_cargo.setLocationRelativeTo(null);
+        vista_cargo.setLocation(611, 159);
+        vista_cargo.setClosable(true);
         vista_cargo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
         mostrarDatosTabla("");

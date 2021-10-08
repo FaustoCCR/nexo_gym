@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 
-public class VistaRegistrar_Membresia extends javax.swing.JFrame {
+public class VistaRegistrar_Membresia extends javax.swing.JInternalFrame{
 
 
     public VistaRegistrar_Membresia() {

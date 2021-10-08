@@ -5,7 +5,7 @@ import javax.swing.JComboBox;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class VistaRegistrar_Usuario extends javax.swing.JFrame {
+public class VistaRegistrar_Usuario extends javax.swing.JInternalFrame {
 
     public VistaRegistrar_Usuario() {
         initComponents();

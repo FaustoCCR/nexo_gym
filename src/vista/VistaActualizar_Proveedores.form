@@ -34,7 +34,7 @@
                   <Component id="txt_nombre" alignment="0" max="32767" attributes="0"/>
                   <Component id="txt_contacto" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="200" max="32767" attributes="0"/>
+              <EmptySpace pref="241" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
@@ -73,7 +73,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Informaci&#xf3;n de los proovedores"/>
+        <Property name="text" type="java.lang.String" value="Informaci&#xf3;n del proveedor"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

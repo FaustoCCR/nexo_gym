@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package modelo.dao;
 
 import java.sql.ResultSet;
@@ -59,7 +55,7 @@ public class RutinaDao extends RutinaVo {
         String sql = "select id_rutina,nombre,replace(descripcion,chr(10),' | ')"
                 + " from rutina "
                 + " Where "
-                + " UPPER(nombre) like UPPER('%" + aguja + "%')";
+                + " UPPER(nombre) like UPPER('%" + aguja + "%') order by 1";
         ResultSet rs = conecta.consulta(sql);
 
         try {

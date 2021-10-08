@@ -6,7 +6,7 @@ import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
-public class VistaRegistrar_Cliente extends javax.swing.JFrame {
+public class VistaRegistrar_Cliente extends javax.swing.JInternalFrame {
 
     public VistaRegistrar_Cliente() {
         initComponents();

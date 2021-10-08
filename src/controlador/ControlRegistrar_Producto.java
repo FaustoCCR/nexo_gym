@@ -39,7 +39,8 @@ public class ControlRegistrar_Producto {
         vista_producto.setVisible(true);
         vista_producto.setTitle("Registro de Productos - Nexo Gym");
         vista_producto.setResizable(false);
-        vista_producto.setLocationRelativeTo(null);
+        vista_producto.setLocation(611, 159);
+        vista_producto.setClosable(true);
         vista_producto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         cargarCategorias();

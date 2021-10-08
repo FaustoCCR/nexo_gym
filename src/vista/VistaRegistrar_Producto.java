@@ -8,7 +8,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
 
-public class VistaRegistrar_Producto extends javax.swing.JFrame {
+public class VistaRegistrar_Producto extends javax.swing.JInternalFrame {
 
     public VistaRegistrar_Producto() {
         initComponents();

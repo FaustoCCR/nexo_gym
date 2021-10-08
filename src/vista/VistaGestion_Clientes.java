@@ -5,7 +5,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-public class VistaGestion_Clientes extends javax.swing.JFrame {
+public class VistaGestion_Clientes extends javax.swing.JInternalFrame {
 
     public VistaGestion_Clientes() {
         initComponents();
@@ -23,8 +23,9 @@ public class VistaGestion_Clientes extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txt_buscar = new javax.swing.JTextField();
         bt_asignarRutina = new javax.swing.JButton();
+        bt_asignarRutina1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel2.setText("Clientes Registrados");
@@ -63,6 +64,10 @@ public class VistaGestion_Clientes extends javax.swing.JFrame {
         bt_asignarRutina.setText("Asignar Rutina");
         bt_asignarRutina.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
+        bt_asignarRutina1.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_asignarRutina1.setText("Imprimir");
+        bt_asignarRutina1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -85,7 +90,10 @@ public class VistaGestion_Clientes extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(bt_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(bt_asignarRutina, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)))
+                        .addComponent(bt_asignarRutina, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(bt_asignarRutina1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
@@ -102,7 +110,9 @@ public class VistaGestion_Clientes extends javax.swing.JFrame {
                     .addComponent(bt_asignarRutina, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(bt_asignarRutina1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
 
         pack();
@@ -190,6 +200,7 @@ public class VistaGestion_Clientes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_asignarRutina;
+    private javax.swing.JButton bt_asignarRutina1;
     private javax.swing.JButton bt_eliminar;
     private javax.swing.JButton bt_verificar;
     private javax.swing.JLabel jLabel1;

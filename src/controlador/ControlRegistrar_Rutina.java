@@ -21,7 +21,8 @@ public class ControlRegistrar_Rutina {
         vista.setVisible(true);
         vista.setTitle("Registro de Rutina - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
+        vista.setLocation(611, 159);
+        vista.setClosable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }

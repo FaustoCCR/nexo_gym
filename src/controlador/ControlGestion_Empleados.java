@@ -25,7 +25,8 @@ public class ControlGestion_Empleados {
         vista_empleado.setVisible(true);
         vista_empleado.setTitle("Empleados Registrados - Nexo Gym");
         vista_empleado.setResizable(false);
-        vista_empleado.setLocationRelativeTo(null);
+        vista_empleado.setLocation(611, 159);
+        vista_empleado.setClosable(true);
         vista_empleado.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
 

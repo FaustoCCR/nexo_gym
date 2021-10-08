@@ -4,7 +4,7 @@ package vista;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-public class VistaRegistrarCargo extends javax.swing.JFrame {
+public class VistaRegistrarCargo extends javax.swing.JInternalFrame {
 
 
     public VistaRegistrarCargo() {

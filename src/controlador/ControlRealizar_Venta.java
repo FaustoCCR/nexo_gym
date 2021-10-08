@@ -50,7 +50,8 @@ public class ControlRealizar_Venta {
         vista.setVisible(true);
         vista.setTitle("Venta de Productos - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
+        vista.setLocation(470, 0);
+        vista.setClosable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         vista.getJdate_venta().getDateEditor().setEnabled(false);
         vista.getJdate_venta().setDate(new java.util.Date());

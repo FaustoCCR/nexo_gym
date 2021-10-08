@@ -37,7 +37,7 @@ public class ControlActualizar_Proveedor {
         vista_proveedor.getTxt_ruc().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
-                verificarProveedorRegistrado(vista_proveedor.getTxt_ruc().getText());
+                verificarRUCRepetido(vista_proveedor.getTxt_ruc().getText());
             }
 
         });
@@ -60,36 +60,24 @@ public class ControlActualizar_Proveedor {
 
         /*Analiza si el RUC a ser cambiada pertenece a otra proveedor ya registrado, por lo que no podrá si es el caso
          */
-        Predicate<ProveedorVo> condicion = p -> p.getId_proveedor().equalsIgnoreCase(ruc);
-        Predicate<ProveedorVo> condicion2 = p -> p.getId_proveedor() != id_proveedor;
+        if (!ruc.isEmpty()) {
 
-        boolean respuesta = modelo_proveedor.mostrarDatos(ruc, id_proveedor).isEmpty();
-        if (respuesta) {
+            Predicate<ProveedorVo> condicion = p -> p.getId_proveedor().equalsIgnoreCase(ruc);
+            Predicate<ProveedorVo> condicion2 = p -> p.getId_proveedor() != id_proveedor;
 
-            vista_proveedor.getTxt_ruc().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+            boolean respuesta = modelo_proveedor.mostrarDatos(ruc, id_proveedor).isEmpty();
+            if (respuesta) {
+
+                vista_proveedor.getTxt_ruc().setBorder(new LineBorder(Color.decode("#6CC01B"), 2));
+            } else {
+                vista_proveedor.getTxt_ruc().setBorder(new LineBorder(Color.decode("#C33529"), 2));
+
+            }
+            return respuesta;
         } else {
             vista_proveedor.getTxt_ruc().setBorder(new LineBorder(Color.decode("#C33529"), 2));
-
+            return false;
         }
-        return respuesta;
-    }
-
-    private boolean verificarProveedorRegistrado(String id_proveedor) {
-//
-//        if (!id_proveedor.isEmpty()) {
-//            boolean respuesta = modelo_proveedor.mostrarDatosJoin(id_proveedor).isEmpty();
-//            if (respuesta) {
-                
-               return  verificarRUCRepetido(id_proveedor);
-//            } else {
-//                vista_proveedor.getTxt_ruc().setBorder(new LineBorder(Color.decode("#C33529"), 2));
-//
-//            }
-//            return respuesta;
-//        } else {
-//            vista_proveedor.getTxt_ruc().setBorder(new LineBorder(Color.decode("#C33529"), 2));
-//            return false;
-//        }
 
     }
 
@@ -137,7 +125,7 @@ public class ControlActualizar_Proveedor {
 
         if (validarRegistro()) {
 
-            if (verificarProveedorRegistrado(vista_proveedor.getTxt_ruc().getText())) {
+            if (verificarRUCRepetido(vista_proveedor.getTxt_ruc().getText())) {
 
                 sentenciaUpdate();
                 restaurarBordes();

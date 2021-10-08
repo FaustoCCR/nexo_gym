@@ -6,7 +6,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class VistaRegistrar_Empleado extends javax.swing.JFrame {
+public class VistaRegistrar_Empleado extends javax.swing.JInternalFrame {
 
     public VistaRegistrar_Empleado() {
         initComponents();

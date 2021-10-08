@@ -68,7 +68,7 @@ public class VistaActualizar_Proveedores extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel1.setText("Información de los proovedores");
+        jLabel1.setText("Información del proveedor");
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel2.setText("RUC:");
@@ -102,7 +102,7 @@ public class VistaActualizar_Proveedores extends javax.swing.JFrame {
                     .addComponent(txt_ruc)
                     .addComponent(txt_nombre)
                     .addComponent(txt_contacto))
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(241, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(bt_actualizar)

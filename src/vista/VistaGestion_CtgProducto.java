@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
 import javax.swing.JButton;
@@ -10,15 +6,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Usuario
- */
-public class VistaGestion_CtgProducto extends javax.swing.JFrame {
+public class VistaGestion_CtgProducto extends javax.swing.JInternalFrame{
 
-    /**
-     * Creates new form VistaGestion_CtgProducto
-     */
+
     public VistaGestion_CtgProducto() {
         initComponents();
     }

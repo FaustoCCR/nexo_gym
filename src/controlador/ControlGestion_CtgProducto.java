@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controlador;
 
 import java.awt.Font;
@@ -15,10 +11,6 @@ import modelo.dao.Ctg_ProductoDao;
 import vista.VistaActualizar_CtgProducto;
 import vista.VistaGestion_CtgProducto;
 
-/**
- *
- * @author Usuario
- */
 public class ControlGestion_CtgProducto {
     private Ctg_ProductoDao modelo_ctgp;
     private VistaGestion_CtgProducto vista_ctgp;
@@ -33,7 +25,8 @@ public class ControlGestion_CtgProducto {
         vista_ctgp.setVisible(true);
         vista_ctgp.setTitle("Rutinas Registradas - Nexo Gym");
         vista_ctgp.setResizable(false);
-        vista_ctgp.setLocationRelativeTo(null);
+        vista_ctgp.setLocation(611, 159);
+        vista_ctgp.setClosable(true);
         vista_ctgp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
         mostrarDatosTabla("");

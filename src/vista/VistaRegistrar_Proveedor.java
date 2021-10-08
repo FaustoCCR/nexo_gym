@@ -3,7 +3,7 @@ package vista;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-public class VistaRegistrar_Proveedor extends javax.swing.JFrame {
+public class VistaRegistrar_Proveedor extends javax.swing.JInternalFrame {
 
     public VistaRegistrar_Proveedor() {
         initComponents();

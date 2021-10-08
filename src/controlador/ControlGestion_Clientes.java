@@ -27,7 +27,8 @@ public class ControlGestion_Clientes {
         vista_cliente.setVisible(true);
         vista_cliente.setTitle("Clientes Registrados - Nexo Gym");
         vista_cliente.setResizable(false);
-        vista_cliente.setLocationRelativeTo(null);
+        vista_cliente.setLocation(611, 159);
+        vista_cliente.setClosable(true);
         vista_cliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
 

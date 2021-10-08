@@ -26,7 +26,8 @@ public class ControlGestion_Rutina {
         vista_rutina.setVisible(true);
         vista_rutina.setTitle("Rutinas Registradas - Nexo Gym");
         vista_rutina.setResizable(false);
-        vista_rutina.setLocationRelativeTo(null);
+        vista_rutina.setLocation(611, 159);
+        vista_rutina.setClosable(true);
         vista_rutina.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
         mostrarDatosTabla("");

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controlador;
 
 import java.awt.Font;
@@ -15,10 +10,6 @@ import modelo.dao.ProveedorDao;
 import vista.VistaActualizar_Proveedores;
 import vista.VistaGestion_Proveedor;
 
-/**
- *
- * @author Casa
- */
 public class ControlGestion_Proveedor {
 
     private ProveedorDao modelo_proveedor;
@@ -34,7 +25,8 @@ public class ControlGestion_Proveedor {
         vista_proveedor.setVisible(true);
         vista_proveedor.setTitle("Proveedores Registrados - Nexo Gym");
         vista_proveedor.setResizable(false);
-        vista_proveedor.setLocationRelativeTo(null);
+        vista_proveedor.setLocation(611, 159);
+        vista_proveedor.setClosable(true);
         vista_proveedor.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
         mostrarDatosTabla("");
@@ -60,12 +52,10 @@ public class ControlGestion_Proveedor {
         tb_model = new DefaultTableModel(columnas, 0) {
             @Override
             public boolean isCellEditable(int row, int column) {
-                if (column == 3) {
-                    return true;
+                
+                /*true me permite tomar los datos de la tabla para copiar en otro formulario*/
+                return true;
 
-                } else {
-                    return false;
-                }
             }
 
         };
@@ -88,7 +78,7 @@ public class ControlGestion_Proveedor {
 
         });
     }
-    
+
     private void ventanaActualizar() {
 
         int fila = vista_proveedor.getJtable_proveedores().getSelectedRow();
@@ -107,7 +97,8 @@ public class ControlGestion_Proveedor {
         }
 
     }
-      private void sentenciaDelete() {
+
+    private void sentenciaDelete() {
 
         int fila = vista_proveedor.getJtable_proveedores().getSelectedRow();
         final int columna = 0;
@@ -117,7 +108,7 @@ public class ControlGestion_Proveedor {
             String proveedor = modelo_proveedor.mostrarDatos().stream().filter(u -> u.getId_proveedor().equals(id_prov)).findAny().get().getNombre();
 
 //          String producto = modelo.mostrarDatos("").stream().filter(u -> u.getId_prod() == id_producto).findAny().get().getNombre();
-            int resp = JOptionPane.showConfirmDialog(vista_proveedor, "Seguro desea eliminar el proveedor : "+proveedor, "Confirmación", JOptionPane.YES_NO_OPTION);
+            int resp = JOptionPane.showConfirmDialog(vista_proveedor, "Seguro desea eliminar el proveedor : " + proveedor, "Confirmación", JOptionPane.YES_NO_OPTION);
             if (resp == 0) {
 
                 modelo_proveedor.eliminar(id_prov);

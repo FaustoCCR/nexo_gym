@@ -30,7 +30,8 @@ public class ControlGestion_Persona {
         vista_persona.setVisible(true);
         vista_persona.setTitle("Personas Registradas - Nexo Gym");
         vista_persona.setResizable(false);
-        vista_persona.setLocationRelativeTo(null);
+        vista_persona.setLocation(611, 159);
+        vista_persona.setClosable(true);
         vista_persona.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
 

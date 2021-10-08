@@ -31,8 +31,10 @@ public class ControlRegistrar_Usuario {
         vista.setVisible(true);
         vista.setTitle("Registro de Usuarios - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
+        vista.setLocation(611, 159);
+        vista.setClosable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        
 
         cargarRoles();
 

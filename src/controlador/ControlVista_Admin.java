@@ -114,6 +114,7 @@ public class ControlVista_Admin {
 
         UsuarioDao modelo_rguser = new UsuarioDao();
         VistaRegistrar_Usuario v_rguser = new VistaRegistrar_Usuario();
+        vp.getjDesktopPanePrincipal().add(v_rguser);
         ControlRegistrar_Usuario controlrg_user = new ControlRegistrar_Usuario(modelo_rguser, v_rguser);
         controlrg_user.funcionalidad();
     }
@@ -122,6 +123,7 @@ public class ControlVista_Admin {
 
         CargoDao modelo_rgcargo = new CargoDao();
         VistaRegistrarCargo v_rgcargo = new VistaRegistrarCargo();
+        vp.getjDesktopPanePrincipal().add(v_rgcargo);
         ControlRegistrar_Cargo control_rgcargo = new ControlRegistrar_Cargo(modelo_rgcargo, v_rgcargo);
         control_rgcargo.funcionalidad();
 
@@ -131,7 +133,7 @@ public class ControlVista_Admin {
 
         MembresiaDao m_rgmembresia = new MembresiaDao();
         VistaRegistrar_Membresia v_rgmembresia = new VistaRegistrar_Membresia();
-
+        vp.getjDesktopPanePrincipal().add(v_rgmembresia);
         ControlRegistrar_Membresia c_rgmembresia = new ControlRegistrar_Membresia(m_rgmembresia, v_rgmembresia);
         c_rgmembresia.funcionalidad();
     }
@@ -139,6 +141,7 @@ public class ControlVista_Admin {
     private void ventanaRegistrar_Rutina() {
         RutinaDao modelo = new RutinaDao();
         VistaRegistrar_Rutina vista = new VistaRegistrar_Rutina();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlRegistrar_Rutina control = new ControlRegistrar_Rutina(modelo, vista);
         control.funcionalidad();
     }
@@ -146,6 +149,7 @@ public class ControlVista_Admin {
     private void ventanaRegistrar_Empleado() {
         EmpleadoDao modelo = new EmpleadoDao();
         VistaRegistrar_Empleado vista = new VistaRegistrar_Empleado();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlRegistrar_Empleado control = new ControlRegistrar_Empleado(modelo, vista);
         control.funcionalidad();
     }
@@ -154,6 +158,7 @@ public class ControlVista_Admin {
 
         ClienteDao m_rgcliente = new ClienteDao();
         VistaRegistrar_Cliente v_rgcliente = new VistaRegistrar_Cliente();
+        vp.getjDesktopPanePrincipal().add(v_rgcliente);
         ControlRegistrar_Cliente c_rgcliente = new ControlRegistrar_Cliente(m_rgcliente, v_rgcliente);
         c_rgcliente.funcionalidad();
     }
@@ -162,7 +167,7 @@ public class ControlVista_Admin {
 
         ClienteDao modelo = new ClienteDao();
         VistaGestion_Clientes vista = new VistaGestion_Clientes();
-
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlGestion_Clientes control = new ControlGestion_Clientes(modelo, vista);
         control.funcionalidad();
     }
@@ -171,6 +176,7 @@ public class ControlVista_Admin {
 
         Ctg_ProductoDao modelo = new Ctg_ProductoDao();
         VistaRegistrar_CtgProducto vista = new VistaRegistrar_CtgProducto();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlRegistrar_CtgProducto control = new ControlRegistrar_CtgProducto(modelo, vista);
         control.funcionalidad();
     }
@@ -179,6 +185,7 @@ public class ControlVista_Admin {
 
         ProveedorDao modelo = new ProveedorDao();
         VistaRegistrar_Proveedor vista = new VistaRegistrar_Proveedor();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlRegistrar_Proveedor control = new ControlRegistrar_Proveedor(modelo, vista);
         control.funcionalidad();
     }
@@ -186,6 +193,7 @@ public class ControlVista_Admin {
     private void ventanaRg_Producto() {
         ProductoDao modelo = new ProductoDao();
         VistaRegistrar_Producto vista = new VistaRegistrar_Producto();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlRegistrar_Producto control = new ControlRegistrar_Producto(modelo, vista);
         control.funcionalidad();
     }
@@ -194,6 +202,7 @@ public class ControlVista_Admin {
 
         ProductoDao modelo = new ProductoDao();
         VistaGestion_Productos vista = new VistaGestion_Productos();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlGestion_Productos control = new ControlGestion_Productos(modelo, vista);
         control.funcionalidad();
     }
@@ -202,6 +211,7 @@ public class ControlVista_Admin {
 
         PersonaDao modelo = new PersonaDao();
         VistaGestion_Persona vista = new VistaGestion_Persona();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlGestion_Persona control = new ControlGestion_Persona(modelo, vista);
         control.funcionalidad();
 
@@ -211,6 +221,7 @@ public class ControlVista_Admin {
 
         CargoDao modelo = new CargoDao();
         VistaGestion_Cargo vista = new VistaGestion_Cargo();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlGestion_Cargo control = new ControlGestion_Cargo(modelo, vista);
         control.funcionalidad();
 
@@ -220,6 +231,7 @@ public class ControlVista_Admin {
 
         EmpleadoDao modelo = new EmpleadoDao();
         VistaGestion_Empleado vista = new VistaGestion_Empleado();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlGestion_Empleados control = new ControlGestion_Empleados(modelo, vista);
         control.funcionalidad();
 
@@ -229,6 +241,7 @@ public class ControlVista_Admin {
 
         MembresiaDao modelo = new MembresiaDao();
         VistaGestion_Membresias vista = new VistaGestion_Membresias();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlGestion_Membresia control = new ControlGestion_Membresia(modelo, vista);
         control.funcionalidad();
 
@@ -238,6 +251,7 @@ public class ControlVista_Admin {
 
         RutinaDao modelo = new RutinaDao();
         VistaGestion_Rutina vista = new VistaGestion_Rutina();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlGestion_Rutina control = new ControlGestion_Rutina(modelo, vista);
         control.funcionalidad();
     }
@@ -245,6 +259,7 @@ public class ControlVista_Admin {
     private void ventanaGestion_Users() {
         UsuarioDao modelo = new UsuarioDao();
         VistaGestion_Users vista = new VistaGestion_Users();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlGestion_Users control = new ControlGestion_Users(modelo, vista);
         control.funcionalidad();
     }
@@ -254,6 +269,7 @@ public class ControlVista_Admin {
         Ecb_VentaDao modelo = new Ecb_VentaDao();
         Cuerpo_VentaDao modelo2 = new Cuerpo_VentaDao();
         VistaRealizar_Venta vista = new VistaRealizar_Venta();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlRealizar_Venta control = new ControlRealizar_Venta(modelo, modelo2, vista);
         control.funcionalidad();
     }
@@ -262,6 +278,7 @@ public class ControlVista_Admin {
 
         Ctg_ProductoDao modelo = new Ctg_ProductoDao();
         VistaGestion_CtgProducto vista = new VistaGestion_CtgProducto();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlGestion_CtgProducto control = new ControlGestion_CtgProducto(modelo, vista);
         control.funcionalidad();
     }
@@ -270,6 +287,7 @@ public class ControlVista_Admin {
 
         ProveedorDao proveedor = new ProveedorDao();
         VistaGestion_Proveedor vista = new VistaGestion_Proveedor();
+        vp.getjDesktopPanePrincipal().add(vista);
         ControlGestion_Proveedor control = new ControlGestion_Proveedor(proveedor, vista);
         control.funcionalidad();
 

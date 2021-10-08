@@ -7,7 +7,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 
 
-public class VistaGestion_Productos extends javax.swing.JFrame {
+public class VistaGestion_Productos extends javax.swing.JInternalFrame {
 
     public VistaGestion_Productos() {
         initComponents();
