@@ -14,11 +14,14 @@ import modelo.dao.RutinaDao;
 import modelo.dao.UsuarioDao;
 import modelo.dao.Ecb_VentaDao;
 import vista.VistaAdministrador;
+import vista.VistaGestion_Cargo;
 import vista.VistaGestion_Clientes;
+import vista.VistaGestion_CtgProducto;
 import vista.VistaGestion_Empleado;
 import vista.VistaGestion_Membresias;
 import vista.VistaGestion_Persona;
 import vista.VistaGestion_Productos;
+import vista.VistaGestion_Proveedor;
 import vista.VistaGestion_Rutina;
 import vista.VistaGestion_Users;
 import vista.VistaLogin;
@@ -83,6 +86,9 @@ public class ControlVista_Admin {
         vp.getJmi_realizarventa().addActionListener(l -> ventanaRealizarVenta());
         vp.getJmi_gempleados().addActionListener(l -> ventanaGestion_Empleados());
         vp.getJmi_gmembresias().addActionListener(l -> ventanaGestion_Membresias());
+        vp.getJmi_gcargos().addActionListener(l -> ventanaGestion_Cargos());
+        vp.getJmi_gcategorias().addActionListener(l -> ventanaGestion_Categorias());
+        vp.getJmi_gproveedores().addActionListener(l -> ventanaGestion_Proveedores());
 
     }
 
@@ -203,6 +209,11 @@ public class ControlVista_Admin {
 
     private void ventanaGestion_Cargos() {
 
+        CargoDao modelo = new CargoDao();
+        VistaGestion_Cargo vista = new VistaGestion_Cargo();
+        ControlGestion_Cargo control = new ControlGestion_Cargo(modelo, vista);
+        control.funcionalidad();
+
     }
 
     private void ventanaGestion_Empleados() {
@@ -245,6 +256,23 @@ public class ControlVista_Admin {
         VistaRealizar_Venta vista = new VistaRealizar_Venta();
         ControlRealizar_Venta control = new ControlRealizar_Venta(modelo, modelo2, vista);
         control.funcionalidad();
+    }
+
+    private void ventanaGestion_Categorias() {
+
+        Ctg_ProductoDao modelo = new Ctg_ProductoDao();
+        VistaGestion_CtgProducto vista = new VistaGestion_CtgProducto();
+        ControlGestion_CtgProducto control = new ControlGestion_CtgProducto(modelo, vista);
+        control.funcionalidad();
+    }
+
+    private void ventanaGestion_Proveedores() {
+
+        ProveedorDao proveedor = new ProveedorDao();
+        VistaGestion_Proveedor vista = new VistaGestion_Proveedor();
+        ControlGestion_Proveedor control = new ControlGestion_Proveedor(proveedor, vista);
+        control.funcionalidad();
+
     }
 
 }

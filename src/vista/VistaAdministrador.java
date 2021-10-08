@@ -39,6 +39,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_rgproveedor = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         jmi_gproductos = new javax.swing.JMenuItem();
+        jmi_gcategorias = new javax.swing.JMenuItem();
+        jmi_gproveedores = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
         jmi_rgmembresia = new javax.swing.JMenuItem();
         jmi_rgrutina = new javax.swing.JMenuItem();
@@ -142,6 +144,14 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_gproductos.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_gproductos.setText("Mostrar Productos");
         JMenu5.add(jmi_gproductos);
+
+        jmi_gcategorias.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jmi_gcategorias.setText("Mostrar Categorías");
+        JMenu5.add(jmi_gcategorias);
+
+        jmi_gproveedores.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jmi_gproveedores.setText("Mostrar Proveedores");
+        JMenu5.add(jmi_gproveedores);
 
         jMenuBar1.add(JMenu5);
 
@@ -382,6 +392,22 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public void setJlfooter(JLabel jlfooter) {
         this.jlfooter = jlfooter;
     }
+
+    public JMenuItem getJmi_gcategorias() {
+        return jmi_gcategorias;
+    }
+
+    public void setJmi_gcategorias(JMenuItem jmi_gcategorias) {
+        this.jmi_gcategorias = jmi_gcategorias;
+    }
+
+    public JMenuItem getJmi_gproveedores() {
+        return jmi_gproveedores;
+    }
+
+    public void setJmi_gproveedores(JMenuItem jmi_gproveedores) {
+        this.jmi_gproveedores = jmi_gproveedores;
+    }
     
     
 
@@ -431,11 +457,13 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JLabel jlfooter;
     private javax.swing.JMenu jm_personas;
     private javax.swing.JMenuItem jmi_gcargos;
+    private javax.swing.JMenuItem jmi_gcategorias;
     private javax.swing.JMenuItem jmi_gclientes;
     private javax.swing.JMenuItem jmi_gempleados;
     private javax.swing.JMenuItem jmi_gmembresias;
     private javax.swing.JMenuItem jmi_gpersonas;
     private javax.swing.JMenuItem jmi_gproductos;
+    private javax.swing.JMenuItem jmi_gproveedores;
     private javax.swing.JMenuItem jmi_grutinas;
     private javax.swing.JMenuItem jmi_gusers;
     private javax.swing.JMenuItem jmi_realizarventa;

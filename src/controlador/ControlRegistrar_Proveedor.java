@@ -1,7 +1,10 @@
 package controlador;
 
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import modelo.dao.ProveedorDao;
 import vista.VistaRegistrar_Proveedor;
 
@@ -9,7 +12,8 @@ public class ControlRegistrar_Proveedor {
 
     private ProveedorDao modelo;
     private VistaRegistrar_Proveedor vista;
-
+    private Border origin_border = new LineBorder(Color.gray, 1);
+    
     public ControlRegistrar_Proveedor(ProveedorDao modelo, VistaRegistrar_Proveedor vista) {
         this.modelo = modelo;
         this.vista = vista;
