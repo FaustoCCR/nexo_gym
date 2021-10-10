@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.Ctg_ProductoDao;
 import vista.VistaActualizar_CtgProducto;
+import vista.VistaAdministrador;
 import vista.VistaGestion_CtgProducto;
 
 public class ControlGestion_CtgProducto {
@@ -23,11 +24,14 @@ public class ControlGestion_CtgProducto {
         this.vista_ctgp = vista_ctgp;
 
         vista_ctgp.setVisible(true);
-        vista_ctgp.setTitle("Rutinas Registradas - Nexo Gym");
+        vista_ctgp.setTitle("Categorías Registradas - Nexo Gym");
         vista_ctgp.setResizable(false);
-        vista_ctgp.setLocation(611, 159);
+        vista_ctgp.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_ctgp.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_ctgp.getHeight())/2);
         vista_ctgp.setClosable(true);
+        vista_ctgp.setIconifiable(true);
         vista_ctgp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        identificarRol();
         disenioTabla();
         mostrarDatosTabla("");
 
@@ -47,6 +51,20 @@ public class ControlGestion_CtgProducto {
         vista_ctgp.getBt_verificar().addActionListener(l -> ventanaActualizar());
         vista_ctgp.getBt_eliminar().addActionListener(l -> sentenciaDelete());
 
+    }
+    
+        private void identificarRol() {
+
+        switch (ControlLogin.permiso) {
+
+            case 2:
+
+                vista_ctgp.getBt_verificar().setVisible(false);
+                vista_ctgp.getBt_eliminar().setVisible(false);
+
+                break;
+
+        }
     }
     
     private void disenioTabla() {
@@ -94,6 +112,7 @@ public class ControlGestion_CtgProducto {
             id_ctgp = (int) vista_ctgp.getJtable_ctgProductos().getValueAt(fila, columna);
             vista_ctgp.dispose();
             VistaActualizar_CtgProducto vista = new VistaActualizar_CtgProducto();
+            VistaAdministrador.getjDesktopPanePrincipal().add(vista);
             ControlActualizar_CtgProducto control = new ControlActualizar_CtgProducto(modelo_ctgp, vista);
             control.funcionalidad();
 

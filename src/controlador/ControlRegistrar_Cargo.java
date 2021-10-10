@@ -3,6 +3,7 @@ package controlador;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.dao.CargoDao;
+import vista.VistaAdministrador;
 import vista.VistaRegistrarCargo;
 
 public class ControlRegistrar_Cargo {
@@ -17,8 +18,10 @@ public class ControlRegistrar_Cargo {
         vista.setVisible(true);
         vista.setTitle("Registro de Cargos - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation(611, 159);
+        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
         vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 

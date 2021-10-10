@@ -23,14 +23,17 @@ public class PGConexion {
     public PGConexion() {
 
         try {
-            Class.forName("org.postgresql.Driver");//paquete jar que importamos para postgresql
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(PGConexion.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        try {
-            con = DriverManager.getConnection(CadenaConexion, usuarioBD, contraBD);//conexion a la base
-        } catch (SQLException ex) {
+            try {
+                Class.forName("org.postgresql.Driver");//paquete jar que importamos para postgresql
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(PGConexion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                con = DriverManager.getConnection(CadenaConexion, usuarioBD, contraBD);//conexion a la base
+            } catch (SQLException ex) {
+                Logger.getLogger(PGConexion.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            super.finalize();        } catch (Throwable ex) {
             Logger.getLogger(PGConexion.class.getName()).log(Level.SEVERE, null, ex);
         }
 

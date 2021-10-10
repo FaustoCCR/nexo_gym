@@ -53,8 +53,10 @@ public class VistaRealizar_Venta extends javax.swing.JInternalFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jPanel1.setBackground(new java.awt.Color(20, 146, 230));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
+        jPanel3.setBackground(new java.awt.Color(140, 175, 230));
         jPanel3.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N

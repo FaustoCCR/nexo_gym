@@ -18,6 +18,7 @@ public class ControlLogin {
     private VistaLogin vista;
     public static int id_user;
     private TextPrompt placeholder;
+    public static int permiso;
 
     public ControlLogin(UsuarioDao modelo, VistaLogin vista) {
         this.modelo = modelo;
@@ -65,18 +66,27 @@ public class ControlLogin {
                 boolean estado = filtro_login.stream().anyMatch(checkestado);
 
                 if (estado) {
-                    
+
                     id_user = filtro_login.stream().filter(checkpass).findAny().get().getId_user();
 
                     filtro_login.stream().forEach((t) -> {
                         if (t.getId_rol() == 1) {
 
                             System.out.println("Bienvenido Administrador");
+                            permiso = 1;
                             vista.dispose();
-                            ventanaAdmin();
+                            ventanaGestion();
 
                         } else if (t.getId_rol() == 2) {
+                            permiso = 2;
                             System.out.println("Bienvenido Recepcionista");
+                            vista.dispose();
+                            ventanaGestion();
+                        } else if (t.getId_rol() == 3) {
+                            permiso = 3;
+                            vista.dispose();
+                            System.out.println("Bienvenido Instructor");
+                            ventanaGestion();
                         }
                     });
 
@@ -100,7 +110,7 @@ public class ControlLogin {
 
     }
 
-    public void ventanaAdmin() {
+    private void ventanaGestion() {
 
         VistaAdministrador vadmin = new VistaAdministrador();
         ControlVista_Admin ctadmin = new ControlVista_Admin(vadmin);

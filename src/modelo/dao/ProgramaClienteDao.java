@@ -3,6 +3,7 @@ package modelo.dao;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -118,6 +119,47 @@ public class ProgramaClienteDao extends ProgramaClienteVo {
                 pgc.setDescripcion_rutina(rs.getString(4));
                 pgc.setNombreInstructor(rs.getString(5));
                 pgc.setFecha(rs.getDate(6));
+
+                lista_programas.add(pgc);
+
+            }
+
+            rs.close();//cerramos conexion base.
+            return lista_programas;
+        } catch (SQLException ex) {
+            Logger.getLogger(ProgramaClienteDao.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+
+    }
+
+    public List<ProgramaClienteVo> mostrarDatosJoinPlantilla(int idusuario_entrenador,String aguja) {
+
+        List<ProgramaClienteVo> lista_programas = new ArrayList<>();
+        String sql = "select p.nombre||' '||p.apellido \"Instructor\",pc.id_cliente,p2.nombre||' '||p2.apellido \"Cliente\",r.nombre \"Rutina\" ,pc.fecha\n"
+                + "from programa_cliente pc\n"
+                + "join empleado e on (pc.id_empleado = e.id_empleado)\n"
+                + "join persona p on (e.id_persona = p.id_persona)\n"
+                + "join usuario u on(u.id_persona = p.id_persona)\n"
+                + "join cliente c on(pc.id_cliente = c.id_cliente)\n"
+                + "join persona p2 on(c.id_persona = p2.id_persona)\n"
+                + "join rutina r on(pc.id_rutina=r.id_rutina)\n"
+                + "where u.id_user = " + idusuario_entrenador + "\n"
+                + "and upper(p2.nombre||' '||p2.apellido) like upper('%" + aguja +"%')\n"
+                + "order by 5";
+        ResultSet rs = conecta.consulta(sql);
+
+        try {
+
+            while (rs.next()) {
+
+                ProgramaClienteVo pgc = new ProgramaClienteVo();
+
+                pgc.setNombreInstructor(rs.getString(1));
+                pgc.setId_cliente(rs.getInt(2));
+                pgc.setNombreCliente(rs.getString(3));
+                pgc.setNombreRutina(rs.getString(4));
+                pgc.setFecha(rs.getDate(5));
 
                 lista_programas.add(pgc);
 

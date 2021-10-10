@@ -16,6 +16,7 @@ import modelo.dao.CargoDao;
 import modelo.dao.EmpleadoDao;
 import modelo.dao.PersonaDao;
 import modelo.vo.PersonaVo;
+import vista.VistaAdministrador;
 import vista.VistaRegistrar_Empleado;
 
 public class ControlRegistrar_Empleado {
@@ -32,8 +33,10 @@ public class ControlRegistrar_Empleado {
         vista.setVisible(true);
         vista.setTitle("Registro de Empleados - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation(611, 159);
+        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
         vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         vista.getJd_fechacontrato().getDateEditor().setEnabled(false);
         vista.getJd_fechacontrato().setDate(new java.util.Date());

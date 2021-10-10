@@ -16,6 +16,7 @@ import modelo.dao.UsuarioDao;
 import modelo.vo.PersonaVo;
 import modelo.vo.UsuarioVo;
 import vista.VistaActualizar_Usuario;
+import vista.VistaAdministrador;
 
 public class ControlActualizar_User {
 
@@ -36,7 +37,10 @@ public class ControlActualizar_User {
         vista.setVisible(true);
         vista.setTitle("Actualizar Usuario - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
+        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarEstados();
         cargarRoles();

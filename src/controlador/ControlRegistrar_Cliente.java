@@ -17,6 +17,7 @@ import modelo.dao.ClienteDao;
 import modelo.dao.MembresiaDao;
 import modelo.dao.PersonaDao;
 import modelo.vo.PersonaVo;
+import vista.VistaAdministrador;
 import vista.VistaRegistrar_Cliente;
 
 public class ControlRegistrar_Cliente {
@@ -36,8 +37,10 @@ public class ControlRegistrar_Cliente {
         vista.setVisible(true);
         vista.setTitle("Registro de Clientes - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation(611, 159);
+        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
         vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         vista.getJdate_inicio().getDateEditor().setDate(new java.util.Date());

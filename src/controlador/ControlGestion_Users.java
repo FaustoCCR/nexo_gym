@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.UsuarioDao;
 import vista.VistaActualizar_Usuario;
+import vista.VistaAdministrador;
 import vista.VistaGestion_Users;
 
 public class ControlGestion_Users {
@@ -26,8 +27,10 @@ public class ControlGestion_Users {
         vista.setVisible(true);
         vista.setTitle("Clientes Registrados - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation(611, 159);
+        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
         vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
 
@@ -96,6 +99,7 @@ public class ControlGestion_Users {
             id_user = (int) vista.getJtable_users().getValueAt(fila, columna);
             vista.dispose();
             VistaActualizar_Usuario vista = new VistaActualizar_Usuario();
+            VistaAdministrador.getjDesktopPanePrincipal().add(vista);
             ControlActualizar_User control = new ControlActualizar_User(modelo_user, vista);
             control.funcionalidad();
 

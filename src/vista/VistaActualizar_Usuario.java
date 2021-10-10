@@ -6,7 +6,7 @@ import javax.swing.JDialog;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-public class VistaActualizar_Usuario extends javax.swing.JFrame {
+public class VistaActualizar_Usuario extends javax.swing.JInternalFrame {
 
     public VistaActualizar_Usuario() {
         initComponents();

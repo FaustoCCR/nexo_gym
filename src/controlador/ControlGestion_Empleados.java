@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.EmpleadoDao;
 import vista.VistaActualizar_Empleado;
+import vista.VistaAdministrador;
 import vista.VistaGestion_Empleado;
 
 public class ControlGestion_Empleados {
@@ -25,8 +26,10 @@ public class ControlGestion_Empleados {
         vista_empleado.setVisible(true);
         vista_empleado.setTitle("Empleados Registrados - Nexo Gym");
         vista_empleado.setResizable(false);
-        vista_empleado.setLocation(611, 159);
+        vista_empleado.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_empleado.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_empleado.getHeight())/2);
         vista_empleado.setClosable(true);
+        vista_empleado.setIconifiable(true);
         vista_empleado.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
 
@@ -83,6 +86,7 @@ public class ControlGestion_Empleados {
             id_empleado = (int) vista_empleado.getJtable_empleados().getValueAt(fila, columna);
             vista_empleado.dispose();
             VistaActualizar_Empleado vista = new VistaActualizar_Empleado();
+            VistaAdministrador.getjDesktopPanePrincipal().add(vista);
             ControlActualizar_Empleado control = new ControlActualizar_Empleado(modelo_empleado, vista);
             control.funcionalidad();
 

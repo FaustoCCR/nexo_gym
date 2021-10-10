@@ -7,7 +7,7 @@ import javax.swing.JLabel;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
-public class VistaActualizar_Producto extends javax.swing.JFrame {
+public class VistaActualizar_Producto extends javax.swing.JInternalFrame{
 
 
     public VistaActualizar_Producto() {

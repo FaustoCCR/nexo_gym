@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import modelo.dao.ProveedorDao;
+import vista.VistaAdministrador;
 import vista.VistaRegistrar_Proveedor;
 
 public class ControlRegistrar_Proveedor {
@@ -21,8 +22,10 @@ public class ControlRegistrar_Proveedor {
         vista.setVisible(true);
         vista.setTitle("Registro de Proveedores - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation(611, 159);
+        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
         vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 

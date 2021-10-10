@@ -3,6 +3,7 @@ package controlador;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.dao.Ctg_ProductoDao;
+import vista.VistaAdministrador;
 import vista.VistaRegistrar_CtgProducto;
 
 public class ControlRegistrar_CtgProducto {
@@ -17,8 +18,10 @@ public class ControlRegistrar_CtgProducto {
         vista.setVisible(true);
         vista.setTitle("Registro Categorias Productos - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation(611, 159);
+        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
         vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
     }

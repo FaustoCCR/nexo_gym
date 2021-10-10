@@ -11,6 +11,7 @@ import javax.swing.border.LineBorder;
 import modelo.dao.ProveedorDao;
 import modelo.vo.ProveedorVo;
 import vista.VistaActualizar_Proveedores;
+import vista.VistaAdministrador;
 
 public class ControlActualizar_Proveedor {
 
@@ -28,7 +29,10 @@ public class ControlActualizar_Proveedor {
         vista_proveedor.setVisible(true);
         vista_proveedor.setTitle("Actualizar Rutina - Nexo Gym");
         vista_proveedor.setResizable(false);
-        vista_proveedor.setLocationRelativeTo(null);
+        vista_proveedor.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_proveedor.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_proveedor.getHeight())/2);
+        vista_proveedor.setClosable(true);
+        vista_proveedor.setIconifiable(true);
         vista_proveedor.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarDatosProveedor();
     }

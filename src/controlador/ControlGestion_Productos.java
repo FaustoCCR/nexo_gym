@@ -12,6 +12,7 @@ import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.ProductoDao;
 import vista.VistaActualizar_Producto;
+import vista.VistaAdministrador;
 import vista.VistaGestion_Productos;
 
 public class ControlGestion_Productos {
@@ -28,9 +29,12 @@ public class ControlGestion_Productos {
         vista.setVisible(true);
         vista.setTitle("Productos Registrados - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation(611, 159);
+        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
         vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        identificarRol();
         disenioTabla();
 
         mostrarDatosTabla("");
@@ -49,6 +53,19 @@ public class ControlGestion_Productos {
         vista.getBt_verificar().addActionListener(l -> ventanaActualizar());
         vista.getBt_eliminar().addActionListener(l -> sentenciaDelete());
 
+    }
+        private void identificarRol() {
+
+        switch (ControlLogin.permiso) {
+
+            case 2:
+
+                vista.getBt_verificar().setVisible(false);
+                vista.getBt_eliminar().setVisible(false);
+
+                break;
+
+        }
     }
 
     private void disenioTabla() {
@@ -114,6 +131,7 @@ public class ControlGestion_Productos {
             id_prod = (int) vista.getJtable_productos().getValueAt(fila, columna);
             vista.dispose();
             VistaActualizar_Producto vista = new VistaActualizar_Producto();
+            VistaAdministrador.getjDesktopPanePrincipal().add(vista);
             ControlActualizar_Producto control = new ControlActualizar_Producto(modelo, vista);
             control.funcionalidad();
 

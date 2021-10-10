@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.ProveedorDao;
 import vista.VistaActualizar_Proveedores;
+import vista.VistaAdministrador;
 import vista.VistaGestion_Proveedor;
 
 public class ControlGestion_Proveedor {
@@ -25,9 +26,12 @@ public class ControlGestion_Proveedor {
         vista_proveedor.setVisible(true);
         vista_proveedor.setTitle("Proveedores Registrados - Nexo Gym");
         vista_proveedor.setResizable(false);
-        vista_proveedor.setLocation(611, 159);
+        vista_proveedor.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_proveedor.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_proveedor.getHeight())/2);
         vista_proveedor.setClosable(true);
+        vista_proveedor.setIconifiable(true);
         vista_proveedor.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        identificarRol();
         disenioTabla();
         mostrarDatosTabla("");
 
@@ -46,6 +50,19 @@ public class ControlGestion_Proveedor {
 
         vista_proveedor.getBt_verificar().addActionListener(l -> ventanaActualizar());
         vista_proveedor.getBt_eliminar().addActionListener(l -> sentenciaDelete());
+    }
+        private void identificarRol() {
+
+        switch (ControlLogin.permiso) {
+
+            case 2:
+
+                vista_proveedor.getBt_verificar().setVisible(false);
+                vista_proveedor.getBt_eliminar().setVisible(false);
+
+                break;
+
+        }
     }
 
     private void disenioTabla() {
@@ -89,6 +106,7 @@ public class ControlGestion_Proveedor {
             id_proveedor = (String) vista_proveedor.getJtable_proveedores().getValueAt(fila, columna);
             vista_proveedor.dispose();
             VistaActualizar_Proveedores vista = new VistaActualizar_Proveedores();
+            VistaAdministrador.getjDesktopPanePrincipal().add(vista);
             ControlActualizar_Proveedor control = new ControlActualizar_Proveedor(modelo_proveedor, vista);
             control.funcionalidad();
 

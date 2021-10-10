@@ -23,6 +23,7 @@ import modelo.dao.ProductoDao;
 import modelo.dao.ProveedorDao;
 import modelo.vo.ProveedorVo;
 import vista.VistaActualizar_Producto;
+import vista.VistaAdministrador;
 
 public class ControlActualizar_Producto {
 
@@ -43,7 +44,10 @@ public class ControlActualizar_Producto {
         vista.setVisible(true);
         vista.setTitle("Actualizar Productos - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
+        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         cargarCategorias();
@@ -84,7 +88,7 @@ public class ControlActualizar_Producto {
             vista_producto.getJspinner_stock().setValue(pr.getStock());
             Image img = pr.getFoto();
             if (img != null) {
-                Image nimg = img.getScaledInstance(vista_producto.getJlfoto().getWidth(), vista_producto.getJlfoto().getHeight(), Image.SCALE_SMOOTH);
+                Image nimg = img.getScaledInstance(vista_producto.getJlfoto().getWidth(), vista_producto.getJlfoto().getHeight(), Image.SCALE_DEFAULT);
                 ImageIcon icon = new ImageIcon(nimg);
                 vista_producto.getJlfoto().setIcon(icon);
 

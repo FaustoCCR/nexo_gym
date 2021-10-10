@@ -13,7 +13,9 @@ import modelo.dao.ProveedorDao;
 import modelo.dao.RutinaDao;
 import modelo.dao.UsuarioDao;
 import modelo.dao.Ecb_VentaDao;
+import modelo.dao.ProgramaClienteDao;
 import vista.VistaAdministrador;
+import vista.VistaGestionVentas;
 import vista.VistaGestion_Cargo;
 import vista.VistaGestion_Clientes;
 import vista.VistaGestion_CtgProducto;
@@ -25,6 +27,7 @@ import vista.VistaGestion_Proveedor;
 import vista.VistaGestion_Rutina;
 import vista.VistaGestion_Users;
 import vista.VistaLogin;
+import vista.VistaPlantilla_Instructor;
 import vista.VistaRealizar_Venta;
 import vista.VistaRegistrarCargo;
 import vista.VistaRegistrar_Cliente;
@@ -41,7 +44,6 @@ public class ControlVista_Admin {
 
     private VistaAdministrador vp;
     private int id_user;
-    private String usuario;
 
     private UsuarioDao modelo_user = new UsuarioDao();
 
@@ -54,6 +56,7 @@ public class ControlVista_Admin {
 //        vista.setResizable(false);
         vp.setLocationRelativeTo(null);
         vp.setExtendedState(Frame.MAXIMIZED_BOTH);//acopla el frame a toda la pantalla
+        identificarRol();
 
     }
 
@@ -89,7 +92,61 @@ public class ControlVista_Admin {
         vp.getJmi_gcargos().addActionListener(l -> ventanaGestion_Cargos());
         vp.getJmi_gcategorias().addActionListener(l -> ventanaGestion_Categorias());
         vp.getJmi_gproveedores().addActionListener(l -> ventanaGestion_Proveedores());
+        vp.getJmi_plantillaEntrenamiento().addActionListener(l->ventanaPlantilla_Instructor());
+        vp.getJmi_reporteventas().addActionListener(l->ventanaGestion_Ventas());
+        
+        
 
+    }
+
+    private void identificarRol() {
+
+        switch (ControlLogin.permiso) {
+            
+            case 1: 
+                
+                vp.getJmi_plantillaEntrenamiento().setVisible(false);
+                break;
+
+            case 2:
+
+                vp.getJmi_registraruser().setVisible(false);
+                vp.getJmi_registrarcargo().setVisible(false);
+                vp.getJmi_rgempleado().setVisible(false);
+                vp.getJmi_gusers().setVisible(false);
+                vp.getJmi_gcargos().setVisible(false);
+                vp.getJmi_gempleados().setVisible(false);
+                vp.getJmi_rgproducto().setVisible(false);
+                vp.getJmi_rgctgproducto().setVisible(false);
+                vp.getJmi_rgproveedor().setVisible(false);
+                vp.getJmi_rgmembresia().setVisible(false);
+                vp.getJmi_rgrutina().setVisible(false);
+                vp.getJmi_plantillaEntrenamiento().setVisible(false);
+                vp.getJmi_reporteventas().setVisible(false);
+
+                break;
+            case 3:
+
+                vp.getJm_personas().setText("Clientes");
+                vp.getJmi_rgpersona().setVisible(false);
+                vp.getJmi_gpersonas().setVisible(false);
+                vp.getJmi_registraruser().setVisible(false);
+                vp.getJmi_registrarcargo().setVisible(false);
+                vp.getJmi_rgcliente().setVisible(false);
+                vp.getJmi_rgempleado().setVisible(false);
+                vp.getJmi_gusers().setVisible(false);
+                vp.getJmi_gcargos().setVisible(false);
+                vp.getJmi_gempleados().setVisible(false);
+                vp.getJmenu_productos().setVisible(false);
+                vp.getJmenuMembresias().setText("Rutinas");
+                vp.getJmi_rgmembresia().setVisible(false);
+                vp.getJmi_gmembresias().setVisible(false);
+                vp.getJmenuVentas().setVisible(false);
+                ventanaPlantilla_Instructor();
+
+                break;
+
+        }
     }
 
     private void ventanaLogin() {
@@ -293,4 +350,20 @@ public class ControlVista_Admin {
 
     }
 
+    private void ventanaPlantilla_Instructor() {
+        ProgramaClienteDao modelo = new ProgramaClienteDao();
+        VistaPlantilla_Instructor vista = new VistaPlantilla_Instructor();
+        VistaAdministrador.getjDesktopPanePrincipal().add(vista);
+        ControlPlantilla_Instructor control = new ControlPlantilla_Instructor(modelo, vista);
+        control.funcionalidad();
+    }
+    
+    private void ventanaGestion_Ventas(){
+        Ecb_VentaDao modelo1 = new Ecb_VentaDao();
+        Cuerpo_VentaDao modelo2 = new Cuerpo_VentaDao();
+        VistaGestionVentas vista = new  VistaGestionVentas();
+        VistaAdministrador.getjDesktopPanePrincipal().add(vista);
+        ControlGestion_Ventas control = new ControlGestion_Ventas(modelo1, modelo2, vista);
+        control.funcionalidad();
+    }
 }

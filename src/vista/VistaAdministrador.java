@@ -33,7 +33,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_gcargos = new javax.swing.JMenuItem();
         jmi_gclientes = new javax.swing.JMenuItem();
         jmi_gempleados = new javax.swing.JMenuItem();
-        JMenu5 = new javax.swing.JMenu();
+        jmenu_productos = new javax.swing.JMenu();
         jmi_rgproducto = new javax.swing.JMenuItem();
         jmi_rgctgproducto = new javax.swing.JMenuItem();
         jmi_rgproveedor = new javax.swing.JMenuItem();
@@ -41,14 +41,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_gproductos = new javax.swing.JMenuItem();
         jmi_gcategorias = new javax.swing.JMenuItem();
         jmi_gproveedores = new javax.swing.JMenuItem();
-        jMenu6 = new javax.swing.JMenu();
+        jmenuMembresias = new javax.swing.JMenu();
         jmi_rgmembresia = new javax.swing.JMenuItem();
         jmi_rgrutina = new javax.swing.JMenuItem();
         jSeparator2 = new javax.swing.JPopupMenu.Separator();
         jmi_gmembresias = new javax.swing.JMenuItem();
         jmi_grutinas = new javax.swing.JMenuItem();
-        jMenu7 = new javax.swing.JMenu();
+        jmi_plantillaEntrenamiento = new javax.swing.JMenuItem();
+        jmenuVentas = new javax.swing.JMenu();
         jmi_realizarventa = new javax.swing.JMenuItem();
+        jmi_reporteventas = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -125,66 +127,74 @@ public class VistaAdministrador extends javax.swing.JFrame {
 
         jMenuBar1.add(jm_personas);
 
-        JMenu5.setText("Productos");
-        JMenu5.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jmenu_productos.setText("Productos");
+        jmenu_productos.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
 
         jmi_rgproducto.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_rgproducto.setText("Registrar Producto");
-        JMenu5.add(jmi_rgproducto);
+        jmenu_productos.add(jmi_rgproducto);
 
         jmi_rgctgproducto.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_rgctgproducto.setText("Registrar Categoría");
-        JMenu5.add(jmi_rgctgproducto);
+        jmenu_productos.add(jmi_rgctgproducto);
 
         jmi_rgproveedor.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_rgproveedor.setText("Registrar Proveedor");
-        JMenu5.add(jmi_rgproveedor);
-        JMenu5.add(jSeparator1);
+        jmenu_productos.add(jmi_rgproveedor);
+        jmenu_productos.add(jSeparator1);
 
         jmi_gproductos.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_gproductos.setText("Mostrar Productos");
-        JMenu5.add(jmi_gproductos);
+        jmenu_productos.add(jmi_gproductos);
 
         jmi_gcategorias.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_gcategorias.setText("Mostrar Categorías");
-        JMenu5.add(jmi_gcategorias);
+        jmenu_productos.add(jmi_gcategorias);
 
         jmi_gproveedores.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_gproveedores.setText("Mostrar Proveedores");
-        JMenu5.add(jmi_gproveedores);
+        jmenu_productos.add(jmi_gproveedores);
 
-        jMenuBar1.add(JMenu5);
+        jMenuBar1.add(jmenu_productos);
 
-        jMenu6.setText("Membresías");
-        jMenu6.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jmenuMembresias.setText("Membresías");
+        jmenuMembresias.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
 
         jmi_rgmembresia.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_rgmembresia.setText("Registrar Membresia");
-        jMenu6.add(jmi_rgmembresia);
+        jmenuMembresias.add(jmi_rgmembresia);
 
         jmi_rgrutina.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_rgrutina.setText("Registrar Rutina");
-        jMenu6.add(jmi_rgrutina);
-        jMenu6.add(jSeparator2);
+        jmenuMembresias.add(jmi_rgrutina);
+        jmenuMembresias.add(jSeparator2);
 
         jmi_gmembresias.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_gmembresias.setText("Mostrar Membresías");
-        jMenu6.add(jmi_gmembresias);
+        jmenuMembresias.add(jmi_gmembresias);
 
         jmi_grutinas.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_grutinas.setText("Mostrar Rutinas");
-        jMenu6.add(jmi_grutinas);
+        jmenuMembresias.add(jmi_grutinas);
 
-        jMenuBar1.add(jMenu6);
+        jmi_plantillaEntrenamiento.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jmi_plantillaEntrenamiento.setText("Mi  Plantilla");
+        jmenuMembresias.add(jmi_plantillaEntrenamiento);
 
-        jMenu7.setText("Ventas");
-        jMenu7.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
+        jMenuBar1.add(jmenuMembresias);
+
+        jmenuVentas.setText("Ventas");
+        jmenuVentas.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
 
         jmi_realizarventa.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_realizarventa.setText("Realizar Venta");
-        jMenu7.add(jmi_realizarventa);
+        jmenuVentas.add(jmi_realizarventa);
 
-        jMenuBar1.add(jMenu7);
+        jmi_reporteventas.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jmi_reporteventas.setText("Reporte Ventas");
+        jmenuVentas.add(jmi_reporteventas);
+
+        jMenuBar1.add(jmenuVentas);
 
         setJMenuBar(jMenuBar1);
 
@@ -377,7 +387,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         this.jmi_realizarventa = jmi_realizarventa;
     }
 
-    public JDesktopPane getjDesktopPanePrincipal() {
+    public static JDesktopPane getjDesktopPanePrincipal() {
         return jDesktopPanePrincipal;
     }
 
@@ -408,6 +418,47 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public void setJmi_gproveedores(JMenuItem jmi_gproveedores) {
         this.jmi_gproveedores = jmi_gproveedores;
     }
+
+    public JMenu getJmenu_productos() {
+        return jmenu_productos;
+    }
+
+    public void setJmenu_productos(JMenu jmenu_productos) {
+        this.jmenu_productos = jmenu_productos;
+    }
+
+    public JMenu getJmenuVentas() {
+        return jmenuVentas;
+    }
+
+    public void setJmenuVentas(JMenu jmenuVentas) {
+        this.jmenuVentas = jmenuVentas;
+    }
+
+    public JMenu getJmenuMembresias() {
+        return jmenuMembresias;
+    }
+
+    public void setJmenuMembresias(JMenu jmenuMembresias) {
+        this.jmenuMembresias = jmenuMembresias;
+    }
+
+    public JMenuItem getJmi_plantillaEntrenamiento() {
+        return jmi_plantillaEntrenamiento;
+    }
+
+    public void setJmi_plantillaEntrenamiento(JMenuItem jmi_plantillaEntrenamiento) {
+        this.jmi_plantillaEntrenamiento = jmi_plantillaEntrenamiento;
+    }
+
+    public JMenuItem getJmi_reporteventas() {
+        return jmi_reporteventas;
+    }
+
+    public void setJmi_reporteventas(JMenuItem jmi_reporteventas) {
+        this.jmi_reporteventas = jmi_reporteventas;
+    }
+    
     
     
 
@@ -444,11 +495,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu JMenu5;
-    private javax.swing.JDesktopPane jDesktopPanePrincipal;
+    public static javax.swing.JDesktopPane jDesktopPanePrincipal;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu6;
-    private javax.swing.JMenu jMenu7;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
@@ -456,6 +504,9 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel jlfooter;
     private javax.swing.JMenu jm_personas;
+    private javax.swing.JMenu jmenuMembresias;
+    private javax.swing.JMenu jmenuVentas;
+    private javax.swing.JMenu jmenu_productos;
     private javax.swing.JMenuItem jmi_gcargos;
     private javax.swing.JMenuItem jmi_gcategorias;
     private javax.swing.JMenuItem jmi_gclientes;
@@ -466,9 +517,11 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_gproveedores;
     private javax.swing.JMenuItem jmi_grutinas;
     private javax.swing.JMenuItem jmi_gusers;
+    private javax.swing.JMenuItem jmi_plantillaEntrenamiento;
     private javax.swing.JMenuItem jmi_realizarventa;
     private javax.swing.JMenuItem jmi_registrarcargo;
     private javax.swing.JMenuItem jmi_registraruser;
+    private javax.swing.JMenuItem jmi_reporteventas;
     private javax.swing.JMenuItem jmi_rgcliente;
     private javax.swing.JMenuItem jmi_rgctgproducto;
     private javax.swing.JMenuItem jmi_rgempleado;

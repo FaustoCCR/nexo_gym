@@ -17,6 +17,7 @@ import modelo.dao.EmpleadoDao;
 import modelo.dao.PersonaDao;
 import modelo.vo.PersonaVo;
 import vista.VistaActualizar_Empleado;
+import vista.VistaAdministrador;
 
 public class ControlActualizar_Empleado {
 
@@ -36,7 +37,10 @@ public class ControlActualizar_Empleado {
         vista.setVisible(true);
         vista.setTitle("Actualizar Empleado - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
+        vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
         cargarCargos();
@@ -160,7 +164,7 @@ public class ControlActualizar_Empleado {
         modelo_empleado.setSueldo(sueldo);
 
         if (modelo_empleado.modificar(id_empleado)) {
-            
+
             JOptionPane.showMessageDialog(vista, "Empleado Actualizado");
         } else {
             JOptionPane.showMessageDialog(vista, "Error al Actualizar");

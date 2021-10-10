@@ -7,7 +7,7 @@ import javax.swing.JComboBox;
 import javax.swing.JSpinner;
 import javax.swing.JTextField;
 
-public class VistaActualizar_Cliente extends javax.swing.JFrame {
+public class VistaActualizar_Cliente extends javax.swing.JInternalFrame {
 
 
     public VistaActualizar_Cliente() {
@@ -45,7 +45,8 @@ public class VistaActualizar_Cliente extends javax.swing.JFrame {
         txt_estadopago = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setIconifiable(true);
 
         jLabel4.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel4.setText("F.Inicio:");
@@ -83,7 +84,7 @@ public class VistaActualizar_Cliente extends javax.swing.JFrame {
         jLabel8.setText("Subtotal:");
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        jLabel2.setText("Registro de Clientes");
+        jLabel2.setText("Información del Cliente");
 
         txt_desc.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         txt_desc.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));

@@ -23,6 +23,7 @@ import modelo.dao.UsuarioDao;
 import modelo.dao.Ecb_VentaDao;
 import modelo.vo.ClienteVo;
 import modelo.vo.ProductoVo;
+import vista.VistaAdministrador;
 import vista.VistaRealizar_Venta;
 
 public class ControlRealizar_Venta {
@@ -50,8 +51,10 @@ public class ControlRealizar_Venta {
         vista.setVisible(true);
         vista.setTitle("Venta de Productos - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation(470, 0);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         vista.getJdate_venta().getDateEditor().setEnabled(false);
         vista.getJdate_venta().setDate(new java.util.Date());
@@ -84,7 +87,7 @@ public class ControlRealizar_Venta {
         });
 
         vista.getBt_cancelar().addActionListener(l -> reiniciarCampos());
-        vista.getBt_retirar().addActionListener(l->retirarProducto());
+        vista.getBt_retirar().addActionListener(l -> retirarProducto());
 
     }
 
@@ -133,7 +136,7 @@ public class ControlRealizar_Venta {
                     vista.getTxt_preciou().setText(String.valueOf(pr.getPrecio_u()));
                     stock = pr.getStock();
                     vista.getTxt_stock().setText(String.valueOf(stock));
-                    SpinnerModel sm = new SpinnerNumberModel(1, 1, stock, 1);//(valor inicial,mínimo,máximo,incremento)
+                    SpinnerModel sm = new SpinnerNumberModel(0, 0, stock, 1);//(valor inicial,mínimo,máximo,incremento)
                     vista.getJspinner_cantidad().setModel(sm);
 
                 });
@@ -188,23 +191,31 @@ public class ControlRealizar_Venta {
         if (!producto.isEmpty()) {
 
             /* validar el stock*/
-            item++;//---Nro
-            int id = Integer.parseInt(vista.getTxt_codproducto().getText());
-            int cantidad = (int) vista.getJspinner_cantidad().getValue();
-            double precio_u = Double.parseDouble(vista.getTxt_preciou().getText());
-            double total = cantidad * precio_u;
+            if (stock > 0) {
+                item++;//---Nro
+                int id = Integer.parseInt(vista.getTxt_codproducto().getText());
+                int cantidad = (int) vista.getJspinner_cantidad().getValue();
+                double precio_u = Double.parseDouble(vista.getTxt_preciou().getText());
+                double total = cantidad * precio_u;
+                if (cantidad > 0) {
 
-            Object[] filas = {item, id, producto, cantidad, precio_u, total};
-            tb_model.addRow(filas);
-            calcularTotal();
+                    Object[] filas = {item, id, producto, cantidad, precio_u, total};
+                    tb_model.addRow(filas);
+                    calcularTotal();
 
-            /* restauramos campos*/
-            vista.getTxt_producto().setText("");
-            vista.getTxt_preciou().setText("");
-            vista.getTxt_stock().setText("");
-            vista.getTxt_codproducto().setText("");
-            vista.getTxt_codproducto().requestFocus();
-            vista.getTxt_codproducto().setBorder(origin_border);
+                    /* restauramos campos*/
+                    vista.getTxt_producto().setText("");
+                    vista.getTxt_preciou().setText("");
+                    vista.getTxt_stock().setText("");
+                    vista.getTxt_codproducto().setText("");
+                    vista.getTxt_codproducto().requestFocus();
+                    vista.getTxt_codproducto().setBorder(origin_border);
+                } else {
+                    JOptionPane.showMessageDialog(vista, "Ingrese la cantidad");
+                }
+            }else{
+                JOptionPane.showMessageDialog(vista, "Revisar Stock");
+            }
 
         } else {
             JOptionPane.showMessageDialog(vista, "Producto no encontrado", "Advertencia", 0);
@@ -329,10 +340,10 @@ public class ControlRealizar_Venta {
         int seleccion = vista.getTb_detalleventa().getSelectedRow();
         if (seleccion != -1) {
             tb_model.removeRow(seleccion);
-           calcularTotal();
+            calcularTotal();
 
         } else {
-            JOptionPane.showMessageDialog(vista,"Seleccione en la tabla el producto","Mensaje",1);
+            JOptionPane.showMessageDialog(vista, "Seleccione en la tabla el producto", "Mensaje", 1);
         }
     }
 

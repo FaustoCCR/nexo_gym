@@ -11,11 +11,9 @@ import javax.swing.border.LineBorder;
 import modelo.dao.CargoDao;
 import modelo.vo.CargoVo;
 import vista.VistaActualizar_Cargo;
+import vista.VistaAdministrador;
 
-/**
- *
- * @author Alex
- */
+
 public class ControlActualizar_Cargo {
     
     private CargoDao modelo_cargo;
@@ -28,11 +26,12 @@ public class ControlActualizar_Cargo {
         this.vista = vista;
 
         id_cargo = ControlGestion_Cargo.id_cargo;
-
         vista.setVisible(true);
         vista.setTitle("Actualizar Cargo - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
+        vista.setLocation(611, 159);
+        vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarDatosCargo();
     }

@@ -3,12 +3,25 @@ package controlador;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import modelo.conexion.PGConexion;
 import modelo.dao.ClienteDao;
 import modelo.dao.ProgramaClienteDao;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import vista.VistaActualizar_Cliente;
+import vista.VistaAdministrador;
 import vista.VistaGestion_Clientes;
 import vista.VistaPrograma_Cliente;
 
@@ -27,8 +40,14 @@ public class ControlGestion_Clientes {
         vista_cliente.setVisible(true);
         vista_cliente.setTitle("Clientes Registrados - Nexo Gym");
         vista_cliente.setResizable(false);
-        vista_cliente.setLocation(611, 159);
+        vista_cliente.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_cliente.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_cliente.getHeight()) / 2);
         vista_cliente.setClosable(true);
+        vista_cliente.setIconifiable(true);
+
+        System.out.println((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth()));
+        System.out.println((int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight()));
+        identificarRol();
         vista_cliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
 
@@ -51,7 +70,22 @@ public class ControlGestion_Clientes {
         vista_cliente.getBt_verificar().addActionListener(l -> ventanaActualizar());
         vista_cliente.getBt_eliminar().addActionListener(l -> sentenciaDelete());
         vista_cliente.getBt_asignarRutina().addActionListener(l -> ventanaAsignarRutina());
+        vista_cliente.getBt_imprimir().addActionListener(l -> imprimirReporte());
 
+    }
+
+    private void identificarRol() {
+
+        switch (ControlLogin.permiso) {
+
+            case 3:
+
+                vista_cliente.getBt_verificar().setVisible(false);
+                vista_cliente.getBt_eliminar().setVisible(false);
+
+                break;
+
+        }
     }
 
     private void disenioTabla() {
@@ -109,6 +143,7 @@ public class ControlGestion_Clientes {
             id_cliente = (int) vista_cliente.getJtable_clientes().getValueAt(fila, columna);
             vista_cliente.dispose();
             VistaActualizar_Cliente vista = new VistaActualizar_Cliente();
+            VistaAdministrador.getjDesktopPanePrincipal().add(vista);
             ControlActualizar_Cliente control = new ControlActualizar_Cliente(modelo_cliente, vista);
             control.funcionalidad();
 
@@ -151,11 +186,53 @@ public class ControlGestion_Clientes {
             id_cliente = (int) vista_cliente.getJtable_clientes().getValueAt(fila, columna);
             ProgramaClienteDao modelo_pgcliente = new ProgramaClienteDao();
             VistaPrograma_Cliente vista = new VistaPrograma_Cliente();
+            VistaAdministrador.getjDesktopPanePrincipal().add(vista);
             ControlPrograma_Cliente control = new ControlPrograma_Cliente(modelo_pgcliente, vista);
             control.funcionalidad();
 
         } else {
             JOptionPane.showMessageDialog(vista_cliente, "Seleccione el registro a asignar");
+        }
+
+    }
+
+    private void imprimirReporte() {
+
+        PGConexion con = new PGConexion();
+
+        try {
+
+            /*Creacion de un mapa
+            asigna un dato a los diferentes 
+            parámetros*/
+            Map<String, Object> parametros = new HashMap<>();
+            String aguja = vista_cliente.getTxt_buscar().getText().trim();
+            
+//            put( ?,  ?)---> el nombre del parametro(tipo de dato), la variable que recibe 
+            parametros.put("paguja", "%" + aguja + "%");
+            parametros.put("pdetalle", subitituloReport(aguja));
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/ReporteClientes.jasper"));
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, con.getCon());
+            // (jr,null,con.getCon()) null --> cuando no enviamos un parametro
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControlGestion_Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private String subitituloReport(String filtro) {
+
+        if (filtro.isEmpty()) {
+
+            return "Búsqueda general";
+
+        } else {
+            return "Párametro de búsqueda : " +filtro;
+
         }
 
     }

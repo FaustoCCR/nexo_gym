@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.RutinaDao;
 import vista.VistaActualizar_Rutina;
+import vista.VistaAdministrador;
 import vista.VistaGestion_Rutina;
 
 public class ControlGestion_Rutina {
@@ -26,8 +27,10 @@ public class ControlGestion_Rutina {
         vista_rutina.setVisible(true);
         vista_rutina.setTitle("Rutinas Registradas - Nexo Gym");
         vista_rutina.setResizable(false);
-        vista_rutina.setLocation(611, 159);
+        vista_rutina.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_rutina.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_rutina.getHeight())/2);
         vista_rutina.setClosable(true);
+        vista_rutina.setIconifiable(true);
         vista_rutina.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         disenioTabla();
         mostrarDatosTabla("");
@@ -49,6 +52,7 @@ public class ControlGestion_Rutina {
         vista_rutina.getBt_eliminar().addActionListener(l -> sentenciaDelete());
 
     }
+    
 
     private void disenioTabla() {
         tb_model = new DefaultTableModel(columnas, 0) {
@@ -94,6 +98,7 @@ public class ControlGestion_Rutina {
             id_rutina = (int) vista_rutina.getJtable_rutinas().getValueAt(fila, columna);
             vista_rutina.dispose();
             VistaActualizar_Rutina vista = new VistaActualizar_Rutina();
+            VistaAdministrador.getjDesktopPanePrincipal().add(vista);
             ControlActualizar_Rutina control = new ControlActualizar_Rutina(modelo_rutina, vista);
             control.funcionalidad();
 

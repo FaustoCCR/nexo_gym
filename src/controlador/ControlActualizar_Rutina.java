@@ -9,6 +9,7 @@ import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import modelo.dao.RutinaDao;
 import vista.VistaActualizar_Rutina;
+import vista.VistaAdministrador;
 
 public class ControlActualizar_Rutina {
 
@@ -26,7 +27,10 @@ public class ControlActualizar_Rutina {
         vista_rutina.setVisible(true);
         vista_rutina.setTitle("Actualizar Rutina - Nexo Gym");
         vista_rutina.setResizable(false);
-        vista_rutina.setLocationRelativeTo(null);
+        vista_rutina.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_rutina.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_rutina.getHeight())/2);
+        vista_rutina.setClosable(true);
+        vista_rutina.setIconifiable(true);
         vista_rutina.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarDatosRutina();
 

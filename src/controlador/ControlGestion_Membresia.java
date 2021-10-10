@@ -8,6 +8,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.MembresiaDao;
 import vista.VistaActualizar_Membresia;
+import vista.VistaAdministrador;
 import vista.VistaGestion_Membresias;
 
 public class ControlGestion_Membresia {
@@ -24,10 +25,12 @@ public class ControlGestion_Membresia {
         vista.setVisible(true);
         vista.setTitle("Membresías Registradas - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation(611, 159);
+        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
         vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-
+        identificarRol();
         disenioTabla();
         mostrarDatosTabla("");
     }
@@ -46,6 +49,19 @@ public class ControlGestion_Membresia {
         
         
 
+    }
+        private void identificarRol() {
+
+        switch (ControlLogin.permiso) {
+
+            case 2:
+
+                vista.getBt_verificar().setVisible(false);
+                vista.getBt_eliminar().setVisible(false);
+
+                break;
+
+        }
     }
 
     private void disenioTabla() {
@@ -92,6 +108,7 @@ public class ControlGestion_Membresia {
             id_membresia = (int) vista.getJtable_membresias().getValueAt(fila, columna);
             vista.dispose();
             VistaActualizar_Membresia vista = new VistaActualizar_Membresia();
+            VistaAdministrador.getjDesktopPanePrincipal().add(vista);
             ControlActualizar_Membresia control = new ControlActualizar_Membresia(modelo, vista);
             control.funcionalidad();
 

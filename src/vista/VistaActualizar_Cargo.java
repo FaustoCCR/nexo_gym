@@ -1,22 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package vista;
 
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-/**
- *
- * @author Alex
- */
-public class VistaActualizar_Cargo extends javax.swing.JFrame {
 
-    /**
-     * Creates new form VistaActualizar_Cargo
-     */
+public class VistaActualizar_Cargo extends javax.swing.JInternalFrame {
+
+
     public VistaActualizar_Cargo() {
         initComponents();
     }

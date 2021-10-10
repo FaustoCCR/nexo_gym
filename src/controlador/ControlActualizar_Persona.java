@@ -18,6 +18,7 @@ import javax.swing.border.LineBorder;
 import modelo.dao.PersonaDao;
 import modelo.vo.PersonaVo;
 import vista.VistaActualizar_Persona;
+import vista.VistaAdministrador;
 
 public class ControlActualizar_Persona {
 
@@ -34,7 +35,10 @@ public class ControlActualizar_Persona {
         vista_persona.setVisible(true);
         vista_persona.setTitle("Actualizar Persona - Nexo Gym");
         vista_persona.setResizable(false);
-        vista_persona.setLocationRelativeTo(null);
+        vista_persona.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_persona.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_persona.getHeight())/2);
+        vista_persona.setClosable(true);
+        vista_persona.setIconifiable(true);
         vista_persona.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         vista_persona.getJdnacimiento().getDateEditor().setEnabled(false);
         cargarDatosPersona();
@@ -151,7 +155,7 @@ public class ControlActualizar_Persona {
 
         if (modelo_persona.modificar1(id_persona)) {
 
-            JOptionPane.showMessageDialog(vista_persona, "Usuario Actualizado");
+            JOptionPane.showMessageDialog(vista_persona, "Persona Actualizado");
 
         } else {
             JOptionPane.showMessageDialog(vista_persona, "Error al Actualizar");
@@ -228,13 +232,6 @@ public class ControlActualizar_Persona {
 
     }
 
-    private int campoId(String cedula) {
-        int id_persona;
-        /*Retora el id de la persona de acuerdo a su número de cédula*/
-        id_persona = modelo_persona.mostrarDatos().stream().filter(p -> p.getDni().equals(cedula)).findAny().get().getId_persona();
-        return id_persona;
-
-    }
 //
 //    private int verificarCedula2(String cedula) {
 //        int cont = modelo_persona.contadorPer(cedula);
@@ -242,7 +239,6 @@ public class ControlActualizar_Persona {
 //        return cont;
 //
 //    }
-
 //    private boolean saber_NoHayOtraCedula() {
 //        String cedula1 = vista_persona.getTxt_cedula().getText();
 //

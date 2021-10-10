@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.dao.PersonaDao;
 import vista.VistaActualizar_Persona;
+import vista.VistaAdministrador;
 import vista.VistaGestion_Persona;
 
 public class ControlGestion_Persona {
@@ -30,9 +31,12 @@ public class ControlGestion_Persona {
         vista_persona.setVisible(true);
         vista_persona.setTitle("Personas Registradas - Nexo Gym");
         vista_persona.setResizable(false);
-        vista_persona.setLocation(611, 159);
+        vista_persona.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_persona.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_persona.getHeight())/2);
         vista_persona.setClosable(true);
+        vista_persona.setIconifiable(true);
         vista_persona.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        identificarRol();
         disenioTabla();
 
         mostrarDatosTabla("");
@@ -52,6 +56,19 @@ public class ControlGestion_Persona {
         vista_persona.getBt_verificar().addActionListener(l -> ventanaActualizar());
         vista_persona.getBt_eliminar().addActionListener(l -> sentenciaDelete());
 
+    }
+        private void identificarRol() {
+
+        switch (ControlLogin.permiso) {
+
+            case 3:
+
+                vista_persona.getBt_verificar().setVisible(false);
+                vista_persona.getBt_eliminar().setVisible(false);
+
+                break;
+
+        }
     }
 
     private void disenioTabla() {
@@ -101,6 +118,7 @@ public class ControlGestion_Persona {
 //            System.out.println("funciona");
             vista_persona.dispose();
             VistaActualizar_Persona vista = new VistaActualizar_Persona();
+            VistaAdministrador.getjDesktopPanePrincipal().add(vista);
             ControlActualizar_Persona control = new ControlActualizar_Persona(modelo_persona, vista);
             control.funcionalidad();
 

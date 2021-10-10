@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package controlador;
 
 import java.awt.Color;
@@ -16,11 +12,9 @@ import javax.swing.border.LineBorder;
 import modelo.dao.Ctg_ProductoDao;
 import modelo.vo.Ctg_ProductoVo;
 import vista.VistaActualizar_CtgProducto;
+import vista.VistaAdministrador;
 
-/**
- *
- * @author Usuario
- */
+
 public class ControlActualizar_CtgProducto {
     private Ctg_ProductoDao modelo_ctgp;
     private VistaActualizar_CtgProducto vista_ctgp;
@@ -36,7 +30,10 @@ public class ControlActualizar_CtgProducto {
         vista_ctgp.setVisible(true);
         vista_ctgp.setTitle("Actualizar Rutina - Nexo Gym");
         vista_ctgp.setResizable(false);
-        vista_ctgp.setLocationRelativeTo(null);
+        vista_ctgp.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_ctgp.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_ctgp.getHeight())/2);
+        vista_ctgp.setClosable(true);
+        vista_ctgp.setIconifiable(true);
         vista_ctgp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarDatosCtgProducto();
 

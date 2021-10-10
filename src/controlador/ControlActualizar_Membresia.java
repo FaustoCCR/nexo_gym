@@ -9,6 +9,7 @@ import javax.swing.border.LineBorder;
 import modelo.dao.MembresiaDao;
 import modelo.vo.MembresiaVo;
 import vista.VistaActualizar_Membresia;
+import vista.VistaAdministrador;
 
 public class ControlActualizar_Membresia {
 
@@ -26,7 +27,10 @@ public class ControlActualizar_Membresia {
         vista.setVisible(true);
         vista.setTitle("Actualizar Membresía - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocationRelativeTo(null);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
+        vista.setClosable(true);
+        vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarDatosMembresia();
 

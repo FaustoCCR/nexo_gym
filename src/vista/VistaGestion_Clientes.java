@@ -23,7 +23,7 @@ public class VistaGestion_Clientes extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         txt_buscar = new javax.swing.JTextField();
         bt_asignarRutina = new javax.swing.JButton();
-        bt_asignarRutina1 = new javax.swing.JButton();
+        bt_imprimir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,9 +64,9 @@ public class VistaGestion_Clientes extends javax.swing.JInternalFrame {
         bt_asignarRutina.setText("Asignar Rutina");
         bt_asignarRutina.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
-        bt_asignarRutina1.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
-        bt_asignarRutina1.setText("Imprimir");
-        bt_asignarRutina1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_imprimir.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_imprimir.setText("Imprimir");
+        bt_imprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -93,7 +93,7 @@ public class VistaGestion_Clientes extends javax.swing.JInternalFrame {
                         .addComponent(bt_asignarRutina, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(bt_asignarRutina1, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(bt_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
@@ -111,7 +111,7 @@ public class VistaGestion_Clientes extends javax.swing.JInternalFrame {
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(bt_asignarRutina1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(bt_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
@@ -166,6 +166,15 @@ public class VistaGestion_Clientes extends javax.swing.JInternalFrame {
         this.bt_asignarRutina = bt_asignarRutina;
     }
 
+    public JButton getBt_imprimir() {
+        return bt_imprimir;
+    }
+
+    public void setBt_imprimir(JButton bt_imprimir) {
+        this.bt_imprimir = bt_imprimir;
+    }
+    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -200,8 +209,8 @@ public class VistaGestion_Clientes extends javax.swing.JInternalFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_asignarRutina;
-    private javax.swing.JButton bt_asignarRutina1;
     private javax.swing.JButton bt_eliminar;
+    private javax.swing.JButton bt_imprimir;
     private javax.swing.JButton bt_verificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

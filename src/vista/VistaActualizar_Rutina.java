@@ -4,7 +4,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class VistaActualizar_Rutina extends javax.swing.JFrame {
+public class VistaActualizar_Rutina extends javax.swing.JInternalFrame{
 
     public VistaActualizar_Rutina() {
         initComponents();

@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JTextField;
 
 
-public class VistaActualizar_Membresia extends javax.swing.JFrame {
+public class VistaActualizar_Membresia extends javax.swing.JInternalFrame{
 
     public VistaActualizar_Membresia() {
         initComponents();

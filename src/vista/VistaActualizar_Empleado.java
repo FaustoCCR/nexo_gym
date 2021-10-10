@@ -5,7 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 
-public class VistaActualizar_Empleado extends javax.swing.JFrame {
+public class VistaActualizar_Empleado extends javax.swing.JInternalFrame {
 
     public VistaActualizar_Empleado() {
         initComponents();

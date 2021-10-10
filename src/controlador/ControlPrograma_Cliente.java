@@ -2,10 +2,12 @@ package controlador;
 
 import java.awt.Font;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -15,6 +17,7 @@ import modelo.dao.EmpleadoDao;
 import modelo.dao.ProgramaClienteDao;
 import modelo.dao.RutinaDao;
 import modelo.vo.EmpleadoVo;
+import vista.VistaAdministrador;
 import vista.VistaPrograma_Cliente;
 
 public class ControlPrograma_Cliente {
@@ -41,7 +44,10 @@ public class ControlPrograma_Cliente {
         vista_pgcliente.setVisible(true);
         vista_pgcliente.setTitle("Programa Cliente - Nexo Gym");
         vista_pgcliente.setResizable(false);
-        vista_pgcliente.setLocationRelativeTo(null);
+        vista_pgcliente.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_pgcliente.getWidth())/2,
+                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_pgcliente.getHeight())/2);
+        vista_pgcliente.setClosable(true);
+        vista_pgcliente.setIconifiable(true);
         vista_pgcliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarDatosCliente();
         disenioTabla();
