@@ -7,10 +7,22 @@ import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import modelo.conexion.PGConexion;
 import modelo.dao.PersonaDao;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import vista.VistaActualizar_Persona;
 import vista.VistaAdministrador;
 import vista.VistaGestion_Persona;
@@ -31,8 +43,8 @@ public class ControlGestion_Persona {
         vista_persona.setVisible(true);
         vista_persona.setTitle("Personas Registradas - Nexo Gym");
         vista_persona.setResizable(false);
-        vista_persona.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_persona.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_persona.getHeight())/2);
+        vista_persona.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_persona.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_persona.getHeight()) / 2);
         vista_persona.setClosable(true);
         vista_persona.setIconifiable(true);
         vista_persona.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -55,9 +67,11 @@ public class ControlGestion_Persona {
 
         vista_persona.getBt_verificar().addActionListener(l -> ventanaActualizar());
         vista_persona.getBt_eliminar().addActionListener(l -> sentenciaDelete());
+        vista_persona.getBt_imprimir().addActionListener(l->imprimirReporte());
 
     }
-        private void identificarRol() {
+
+    private void identificarRol() {
 
         switch (ControlLogin.permiso) {
 
@@ -160,6 +174,47 @@ public class ControlGestion_Persona {
         } else {
             JOptionPane.showMessageDialog(vista_persona, "Seleccione el registro a eliminar");
         }
+    }
+
+    private void imprimirReporte() {
+
+        PGConexion con = new PGConexion();
+
+        try {
+
+            /*Creacion de un mapa
+            asigna un dato a los diferentes 
+            parámetros*/
+            Map<String, Object> parametros = new HashMap<>();
+            String aguja = vista_persona.getTxt_buscar().getText().trim();
+
+//            put( ?,  ?)---> el nombre del parametro(tipo de dato), la variable que recibe 
+            parametros.put("paguja", "%" + aguja + "%");
+            parametros.put("pdetalle", subitituloReport(aguja));
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/ReportePersonas.jasper"));
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, con.getCon());
+            // (jr,null,con.getCon()) null --> cuando no enviamos un parametro
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControlGestion_Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private String subitituloReport(String filtro) {
+
+        if (filtro.isEmpty()) {
+
+            return "Búsqueda general";
+
+        } else {
+            return "Párametro de búsqueda : " + filtro;
+
+        }
+
     }
 
 }

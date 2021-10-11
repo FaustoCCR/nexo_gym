@@ -3,10 +3,22 @@ package controlador;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import modelo.conexion.PGConexion;
 import modelo.dao.EmpleadoDao;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import vista.VistaActualizar_Empleado;
 import vista.VistaAdministrador;
 import vista.VistaGestion_Empleado;
@@ -26,8 +38,8 @@ public class ControlGestion_Empleados {
         vista_empleado.setVisible(true);
         vista_empleado.setTitle("Empleados Registrados - Nexo Gym");
         vista_empleado.setResizable(false);
-        vista_empleado.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_empleado.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_empleado.getHeight())/2);
+        vista_empleado.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_empleado.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_empleado.getHeight()) / 2);
         vista_empleado.setClosable(true);
         vista_empleado.setIconifiable(true);
         vista_empleado.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -46,8 +58,9 @@ public class ControlGestion_Empleados {
 
         });
         vista_empleado.getBt_eliminar().addActionListener(l -> BorrarEmpleado());
-        vista_empleado.getBt_verificar().addActionListener(l->ventanaActualizar());
-        
+        vista_empleado.getBt_verificar().addActionListener(l -> ventanaActualizar());
+        vista_empleado.getBt_imprimir().addActionListener(l->imprimirReporte());
+
     }
 
     private void disenioTabla() {
@@ -114,5 +127,46 @@ public class ControlGestion_Empleados {
         } else {
             JOptionPane.showMessageDialog(vista_empleado, "Seleccione el registro a eliminar");
         }
+    }
+
+    private void imprimirReporte() {
+
+        PGConexion con = new PGConexion();
+
+        try {
+
+            /*Creacion de un mapa
+            asigna un dato a los diferentes 
+            parámetros*/
+            Map<String, Object> parametros = new HashMap<>();
+            String aguja = vista_empleado.getTxt_buscar().getText().trim();
+
+//            put( ?,  ?)---> el nombre del parametro(tipo de dato), la variable que recibe 
+            parametros.put("paguja", "%" + aguja + "%");
+            parametros.put("pdetalle", subitituloReport(aguja));
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/ReporteEmpleados.jasper"));
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, con.getCon());
+            // (jr,null,con.getCon()) null --> cuando no enviamos un parametro
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControlGestion_Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private String subitituloReport(String filtro) {
+
+        if (filtro.isEmpty()) {
+
+            return "Búsqueda general";
+
+        } else {
+            return "Párametro de búsqueda : " + filtro;
+
+        }
+
     }
 }

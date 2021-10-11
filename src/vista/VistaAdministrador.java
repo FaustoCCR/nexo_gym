@@ -18,6 +18,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jToolBar1 = new javax.swing.JToolBar();
         jlfooter = new javax.swing.JLabel();
         jDesktopPanePrincipal = new javax.swing.JDesktopPane();
+        jlb_logo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_salir = new javax.swing.JMenuItem();
@@ -61,15 +62,26 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jlfooter.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jlfooter.setText("  Sistema Nexo - Gym v1.0.0");
 
+        jlb_logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jlb_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/logo8.png"))); // NOI18N
+
+        jDesktopPanePrincipal.setLayer(jlb_logo, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
         javax.swing.GroupLayout jDesktopPanePrincipalLayout = new javax.swing.GroupLayout(jDesktopPanePrincipal);
         jDesktopPanePrincipal.setLayout(jDesktopPanePrincipalLayout);
         jDesktopPanePrincipalLayout.setHorizontalGroup(
             jDesktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPanePrincipalLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jlb_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jDesktopPanePrincipalLayout.setVerticalGroup(
             jDesktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 476, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPanePrincipalLayout.createSequentialGroup()
+                .addContainerGap(258, Short.MAX_VALUE)
+                .addComponent(jlb_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         jMenu1.setText("Opciones");
@@ -202,8 +214,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
-            .addComponent(jlfooter, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
+            .addComponent(jlfooter, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
             .addComponent(jDesktopPanePrincipal)
         );
         layout.setVerticalGroup(
@@ -458,9 +470,14 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public void setJmi_reporteventas(JMenuItem jmi_reporteventas) {
         this.jmi_reporteventas = jmi_reporteventas;
     }
-    
-    
-    
+
+    public JLabel getJlb_logo() {
+        return jlb_logo;
+    }
+
+    public void setJlb_logo(JLabel jlb_logo) {
+        this.jlb_logo = jlb_logo;
+    }
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -502,6 +519,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
     private javax.swing.JToolBar jToolBar1;
+    private javax.swing.JLabel jlb_logo;
     private javax.swing.JLabel jlfooter;
     private javax.swing.JMenu jm_personas;
     private javax.swing.JMenu jmenuMembresias;

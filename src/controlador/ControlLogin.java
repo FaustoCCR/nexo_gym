@@ -1,6 +1,8 @@
 package controlador;
 
 import controlador.cifrado.Hash;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -30,6 +32,10 @@ public class ControlLogin {
         vista.setLocationRelativeTo(null);
         placeholder = new TextPrompt("Nombre de usuario", vista.getTxt_user());
         placeholder = new TextPrompt("Contraseña", vista.getJpassword());
+        
+        //--colacion del Icono
+        Image ico = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("vista/img/logo83.png"));
+        vista.setIconImage(ico);
 
     }
 

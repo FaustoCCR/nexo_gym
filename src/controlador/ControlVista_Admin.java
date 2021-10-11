@@ -1,6 +1,10 @@
 package controlador;
 
 import java.awt.Frame;
+import java.awt.Image;
+import java.awt.Toolkit;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import modelo.dao.CargoDao;
 import modelo.dao.ClienteDao;
 import modelo.dao.Ctg_ProductoDao;
@@ -56,6 +60,9 @@ public class ControlVista_Admin {
 //        vista.setResizable(false);
         vp.setLocationRelativeTo(null);
         vp.setExtendedState(Frame.MAXIMIZED_BOTH);//acopla el frame a toda la pantalla
+        //--colacion del Icono
+        Image ico = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("vista/img/logo83.png"));
+        vp.setIconImage(ico);
         identificarRol();
 
     }
@@ -66,6 +73,16 @@ public class ControlVista_Admin {
                 .filter(u -> u.getId_user() == id_user).
                 findAny().get().getUser_name();
 
+    }
+
+    private void logo() {
+        
+        JLabel label = vp.getJlb_logo();
+        ImageIcon img = new ImageIcon(getClass().getResource("/vista/img/logo8.png"));
+        ImageIcon icono = new ImageIcon(img.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
+        vp.getJlb_logo().setIcon(icono);
+//        vp.getJlb_logo().setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - label.getWidth())/2,
+//                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - label.getHeight())/2);
     }
 
     public void funcionalidad() {
@@ -92,19 +109,17 @@ public class ControlVista_Admin {
         vp.getJmi_gcargos().addActionListener(l -> ventanaGestion_Cargos());
         vp.getJmi_gcategorias().addActionListener(l -> ventanaGestion_Categorias());
         vp.getJmi_gproveedores().addActionListener(l -> ventanaGestion_Proveedores());
-        vp.getJmi_plantillaEntrenamiento().addActionListener(l->ventanaPlantilla_Instructor());
-        vp.getJmi_reporteventas().addActionListener(l->ventanaGestion_Ventas());
-        
-        
+        vp.getJmi_plantillaEntrenamiento().addActionListener(l -> ventanaPlantilla_Instructor());
+        vp.getJmi_reporteventas().addActionListener(l -> ventanaGestion_Ventas());
 
     }
 
     private void identificarRol() {
 
         switch (ControlLogin.permiso) {
-            
-            case 1: 
-                
+
+            case 1:
+
                 vp.getJmi_plantillaEntrenamiento().setVisible(false);
                 break;
 
@@ -357,11 +372,11 @@ public class ControlVista_Admin {
         ControlPlantilla_Instructor control = new ControlPlantilla_Instructor(modelo, vista);
         control.funcionalidad();
     }
-    
-    private void ventanaGestion_Ventas(){
+
+    private void ventanaGestion_Ventas() {
         Ecb_VentaDao modelo1 = new Ecb_VentaDao();
         Cuerpo_VentaDao modelo2 = new Cuerpo_VentaDao();
-        VistaGestionVentas vista = new  VistaGestionVentas();
+        VistaGestionVentas vista = new VistaGestionVentas();
         VistaAdministrador.getjDesktopPanePrincipal().add(vista);
         ControlGestion_Ventas control = new ControlGestion_Ventas(modelo1, modelo2, vista);
         control.funcionalidad();

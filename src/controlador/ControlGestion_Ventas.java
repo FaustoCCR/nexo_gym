@@ -43,7 +43,6 @@ public class ControlGestion_Ventas {
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         vista.getJdatefiltro().getDateEditor().setEnabled(false);
-        
 
         disenioTabla();
         cargarDatosTabla("", "");
@@ -55,20 +54,20 @@ public class ControlGestion_Ventas {
             @Override
             public void keyReleased(KeyEvent e) {
                 cargarDatosTabla(vista.getTxt_buscar().getText(), "");
-                ((JTextField)vista.getJdatefiltro().getDateEditor().getUiComponent()).setText("");
-                
+                ((JTextField) vista.getJdatefiltro().getDateEditor().getUiComponent()).setText("");
 
             }
         });
 
         vista.getJdatefiltro().getDateEditor().addPropertyChangeListener(new PropertyChangeListener() {
             public void propertyChange(PropertyChangeEvent e) {
+                if (vista.getJdatefiltro().getDate() != null) {
 
 //                String sql = "or to_char(ec.fecha_venta,'dd/MM/yyyy') = " + "'"+ vista.getJdatefiltro().getDate() + "'";
 //                String sql = "and to_char(ec.fecha_venta,'dd/mm/yyyy') = '04/10/2021'";
-                String sql = "and ec.fecha_venta = to_date('" + formateadorFecha(transformarFecha())+ "','dd/MM/yyyy')";
-                cargarDatosTabla(vista.getTxt_buscar().getText(), sql);
-
+                    String sql = "and ec.fecha_venta = to_date('" + formateadorFecha(transformarFecha()) + "','dd/MM/yyyy')";
+                    cargarDatosTabla(vista.getTxt_buscar().getText(), sql);
+                }
             }
         });
 
@@ -82,9 +81,9 @@ public class ControlGestion_Ventas {
         return Date.valueOf(zdt.toLocalDate());
 
     }
-    
-    private String formateadorFecha(Date fecha){
-        
+
+    private String formateadorFecha(Date fecha) {
+
         SimpleDateFormat formateador = new SimpleDateFormat("dd/MM/yyyy");
         return formateador.format(fecha);
     }

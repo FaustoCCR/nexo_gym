@@ -8,14 +8,20 @@ import java.sql.Date;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.Predicate;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
+import modelo.conexion.PGConexion;
 import modelo.dao.ClienteDao;
 import modelo.dao.Cuerpo_VentaDao;
 import modelo.dao.ProductoDao;
@@ -23,6 +29,12 @@ import modelo.dao.UsuarioDao;
 import modelo.dao.Ecb_VentaDao;
 import modelo.vo.ClienteVo;
 import modelo.vo.ProductoVo;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import vista.VistaAdministrador;
 import vista.VistaRealizar_Venta;
 
@@ -84,6 +96,7 @@ public class ControlRealizar_Venta {
         vista.getBt_agregar().addActionListener(l -> agregarProducto());
         vista.getBt_generarventa().addActionListener((e) -> {
             realizarVenta();
+            solicitarFactura();
         });
 
         vista.getBt_cancelar().addActionListener(l -> reiniciarCampos());
@@ -213,7 +226,7 @@ public class ControlRealizar_Venta {
                 } else {
                     JOptionPane.showMessageDialog(vista, "Ingrese la cantidad");
                 }
-            }else{
+            } else {
                 JOptionPane.showMessageDialog(vista, "Revisar Stock");
             }
 
@@ -369,6 +382,40 @@ public class ControlRealizar_Venta {
             }
         } else {
             JOptionPane.showMessageDialog(vista, "Ingrese el DNI del cliente", "Aviso", 0);
+        }
+
+    }
+    private void solicitarFactura(){
+        
+        int opc = JOptionPane.showConfirmDialog(vista, "¿Desea la factura de la venta?", "Confirmación",JOptionPane.YES_NO_OPTION);
+        if (opc ==JOptionPane.YES_OPTION) {
+            imprimirReporte(); 
+        }
+    }
+
+    private void imprimirReporte() {
+
+        PGConexion con = new PGConexion();
+
+        try {
+
+            /*Creacion de un mapa
+            asigna un dato a los diferentes 
+            parámetros*/
+            Map<String, Object> parametros = new HashMap<>();
+            int id_factura = modeloecb_venta.mostrar_maxID();
+
+//            put( ?,  ?)---> el nombre del parametro(tipo de dato), la variable que recibe 
+            parametros.put("p_idfactura", id_factura);
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/Factura.jasper"));
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, con.getCon());
+
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControlGestion_Clientes.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
