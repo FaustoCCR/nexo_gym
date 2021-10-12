@@ -86,7 +86,12 @@ public class ControlGestion_Productos {
         vista.getJtable_productos().setModel(tb_model);
         vista.getJtable_productos().getTableHeader().setFont(new Font("Trebuchet MS", 1, 15));//fuente que lleve la cabecera
         vista.getJtable_productos().setShowHorizontalLines(true);//colocar lineas horizontales
-        vista.getJtable_productos().getColumnModel().getColumn(0).setPreferredWidth(20);
+        vista.getJtable_productos().getColumnModel().getColumn(0).setPreferredWidth(8);
+        vista.getJtable_productos().getColumnModel().getColumn(1).setPreferredWidth(110);
+        vista.getJtable_productos().getColumnModel().getColumn(2).setPreferredWidth(140);
+        vista.getJtable_productos().getColumnModel().getColumn(3).setPreferredWidth(40);
+        vista.getJtable_productos().getColumnModel().getColumn(4).setPreferredWidth(25);
+        vista.getJtable_productos().getColumnModel().getColumn(5).setPreferredWidth(100);
         vista.getJtable_productos().setDefaultRenderer(Object.class, new ImagenTabla());
         vista.getJtable_productos().setRowHeight(85);
 
@@ -115,7 +120,7 @@ public class ControlGestion_Productos {
 
         modelo.mostrarDatos(aguja).stream().forEach((pr) -> {
 
-            Object[] contenido = {pr.getId_prod(), pr.getNombre(), pr.getDescripcion(), pr.getPrecio_u(), pr.getStock(), revelarFoto(pr.getFoto())};
+            Object[] contenido = {pr.getId_prod(), pr.getNombre(), pr.getDescripcion(), pr.getPrecio_u() +" $", pr.getStock(), revelarFoto(pr.getFoto())};
 
             tb_model.addRow(contenido);
 

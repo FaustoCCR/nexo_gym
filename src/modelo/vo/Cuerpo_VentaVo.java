@@ -1,27 +1,27 @@
-
 package modelo.vo;
 
 import java.sql.Date;
 
-
 public class Cuerpo_VentaVo {
-    
+
     //atributos
     private int id_cp;
     private int id_ecb; // ----> FK
     private int id_producto; // ----> FK
     private int cantidad;
     private double costo_final;
-    
-    
+
     //variables extras
     private String cliente;
+    private String dni;
+    private String nombre_producto;
+    private double precio_u;
     private String vendedor;
     private Date fecha_venta;
     private int nro_productos;
     private double total;
-    
-    public Cuerpo_VentaVo(){
+
+    public Cuerpo_VentaVo() {
     }
 
     public Cuerpo_VentaVo(int id_cp, int id_ecb, int id_producto, int cantidad, double costo_final) {
@@ -111,9 +111,29 @@ public class Cuerpo_VentaVo {
     public void setTotal(double total) {
         this.total = total;
     }
-    
-    
-    
-    
-    
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
+    public String getNombre_producto() {
+        return nombre_producto;
+    }
+
+    public void setNombre_producto(String nombre_producto) {
+        this.nombre_producto = nombre_producto;
+    }
+
+    public double getPrecio_u() {
+        return precio_u;
+    }
+
+    public void setPrecio_u(double precio_u) {
+        this.precio_u = precio_u;
+    }
+
 }

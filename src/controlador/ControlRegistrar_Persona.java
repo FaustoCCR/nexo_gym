@@ -1,5 +1,10 @@
 package controlador;
 
+import controlador.validaciones.VCorreo;
+import controlador.validaciones.VLetras;
+import controlador.validaciones.VCedula;
+import controlador.validaciones.VDireccion;
+import controlador.validaciones.VTelefono;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -34,8 +39,8 @@ public class ControlRegistrar_Persona {
         vista.setVisible(true);
         vista.setTitle("Registro de Persona - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -54,7 +59,13 @@ public class ControlRegistrar_Persona {
             }
 
         });
-
+        vista_persona.getTxt_cedula().addKeyListener(new VCedula(vista_persona.getTxt_cedula()));
+        vista_persona.getTxt_nombre().addKeyListener(new VLetras(vista_persona.getTxt_nombre()));
+        vista_persona.getTxt_apellido().addKeyListener(new VLetras(vista_persona.getTxt_apellido()));
+        vista_persona.getTxt_correo().addKeyListener(new VCorreo(vista_persona.getTxt_correo()));
+        vista_persona.getTxt_telefono().addKeyListener(new VTelefono(vista_persona.getTxt_telefono()));
+        vista_persona.getTxt_direccion().addKeyListener(new VDireccion(vista_persona.getTxt_direccion()));
+        
         vista_persona.getBt_registrar().addActionListener(l -> registrarPersona());
 
     }

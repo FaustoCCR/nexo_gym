@@ -28,7 +28,7 @@ public class VistaLogin extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(20, 146, 230));
+        jPanel1.setBackground(new java.awt.Color(21, 45, 59));
 
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/logo8.png"))); // NOI18N
@@ -62,7 +62,7 @@ public class VistaLogin extends javax.swing.JFrame {
 
         jpassword.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
 
-        bt_ingresar.setBackground(new java.awt.Color(20, 146, 230));
+        bt_ingresar.setBackground(new java.awt.Color(21, 45, 59));
         bt_ingresar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         bt_ingresar.setForeground(new java.awt.Color(248, 248, 248));
         bt_ingresar.setText("Ingresar");

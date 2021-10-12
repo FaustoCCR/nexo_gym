@@ -3,8 +3,7 @@ package controlador;
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.JDesktopPane;
 import modelo.dao.CargoDao;
 import modelo.dao.ClienteDao;
 import modelo.dao.Ctg_ProductoDao;
@@ -18,6 +17,7 @@ import modelo.dao.RutinaDao;
 import modelo.dao.UsuarioDao;
 import modelo.dao.Ecb_VentaDao;
 import modelo.dao.ProgramaClienteDao;
+import vista.Fondo;
 import vista.VistaAdministrador;
 import vista.VistaGestionVentas;
 import vista.VistaGestion_Cargo;
@@ -54,15 +54,18 @@ public class ControlVista_Admin {
     public ControlVista_Admin(VistaAdministrador vp) {
         this.vp = vp;
 
+        //--colacion del Icono
+        Image ico = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("vista/img/logo83.png"));
+        vp.setIconImage(ico);
+        //--fondo
+        VistaAdministrador.getjDesktopPanePrincipal().setBorder(new Fondo());
+
         id_user = ControlLogin.id_user;
         vp.setVisible(true);
         vp.setTitle("Sesión de " + userName() + " - Nexo Gym");
 //        vista.setResizable(false);
         vp.setLocationRelativeTo(null);
         vp.setExtendedState(Frame.MAXIMIZED_BOTH);//acopla el frame a toda la pantalla
-        //--colacion del Icono
-        Image ico = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("vista/img/logo83.png"));
-        vp.setIconImage(ico);
         identificarRol();
 
     }
@@ -73,16 +76,6 @@ public class ControlVista_Admin {
                 .filter(u -> u.getId_user() == id_user).
                 findAny().get().getUser_name();
 
-    }
-
-    private void logo() {
-        
-        JLabel label = vp.getJlb_logo();
-        ImageIcon img = new ImageIcon(getClass().getResource("/vista/img/logo8.png"));
-        ImageIcon icono = new ImageIcon(img.getImage().getScaledInstance(label.getWidth(), label.getHeight(), Image.SCALE_DEFAULT));
-        vp.getJlb_logo().setIcon(icono);
-//        vp.getJlb_logo().setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - label.getWidth())/2,
-//                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - label.getHeight())/2);
     }
 
     public void funcionalidad() {

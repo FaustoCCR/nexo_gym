@@ -26,16 +26,16 @@ public class ControlLogin {
         this.modelo = modelo;
         this.vista = vista;
 
+        //--colacion del Icono
+        Image ico = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("vista/img/logo83.png"));
+        vista.setIconImage(ico);
+
         vista.setVisible(true);
         vista.setTitle("Login");
         vista.setResizable(false);
         vista.setLocationRelativeTo(null);
         placeholder = new TextPrompt("Nombre de usuario", vista.getTxt_user());
         placeholder = new TextPrompt("Contraseña", vista.getJpassword());
-        
-        //--colacion del Icono
-        Image ico = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("vista/img/logo83.png"));
-        vista.setIconImage(ico);
 
     }
 
