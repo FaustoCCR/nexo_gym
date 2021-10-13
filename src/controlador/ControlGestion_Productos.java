@@ -4,13 +4,25 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
+import modelo.conexion.PGConexion;
 import modelo.dao.ProductoDao;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import vista.VistaActualizar_Producto;
 import vista.VistaAdministrador;
 import vista.VistaGestion_Productos;
@@ -167,5 +179,39 @@ public class ControlGestion_Productos {
             JOptionPane.showMessageDialog(vista, "Seleccione el registro a eliminar");
         }
     }
+     private void imprimirReporte() {
+
+        PGConexion con = new PGConexion();
+
+        try {
+            Map<String, Object> parametros = new HashMap<>();
+            String aguja = vista.getTxt_buscar().getText().trim();
+            parametros.put("paguja", "%" + aguja + "%");
+//          parametros.put("pdetalle", subitituloReport(aguja));
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/ReporteProductos.jasper"));
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, con.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControlGestion_Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    private String subitituloReport(String filtro) {
+
+        if (filtro.isEmpty()) {
+
+            return "Búsqueda general";
+
+        } else {
+            return "Párametro de búsqueda : " +filtro;
+
+        }
+
+    }
+    
 
 }
