@@ -49,4 +49,18 @@ public class Ecb_VentaDao extends Ecb_VentaVo {
         return conecta.accion(sql);
     }
 
+    public boolean modificar(int identificador) {
+        String sql;
+        sql = "UPDATE ecb_venta set \"id_cliente\"='" + getId_cliente() + "',\"id_user\"='" + getId_user() + "',\"fecha_venta\"='" + getFecha_venta() + "'"
+                + "WHERE \"id_ecb\"='" + identificador + "'";
+        return conecta.accion(sql);
+    }
+
+    public boolean eliminar(int identificador) {
+
+        String sql = "delete from ecb_venta where \"id_ecb\"='" + identificador + "'";
+
+        return conecta.accion(sql);
+    }
+
 }

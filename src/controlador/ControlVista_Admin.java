@@ -3,7 +3,6 @@ package controlador;
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Toolkit;
-import javax.swing.JDesktopPane;
 import modelo.dao.CargoDao;
 import modelo.dao.ClienteDao;
 import modelo.dao.Ctg_ProductoDao;
@@ -63,7 +62,7 @@ public class ControlVista_Admin {
         id_user = ControlLogin.id_user;
         vp.setVisible(true);
         vp.setTitle("Sesión de " + userName() + " - Nexo Gym");
-//        vista.setResizable(false);
+        vp.setResizable(false);
         vp.setLocationRelativeTo(null);
         vp.setExtendedState(Frame.MAXIMIZED_BOTH);//acopla el frame a toda la pantalla
         identificarRol();
@@ -105,6 +104,14 @@ public class ControlVista_Admin {
         vp.getJmi_plantillaEntrenamiento().addActionListener(l -> ventanaPlantilla_Instructor());
         vp.getJmi_reporteventas().addActionListener(l -> ventanaGestion_Ventas());
 
+        /*Funciones para los botones del JToolBar */
+        vp.getBt_rpersona().addActionListener(l -> ventanaRegistrar_Persona());
+        vp.getBt_rcliente().addActionListener(l -> ventanaRegistrar_Cliente());
+        vp.getBt_rproveedor().addActionListener(l -> ventanaRg_Proveedor());
+        vp.getBt_rproducto().addActionListener(l -> ventanaRg_Producto());
+        vp.getBt_rventa().addActionListener(l -> ventanaRealizarVenta());
+        vp.getBt_plantilla().addActionListener(l -> ventanaPlantilla_Instructor());
+
     }
 
     private void identificarRol() {
@@ -114,6 +121,7 @@ public class ControlVista_Admin {
             case 1:
 
                 vp.getJmi_plantillaEntrenamiento().setVisible(false);
+                vp.getBt_plantilla().setVisible(false);
                 break;
 
             case 2:
@@ -130,7 +138,14 @@ public class ControlVista_Admin {
                 vp.getJmi_rgmembresia().setVisible(false);
                 vp.getJmi_rgrutina().setVisible(false);
                 vp.getJmi_plantillaEntrenamiento().setVisible(false);
+                vp.getBt_plantilla().setVisible(false);
                 vp.getJmi_reporteventas().setVisible(false);
+
+                /* */
+                vp.getSp2().setVisible(false);
+                vp.getBt_rproveedor().setVisible(false);
+                vp.getSp3().setVisible(false);
+                vp.getBt_rproducto().setVisible(false);
 
                 break;
             case 3:
@@ -151,6 +166,18 @@ public class ControlVista_Admin {
                 vp.getJmi_gmembresias().setVisible(false);
                 vp.getJmenuVentas().setVisible(false);
                 ventanaPlantilla_Instructor();
+
+                /* */
+                vp.getSp0().setVisible(false);
+                vp.getBt_rpersona().setVisible(false);
+                vp.getSp1().setVisible(false);
+                vp.getBt_rcliente().setVisible(false);
+                vp.getSp2().setVisible(false);
+                vp.getBt_rproveedor().setVisible(false);
+                vp.getSp3().setVisible(false);
+                vp.getBt_rproducto().setVisible(false);
+                vp.getSp4().setVisible(false);
+                vp.getBt_rventa().setVisible(false);
 
                 break;
 

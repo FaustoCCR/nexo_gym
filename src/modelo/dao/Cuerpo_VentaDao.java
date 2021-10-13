@@ -68,7 +68,7 @@ public class Cuerpo_VentaDao extends Cuerpo_VentaVo {
     public List<Cuerpo_VentaVo> mostrarDatosJoinEspecifico(int id_ecb) {
 
         List<Cuerpo_VentaVo> lista_ventas = new ArrayList<>();
-        String sql = "select ec.id_ecb \"Id\", ec.fecha_venta \"Fecha Venta\" ,p.dni \"Cedula\",p.nombre||' '||p.apellido \"Cliente\",\n"
+        String sql = "select ec.id_ecb \"IdEncabezado\",cv.id_cp \"IdCuerpoVenta\", ec.fecha_venta \"Fecha Venta\" ,p.dni \"Cedula\",p.nombre||' '||p.apellido \"Cliente\",\n"
                 + "v.nombre||' '||v.apellido \"Vendedor\",pr.id_prod \"ID prod\",pr.nombre \"Producto\",\n"
                 + "cv.cantidad \"Cantidad\",pr.precio_u \"PrecioU\",cv.costo_final \"Precio Total\"\n"
                 + "from cuerpo_venta cv\n"
@@ -89,15 +89,16 @@ public class Cuerpo_VentaDao extends Cuerpo_VentaVo {
                 Cuerpo_VentaVo cv = new Cuerpo_VentaVo();
 
                 cv.setId_ecb(rs.getInt(1));
-                cv.setFecha_venta(rs.getDate(2));
-                cv.setDni(rs.getString(3));
-                cv.setCliente(rs.getString(4));
-                cv.setVendedor(rs.getString(5));
-                cv.setId_producto(rs.getInt(6));
-                cv.setNombre_producto(rs.getString(7));
-                cv.setCantidad(rs.getInt(8));
-                cv.setPrecio_u(rs.getDouble(9));
-                cv.setTotal(rs.getDouble(10));
+                cv.setId_cp(rs.getInt(2));
+                cv.setFecha_venta(rs.getDate(3));
+                cv.setDni(rs.getString(4));
+                cv.setCliente(rs.getString(5));
+                cv.setVendedor(rs.getString(6));
+                cv.setId_producto(rs.getInt(7));
+                cv.setNombre_producto(rs.getString(8));
+                cv.setCantidad(rs.getInt(9));
+                cv.setPrecio_u(rs.getDouble(10));
+                cv.setTotal(rs.getDouble(11));
 
                 lista_ventas.add(cv);
 
@@ -115,6 +116,20 @@ public class Cuerpo_VentaDao extends Cuerpo_VentaVo {
         String sql = "INSERT INTO cuerpo_venta(\n"
                 + "id_ecb, id_prod, cantidad, costo_final)\n"
                 + "VALUES ('" + getId_ecb() + "','" + getId_producto() + "','" + getCantidad() + "','" + getCosto_final() + "');";
+        return conecta.accion(sql);
+    }
+
+    public boolean eliminarFK(int identificador) {
+
+        String sql = "delete from cuerpo_venta where \"id_ecb\"='" + identificador + "'";
+
+        return conecta.accion(sql);
+    }
+
+    public boolean eliminarPK(int identificador) {
+
+        String sql = "delete from cuerpo_venta where \"id_cp\"='" + identificador + "'";
+
         return conecta.accion(sql);
     }
 

@@ -209,7 +209,7 @@ public class ControlRealizar_Venta {
                 int id = Integer.parseInt(vista.getTxt_codproducto().getText());
                 int cantidad = (int) vista.getJspinner_cantidad().getValue();
                 double precio_u = Double.parseDouble(vista.getTxt_preciou().getText());
-                double total = cantidad * precio_u;
+                double total = Math.round((cantidad * precio_u)*100.0)/100.0;
                 if (cantidad > 0) {
 
                     Object[] filas = {item, id, producto, cantidad, precio_u, total};
@@ -306,7 +306,7 @@ public class ControlRealizar_Venta {
 
     }
 
-    void actualizarStock() {
+    private void actualizarStock() {
         for (int i = 0; i < tb_model.getRowCount(); i++) {
 
             int id_prod = Integer.parseInt(vista.getTb_detalleventa().getValueAt(i, 1).toString());

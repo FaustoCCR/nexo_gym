@@ -24,7 +24,7 @@ public class VistaEditar_Venta extends javax.swing.JInternalFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tb_detalleventa = new javax.swing.JTable();
-        bt_cancelar = new javax.swing.JButton();
+        bt_imprimir = new javax.swing.JButton();
         bt_actualizarventa = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
         txt_total = new javax.swing.JTextField();
@@ -51,7 +51,7 @@ public class VistaEditar_Venta extends javax.swing.JInternalFrame {
         jspinner_cantidad = new javax.swing.JSpinner();
         txt_vendedor = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel12.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel12.setText("Vendedor:");
@@ -96,9 +96,9 @@ public class VistaEditar_Venta extends javax.swing.JInternalFrame {
                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        bt_cancelar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
-        bt_cancelar.setText("Cancelar");
-        bt_cancelar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_imprimir.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_imprimir.setText("Imprimir");
+        bt_imprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         bt_actualizarventa.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         bt_actualizarventa.setText("Actualizar Venta");
@@ -234,7 +234,7 @@ public class VistaEditar_Venta extends javax.swing.JInternalFrame {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addComponent(bt_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(bt_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
                                         .addComponent(bt_actualizarventa, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(204, 204, 204))
@@ -350,7 +350,7 @@ public class VistaEditar_Venta extends javax.swing.JInternalFrame {
                         .addComponent(bt_retirar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(121, 121, 121)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_cancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bt_actualizarventa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
                     .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -376,12 +376,12 @@ public class VistaEditar_Venta extends javax.swing.JInternalFrame {
         this.bt_agregar = bt_agregar;
     }
 
-    public JButton getBt_cancelar() {
-        return bt_cancelar;
+    public JButton getBt_imprimir() {
+        return bt_imprimir;
     }
 
-    public void setBt_cancelar(JButton bt_cancelar) {
-        this.bt_cancelar = bt_cancelar;
+    public void setBt_imprimir(JButton bt_imprimir) {
+        this.bt_imprimir = bt_imprimir;
     }
 
     public JButton getBt_retirar() {
@@ -526,7 +526,7 @@ public class VistaEditar_Venta extends javax.swing.JInternalFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bt_actualizarventa;
     private javax.swing.JButton bt_agregar;
-    private javax.swing.JButton bt_cancelar;
+    private javax.swing.JButton bt_imprimir;
     private javax.swing.JButton bt_retirar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

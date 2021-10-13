@@ -8,7 +8,6 @@ import java.beans.PropertyChangeListener;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.DoubleSummaryStatistics;
@@ -30,7 +29,7 @@ public class ControlGestion_Ventas {
     private VistaGestionVentas vista;
     private Cuerpo_VentaDao modelo_cventa;
     private DefaultTableModel tb_model;
-    private Object[] columnas = {" ", "ID", "Cliente", "Vendedor", "Fecha", "Nro.Productos", "Total"};
+    private Object[] columnas = {"#", "ID", "Cliente", "Vendedor", "Fecha", "Nro.Productos", "Total"};
     public static int id_ecb;
 
     public ControlGestion_Ventas(Ecb_VentaDao modelo_ecbventa, Cuerpo_VentaDao modelo_cventa, VistaGestionVentas vista) {
@@ -73,7 +72,8 @@ public class ControlGestion_Ventas {
                 }
             }
         });
-        vista.getBt_verificar().addActionListener(l-> ventanaEditarVenta());
+        vista.getBt_verificar().addActionListener(l -> ventanaEditarVenta());
+        vista.getBt_eliminar().addActionListener(l->sentenciaDelete());
 
     }
 
@@ -135,7 +135,7 @@ public class ControlGestion_Ventas {
     }
 
     private void ventanaEditarVenta() {
-        
+
         int fila = vista.getJtable_ventas().getSelectedRow();
         final int columna = 1; // id_ecb
 
@@ -152,6 +152,30 @@ public class ControlGestion_Ventas {
             JOptionPane.showMessageDialog(vista, "Seleccione el registro a verificar");
         }
 
+    }
+
+    private void sentenciaDelete() {
+
+        int fila = vista.getJtable_ventas().getSelectedRow();
+        final int columna = 1;
+        if (fila != -1) {
+
+            int id_ecb = (int) vista.getJtable_ventas().getValueAt(fila, columna);
+            String cliente = modelo_cventa.mostrarDatosJoinEspecifico(id_ecb).stream().filter(ecb -> ecb.getId_ecb() == id_ecb).findAny().get().getCliente();
+            int resp = JOptionPane.showConfirmDialog(vista, "Seguro desea eliminar la factura con ID : " + id_ecb + "\nCliente : " + cliente, "Confirmación", JOptionPane.YES_NO_OPTION);
+            if (resp == 0) {
+                
+                JOptionPane.showMessageDialog(vista, "Se eliminaran todos los datos relacionados a esta factura");
+                modelo_cventa.eliminarFK(id_ecb);
+                modelo_ecbventa.eliminar(id_ecb);
+                JOptionPane.showMessageDialog(vista, "Venta Eliminada");
+                cargarDatosTabla("", "");
+
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(vista, "Seleccione el registro a eliminar");
+        }
     }
 
 }

@@ -1,9 +1,11 @@
 package vista;
 
+import javax.swing.JButton;
 import javax.swing.JDesktopPane;
 import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuItem;
+import javax.swing.JToolBar;
 
 public class VistaAdministrador extends javax.swing.JFrame {
 
@@ -16,12 +18,18 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private void initComponents() {
 
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jSeparator4 = new javax.swing.JToolBar.Separator();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        sp0 = new javax.swing.JToolBar.Separator();
+        bt_rpersona = new javax.swing.JButton();
+        sp1 = new javax.swing.JToolBar.Separator();
+        bt_rcliente = new javax.swing.JButton();
+        sp2 = new javax.swing.JToolBar.Separator();
+        bt_rproveedor = new javax.swing.JButton();
+        sp3 = new javax.swing.JToolBar.Separator();
+        bt_rproducto = new javax.swing.JButton();
+        sp4 = new javax.swing.JToolBar.Separator();
+        bt_rventa = new javax.swing.JButton();
+        sp5 = new javax.swing.JToolBar.Separator();
+        bt_plantilla = new javax.swing.JButton();
         jlfooter = new javax.swing.JLabel();
         jDesktopPanePrincipal = new javax.swing.JDesktopPane();
         jlb_logo = new javax.swing.JLabel();
@@ -64,42 +72,60 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jToolBar1.setBackground(new java.awt.Color(21, 45, 59));
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
+        jToolBar1.add(sp0);
 
-        jButton1.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton1.setText("Persona");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton1);
+        bt_rpersona.setBackground(new java.awt.Color(215, 233, 244));
+        bt_rpersona.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        bt_rpersona.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/contacto.png"))); // NOI18N
+        bt_rpersona.setFocusable(false);
+        bt_rpersona.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_rpersona.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(bt_rpersona);
+        jToolBar1.add(sp1);
 
-        jButton2.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton2.setText("Cliente");
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
-        jToolBar1.add(jSeparator4);
+        bt_rcliente.setBackground(new java.awt.Color(215, 233, 244));
+        bt_rcliente.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        bt_rcliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/cliente.png"))); // NOI18N
+        bt_rcliente.setFocusable(false);
+        bt_rcliente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_rcliente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(bt_rcliente);
+        jToolBar1.add(sp2);
 
-        jButton3.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton3.setText("Proveedor");
-        jButton3.setFocusable(false);
-        jButton3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton3.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton3);
+        bt_rproveedor.setBackground(new java.awt.Color(215, 233, 244));
+        bt_rproveedor.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        bt_rproveedor.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/proveedor.png"))); // NOI18N
+        bt_rproveedor.setFocusable(false);
+        bt_rproveedor.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_rproveedor.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(bt_rproveedor);
+        jToolBar1.add(sp3);
 
-        jButton4.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton4.setText("Producto");
-        jButton4.setFocusable(false);
-        jButton4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton4.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton4);
+        bt_rproducto.setBackground(new java.awt.Color(215, 233, 244));
+        bt_rproducto.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        bt_rproducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/producto.png"))); // NOI18N
+        bt_rproducto.setFocusable(false);
+        bt_rproducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_rproducto.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(bt_rproducto);
+        jToolBar1.add(sp4);
 
-        jButton5.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
-        jButton5.setText("Venta");
-        jButton5.setFocusable(false);
-        jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton5);
+        bt_rventa.setBackground(new java.awt.Color(215, 233, 244));
+        bt_rventa.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        bt_rventa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/vender.png"))); // NOI18N
+        bt_rventa.setFocusable(false);
+        bt_rventa.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_rventa.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(bt_rventa);
+        jToolBar1.add(sp5);
+
+        bt_plantilla.setBackground(new java.awt.Color(215, 233, 244));
+        bt_plantilla.setFont(new java.awt.Font("Trebuchet MS", 1, 12)); // NOI18N
+        bt_plantilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/plantilla.png"))); // NOI18N
+        bt_plantilla.setFocusable(false);
+        bt_plantilla.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_plantilla.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(bt_plantilla);
 
         jlfooter.setFont(new java.awt.Font("Trebuchet MS", 0, 12)); // NOI18N
         jlfooter.setText("  Sistema Nexo - Gym v1.0.0");
@@ -122,7 +148,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jDesktopPanePrincipalLayout.setVerticalGroup(
             jDesktopPanePrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPanePrincipalLayout.createSequentialGroup()
-                .addContainerGap(258, Short.MAX_VALUE)
+                .addContainerGap(235, Short.MAX_VALUE)
                 .addComponent(jlb_logo, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -264,7 +290,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jDesktopPanePrincipal)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -522,6 +548,104 @@ public class VistaAdministrador extends javax.swing.JFrame {
         this.jlb_logo = jlb_logo;
     }
 
+    public JButton getBt_rcliente() {
+        return bt_rcliente;
+    }
+
+    public void setBt_rcliente(JButton bt_rcliente) {
+        this.bt_rcliente = bt_rcliente;
+    }
+
+    public JButton getBt_rpersona() {
+        return bt_rpersona;
+    }
+
+    public void setBt_rpersona(JButton bt_rpersona) {
+        this.bt_rpersona = bt_rpersona;
+    }
+
+    public JButton getBt_rproducto() {
+        return bt_rproducto;
+    }
+
+    public void setBt_rproducto(JButton bt_rproducto) {
+        this.bt_rproducto = bt_rproducto;
+    }
+
+    public JButton getBt_rproveedor() {
+        return bt_rproveedor;
+    }
+
+    public void setBt_rproveedor(JButton bt_rproveedor) {
+        this.bt_rproveedor = bt_rproveedor;
+    }
+
+    public JButton getBt_rventa() {
+        return bt_rventa;
+    }
+
+    public void setBt_rventa(JButton bt_rventa) {
+        this.bt_rventa = bt_rventa;
+    }
+
+    public JToolBar.Separator getSp0() {
+        return sp0;
+    }
+
+    public void setSp0(JToolBar.Separator sp0) {
+        this.sp0 = sp0;
+    }
+
+    public JToolBar.Separator getSp1() {
+        return sp1;
+    }
+
+    public void setSp1(JToolBar.Separator sp1) {
+        this.sp1 = sp1;
+    }
+
+    public JToolBar.Separator getSp2() {
+        return sp2;
+    }
+
+    public void setSp2(JToolBar.Separator sp2) {
+        this.sp2 = sp2;
+    }
+
+    public JToolBar.Separator getSp3() {
+        return sp3;
+    }
+
+    public void setSp3(JToolBar.Separator sp3) {
+        this.sp3 = sp3;
+    }
+
+    public JToolBar.Separator getSp4() {
+        return sp4;
+    }
+
+    public void setSp4(JToolBar.Separator sp4) {
+        this.sp4 = sp4;
+    }
+
+    public JButton getBt_plantilla() {
+        return bt_plantilla;
+    }
+
+    public void setBt_plantilla(JButton bt_plantilla) {
+        this.bt_plantilla = bt_plantilla;
+    }
+
+    public JToolBar.Separator getSp5() {
+        return sp5;
+    }
+
+    public void setSp5(JToolBar.Separator sp5) {
+        this.sp5 = sp5;
+    }
+    
+    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -555,18 +679,18 @@ public class VistaAdministrador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton bt_plantilla;
+    private javax.swing.JButton bt_rcliente;
+    private javax.swing.JButton bt_rpersona;
+    private javax.swing.JButton bt_rproducto;
+    private javax.swing.JButton bt_rproveedor;
+    private javax.swing.JButton bt_rventa;
     public static javax.swing.JDesktopPane jDesktopPanePrincipal;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JPopupMenu.Separator jSeparator3;
-    private javax.swing.JToolBar.Separator jSeparator4;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel jlb_logo;
     private javax.swing.JLabel jlfooter;
@@ -598,5 +722,11 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmi_rgproveedor;
     private javax.swing.JMenuItem jmi_rgrutina;
     private javax.swing.JMenuItem jmi_salir;
+    private javax.swing.JToolBar.Separator sp0;
+    private javax.swing.JToolBar.Separator sp1;
+    private javax.swing.JToolBar.Separator sp2;
+    private javax.swing.JToolBar.Separator sp3;
+    private javax.swing.JToolBar.Separator sp4;
+    private javax.swing.JToolBar.Separator sp5;
     // End of variables declaration//GEN-END:variables
 }
