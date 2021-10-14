@@ -36,6 +36,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmi_salir = new javax.swing.JMenuItem();
+        jm_estilos = new javax.swing.JMenu();
         jm_personas = new javax.swing.JMenu();
         jmi_rgpersona = new javax.swing.JMenuItem();
         jmi_registraruser = new javax.swing.JMenuItem();
@@ -159,6 +160,10 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jmi_salir.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jmi_salir.setText("Salir");
         jMenu1.add(jmi_salir);
+
+        jm_estilos.setText("Estilos");
+        jm_estilos.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jMenu1.add(jm_estilos);
 
         jMenuBar1.add(jMenu1);
 
@@ -643,6 +648,16 @@ public class VistaAdministrador extends javax.swing.JFrame {
     public void setSp5(JToolBar.Separator sp5) {
         this.sp5 = sp5;
     }
+
+    public JMenu getJm_estilos() {
+        return jm_estilos;
+    }
+
+    public void setJm_estilos(JMenu jm_estilos) {
+        this.jm_estilos = jm_estilos;
+    }
+    
+    
     
     
 
@@ -694,6 +709,7 @@ public class VistaAdministrador extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JLabel jlb_logo;
     private javax.swing.JLabel jlfooter;
+    private javax.swing.JMenu jm_estilos;
     private javax.swing.JMenu jm_personas;
     private javax.swing.JMenu jmenuMembresias;
     private javax.swing.JMenu jmenuVentas;

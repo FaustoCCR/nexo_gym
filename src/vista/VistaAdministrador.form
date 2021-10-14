@@ -20,6 +20,14 @@
                 <Property name="text" type="java.lang.String" value="Salir"/>
               </Properties>
             </MenuItem>
+            <Menu class="javax.swing.JMenu" name="jm_estilos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Estilos"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Trebuchet MS" size="14" style="0"/>
+                </Property>
+              </Properties>
+            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="jm_personas">

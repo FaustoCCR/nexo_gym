@@ -1,5 +1,6 @@
 package controlador;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
@@ -34,12 +35,26 @@ public class ControlGestion_Productos {
     private DefaultTableModel tb_model;
     private Object[] columnas = {"ID", "Nombre", "Descripción", "Precio U", "Stock", "Imagen"};
     public static int id_prod;
+    private Dimension dim;
 
     public ControlGestion_Productos(ProductoDao modelo, VistaGestion_Productos vista) {
         this.modelo = modelo;
         this.vista = vista;
         vista.setVisible(true);
         vista.setTitle("Productos Registrados - Nexo Gym");
+        
+        //con esto obtienes en tamano en en x y y de tu monitor
+        /*--------------- metodo en prueba ------------------    */
+        dim=vista.getToolkit().getScreenSize();
+        int ancho = (int)VistaAdministrador.getjDesktopPanePrincipal().getWidth()/2;
+        int alto = (int)VistaAdministrador.getjDesktopPanePrincipal().getHeight()/2;
+//        vista.setSize(ancho,alto);
+        vista.setPreferredSize(dim);
+        vista.setMaximumSize(dim);
+        
+        /*---------------------------------------------------- */
+        
+        
         vista.setResizable(false);
         vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
                 (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);

@@ -1,8 +1,15 @@
 package controlador;
 
+import java.awt.Font;
 import java.awt.Frame;
 import java.awt.Image;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.ButtonGroup;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.SwingUtilities;
+import javax.swing.UnsupportedLookAndFeelException;
 import modelo.dao.CargoDao;
 import modelo.dao.ClienteDao;
 import modelo.dao.Ctg_ProductoDao;
@@ -47,6 +54,7 @@ public class ControlVista_Admin {
 
     private VistaAdministrador vp;
     private int id_user;
+    private List<String>estilos;
 
     private UsuarioDao modelo_user = new UsuarioDao();
 
@@ -66,7 +74,40 @@ public class ControlVista_Admin {
         vp.setLocationRelativeTo(null);
         vp.setExtendedState(Frame.MAXIMIZED_BOTH);//acopla el frame a toda la pantalla
         identificarRol();
+        agregarEstilos();
 
+    }
+    
+    private void agregarEstilos() {
+        estilos = new ArrayList();
+        ButtonGroup btnsEstilo = new ButtonGroup();
+        for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            JRadioButtonMenuItem mi = new JRadioButtonMenuItem(info.getName());
+            mi.setFont(new Font("Trebuchet MS", 0, 14));
+            mi.addActionListener(e -> estiloVtn(info.getName()));
+            estilos.add(info.getName());
+            vp.getJm_estilos().add(mi);
+            btnsEstilo.add(mi);
+        }
+
+    }
+
+    /**
+     * Se ejecuta al seleccionar un estilo en el menu de opciones. Obtendra el
+     * nombre del estilo elejido y actualizara la ventana, para mostrarlo.
+     */
+    private void estiloVtn(String estilo) {
+        try {
+            vp.setDefaultLookAndFeelDecorated(true);
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if (estilo.equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+            SwingUtilities.updateComponentTreeUI(vp);
+        } catch (ClassNotFoundException | IllegalAccessException | InstantiationException | UnsupportedLookAndFeelException e) {
+        }
     }
 
     private String userName() {
