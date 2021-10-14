@@ -41,8 +41,8 @@ public class ControlGestion_Productos {
         vista.setVisible(true);
         vista.setTitle("Productos Registrados - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -64,9 +64,11 @@ public class ControlGestion_Productos {
         });
         vista.getBt_verificar().addActionListener(l -> ventanaActualizar());
         vista.getBt_eliminar().addActionListener(l -> sentenciaDelete());
+        vista.getBt_imprimir().addActionListener(l -> imprimirReporte());
 
     }
-        private void identificarRol() {
+
+    private void identificarRol() {
 
         switch (ControlLogin.permiso) {
 
@@ -132,7 +134,7 @@ public class ControlGestion_Productos {
 
         modelo.mostrarDatos(aguja).stream().forEach((pr) -> {
 
-            Object[] contenido = {pr.getId_prod(), pr.getNombre(), pr.getDescripcion(), pr.getPrecio_u() +" $", pr.getStock(), revelarFoto(pr.getFoto())};
+            Object[] contenido = {pr.getId_prod(), pr.getNombre(), pr.getDescripcion(), pr.getPrecio_u() + " $", pr.getStock(), revelarFoto(pr.getFoto())};
 
             tb_model.addRow(contenido);
 
@@ -179,7 +181,8 @@ public class ControlGestion_Productos {
             JOptionPane.showMessageDialog(vista, "Seleccione el registro a eliminar");
         }
     }
-     private void imprimirReporte() {
+
+    private void imprimirReporte() {
 
         PGConexion con = new PGConexion();
 
@@ -187,7 +190,8 @@ public class ControlGestion_Productos {
             Map<String, Object> parametros = new HashMap<>();
             String aguja = vista.getTxt_buscar().getText().trim();
             parametros.put("paguja", "%" + aguja + "%");
-//          parametros.put("pdetalle", subitituloReport(aguja));
+            parametros.put("pdetalle", subitituloReport(aguja));
+
             JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/ReporteProductos.jasper"));
             JasperPrint jp = JasperFillManager.fillReport(jr, parametros, con.getCon());
             JasperViewer jv = new JasperViewer(jp, false);
@@ -207,11 +211,10 @@ public class ControlGestion_Productos {
             return "Búsqueda general";
 
         } else {
-            return "Párametro de búsqueda : " +filtro;
+            return "Párametro de búsqueda : " + filtro;
 
         }
 
     }
-    
 
 }

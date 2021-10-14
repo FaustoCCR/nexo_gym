@@ -102,9 +102,9 @@ public class VistaGestion_Productos extends javax.swing.JInternalFrame {
                     .addComponent(bt_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(bt_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();
@@ -148,6 +148,14 @@ public class VistaGestion_Productos extends javax.swing.JInternalFrame {
 
     public void setTxt_buscar(JTextField txt_buscar) {
         this.txt_buscar = txt_buscar;
+    }
+
+    public JButton getBt_imprimir() {
+        return bt_imprimir;
+    }
+
+    public void setBt_imprimir(JButton bt_imprimir) {
+        this.bt_imprimir = bt_imprimir;
     }
     
     
