@@ -11,14 +11,26 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.DoubleSummaryStatistics;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
+import modelo.conexion.PGConexion;
 import modelo.dao.Cuerpo_VentaDao;
 import modelo.dao.Ecb_VentaDao;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.util.JRLoader;
+import net.sf.jasperreports.view.JasperViewer;
 import vista.VistaAdministrador;
 import vista.VistaEditar_Venta;
 import vista.VistaGestionVentas;
@@ -74,7 +86,7 @@ public class ControlGestion_Ventas {
         });
         vista.getBt_verificar().addActionListener(l -> ventanaEditarVenta());
         vista.getBt_eliminar().addActionListener(l->sentenciaDelete());
-
+        vista.getBt_imprimir().addActionListener(l->imprimirReporte());
     }
 
     private Date transformarFecha() {
@@ -176,6 +188,26 @@ public class ControlGestion_Ventas {
         } else {
             JOptionPane.showMessageDialog(vista, "Seleccione el registro a eliminar");
         }
+    }
+    
+        private void imprimirReporte() {
+
+        PGConexion con = new PGConexion();
+
+        try {
+            Map<String, Object> parametros = new HashMap<>();
+            parametros.put("pdetalle", "Reporte General");
+
+            JasperReport jr = (JasperReport) JRLoader.loadObject(getClass().getResource("/vista/reportes/ReporteVentas.jasper"));
+            JasperPrint jp = JasperFillManager.fillReport(jr, parametros, con.getCon());
+            JasperViewer jv = new JasperViewer(jp, false);
+            jv.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+            jv.setVisible(true);
+
+        } catch (JRException ex) {
+            Logger.getLogger(ControlGestion_Clientes.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
 }

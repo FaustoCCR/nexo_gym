@@ -35,8 +35,8 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jlb_logo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jmi_salir = new javax.swing.JMenuItem();
         jm_estilos = new javax.swing.JMenu();
+        jmi_salir = new javax.swing.JMenuItem();
         jm_personas = new javax.swing.JMenu();
         jmi_rgpersona = new javax.swing.JMenuItem();
         jmi_registraruser = new javax.swing.JMenuItem();
@@ -157,13 +157,13 @@ public class VistaAdministrador extends javax.swing.JFrame {
         jMenu1.setText("Opciones");
         jMenu1.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
 
-        jmi_salir.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
-        jmi_salir.setText("Salir");
-        jMenu1.add(jmi_salir);
-
         jm_estilos.setText("Estilos");
         jm_estilos.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
         jMenu1.add(jm_estilos);
+
+        jmi_salir.setFont(new java.awt.Font("Trebuchet MS", 0, 14)); // NOI18N
+        jmi_salir.setText("Salir");
+        jMenu1.add(jmi_salir);
 
         jMenuBar1.add(jMenu1);
 
