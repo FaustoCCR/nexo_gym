@@ -18,21 +18,17 @@ public class VistaGestion_Membresias extends javax.swing.JInternalFrame{
     private void initComponents() {
 
         txt_buscar = new javax.swing.JTextField();
-        bt_verificar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable_membresias = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
+        bt_verificar = new javax.swing.JButton();
         bt_eliminar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         txt_buscar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         txt_buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
-
-        bt_verificar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
-        bt_verificar.setText("Verificar");
-        bt_verificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         jLabel2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel2.setText("Membresías Registradas");
@@ -56,10 +52,17 @@ public class VistaGestion_Membresias extends javax.swing.JInternalFrame{
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel1.setText("Buscar:");
 
+        bt_verificar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_verificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/verify.png"))); // NOI18N
+        bt_verificar.setText("Verificar");
+        bt_verificar.setFocusPainted(false);
+        bt_verificar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
         bt_eliminar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/remove1.png"))); // NOI18N
         bt_eliminar.setText("Eliminar");
         bt_eliminar.setFocusPainted(false);
-        bt_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -67,19 +70,19 @@ public class VistaGestion_Membresias extends javax.swing.JInternalFrame{
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(31, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane1)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bt_verificar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(bt_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 651, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30))
+                        .addComponent(bt_verificar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(bt_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(31, 31, 31))
             .addGroup(layout.createSequentialGroup()
-                .addGap(258, 258, 258)
+                .addGap(271, 271, 271)
                 .addComponent(jLabel2)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -88,12 +91,13 @@ public class VistaGestion_Membresias extends javax.swing.JInternalFrame{
             .addGroup(layout.createSequentialGroup()
                 .addGap(31, 31, 31)
                 .addComponent(jLabel2)
-                .addGap(45, 45, 45)
+                .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_verificar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(bt_verificar)
+                        .addComponent(bt_eliminar)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))

@@ -1,6 +1,8 @@
 package controlador;
 
+import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
@@ -9,6 +11,7 @@ import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Locale;
 import java.util.stream.Collectors;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -44,8 +47,8 @@ public class ControlPrograma_Cliente {
         vista_pgcliente.setVisible(true);
         vista_pgcliente.setTitle("Programa Cliente - Nexo Gym");
         vista_pgcliente.setResizable(false);
-        vista_pgcliente.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_pgcliente.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_pgcliente.getHeight())/2);
+        vista_pgcliente.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_pgcliente.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_pgcliente.getHeight()) / 2);
         vista_pgcliente.setClosable(true);
         vista_pgcliente.setIconifiable(true);
         vista_pgcliente.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -164,14 +167,25 @@ public class ControlPrograma_Cliente {
     }
 
     /* ----------------------- ITEM REGISTRAR ------------------------ */
+    private void cargarIconJbuttonInsertar() {
+
+        ImageIcon img = new ImageIcon(getClass().getResource("/vista/img/crear1.png"));
+        vista_pgcliente.getBt_registrarRutina().setIcon(img);
+        vista_pgcliente.getBt_registrar().setIconTextGap(2);
+        vista_pgcliente.getBt_registrarRutina().setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vista_pgcliente.getBt_registrarRutina().setVerticalAlignment(javax.swing.SwingConstants.CENTER);
+        vista_pgcliente.getBt_registrarRutina().setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        vista_pgcliente.getBt_registrarRutina().setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
+    }
+
     private void ventanaRegistrar() {
         reiniciarCampos();
+        cargarIconJbuttonInsertar();
         vista_pgcliente.getjDialogRutina().setVisible(true);
         vista_pgcliente.getjDialogRutina().setTitle("Asignar Rutina - Nexo Gym");
         vista_pgcliente.getJdate_fecha().setDate(new java.util.Date());
         vista_pgcliente.getBt_registrarRutina().setText("Registrar");
 //        vista_pgcliente.getBt_registrarRutina().addActionListener(l -> registrarRutinaCliente());
-
     }
 
     private boolean validarRegistro() {
@@ -232,6 +246,17 @@ public class ControlPrograma_Cliente {
     }
 
     /* ----------------------- ITEM ACTUALIZAR ------------------------ */
+    private void cargarIconJbuttonActualizar() {
+
+        ImageIcon img = new ImageIcon(getClass().getResource("/vista/img/editar1.png"));
+        vista_pgcliente.getBt_registrarRutina().setIcon(img);
+        vista_pgcliente.getBt_registrar().setIconTextGap(2);
+        vista_pgcliente.getBt_registrarRutina().setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        vista_pgcliente.getBt_registrarRutina().setVerticalAlignment(javax.swing.SwingConstants.CENTER);
+        vista_pgcliente.getBt_registrarRutina().setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        vista_pgcliente.getBt_registrarRutina().setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
+    }
+
     private void ventanaActualizar() {
 
         int fila = vista_pgcliente.getJtable_programacliente().getSelectedRow();
@@ -239,7 +264,7 @@ public class ControlPrograma_Cliente {
         if (fila != -1) {
 
             id_pgcliente = Integer.parseInt(vista_pgcliente.getJtable_programacliente().getValueAt(fila, columna).toString());
-
+            cargarIconJbuttonActualizar();
             vista_pgcliente.getjDialogRutina().setVisible(true);
             vista_pgcliente.getjDialogRutina().setTitle("Actualizar rutina - Nexo Gym");
             vista_pgcliente.getBt_registrarRutina().setText("Actualizar");

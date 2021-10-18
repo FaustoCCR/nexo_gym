@@ -1,7 +1,11 @@
 package controlador;
 
+import controlador.validaciones.VCampoParticular;
+import controlador.validaciones.VLetras;
+import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
 import modelo.dao.CargoDao;
 import vista.VistaAdministrador;
 import vista.VistaRegistrarCargo;
@@ -18,14 +22,18 @@ public class ControlRegistrar_Cargo {
         vista.setVisible(true);
         vista.setTitle("Registro de Cargos - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     public void funcionalidad() {
+
+        /*--validaciones----  */
+        vista.getTxt_nombre().addKeyListener(new VLetras(vista.getTxt_nombre(), 17));
+        vista.getTxt_descripcion().addKeyListener(new VCampoParticular(vista.getTxt_descripcion(), 45));
 
         vista.getBt_registrar().addActionListener(l -> registrarCargo());
 
@@ -87,6 +95,7 @@ public class ControlRegistrar_Cargo {
 
             } else {
                 JOptionPane.showMessageDialog(vista, "Cargo ya registrado", "Advertencia", JOptionPane.ERROR_MESSAGE);
+                vista.getTxt_nombre().setBorder(new LineBorder(Color.decode("#C33529"), 2));
                 vista.getTxt_nombre().grabFocus();
             }
 

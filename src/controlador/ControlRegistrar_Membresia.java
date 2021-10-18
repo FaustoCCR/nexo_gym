@@ -1,5 +1,7 @@
 package controlador;
 
+import controlador.validaciones.VCampoParticular;
+import controlador.validaciones.VDecimales;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -22,8 +24,8 @@ public class ControlRegistrar_Membresia {
         vista.setVisible(true);
         vista.setTitle("Registro de Membresias - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -31,6 +33,10 @@ public class ControlRegistrar_Membresia {
     }
 
     public void funcionalidad() {
+        /*--- validaciones ---  */
+        vista.getTxt_nombre().addKeyListener(new VCampoParticular(vista.getTxt_nombre(), 17));
+        vista.getTxt_descripcion().addKeyListener(new VCampoParticular(vista.getTxt_descripcion(), 45));
+        vista.getTxt_descuento().addKeyListener(new VDecimales(vista.getTxt_descuento()));
 
         vista.getBt_registrar().addActionListener(l -> registrarMembresia());
 

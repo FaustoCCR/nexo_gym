@@ -91,7 +91,7 @@
               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="51" pref="51" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="txt_cedula" min="-2" pref="32" max="-2" attributes="0"/>
@@ -104,7 +104,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="cb_membresia" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
@@ -151,13 +151,13 @@
                               <Component id="txt_estadopago" min="-2" pref="32" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                      <Component id="bt_pagar" min="-2" pref="41" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="bt_actualzar" min="-2" pref="49" max="-2" attributes="0"/>
-              <EmptySpace pref="23" max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <Component id="bt_pagar" min="-2" pref="56" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="bt_actualzar" min="-2" pref="61" max="-2" attributes="0"/>
+              <EmptySpace pref="18" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -216,8 +216,11 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="16" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/vista/img/editar1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Actualizar Cliente"/>
-        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
     </Component>
     <Component class="com.toedter.calendar.JDateChooser" name="jdate_inicio">
@@ -385,8 +388,12 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="16" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/vista/img/pagar1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Pagar"/>
-        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
+        <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_diasfaltantes">

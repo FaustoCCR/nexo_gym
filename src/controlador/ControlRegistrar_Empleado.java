@@ -1,5 +1,7 @@
 package controlador;
 
+import controlador.validaciones.VCedula;
+import controlador.validaciones.VDecimales;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -33,8 +35,8 @@ public class ControlRegistrar_Empleado {
         vista.setVisible(true);
         vista.setTitle("Registro de Empleados - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -46,6 +48,11 @@ public class ControlRegistrar_Empleado {
     }
 
     public void funcionalidad() {
+
+        /*---validaciones----*/
+        vista.getTxt_cedula().addKeyListener(new VCedula(vista.getTxt_cedula()));
+        vista.getTxtSueldo().addKeyListener(new VDecimales(vista.getTxtSueldo()));
+
         vista.getTxt_cedula().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {

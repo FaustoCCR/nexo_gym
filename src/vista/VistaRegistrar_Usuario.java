@@ -30,7 +30,7 @@ public class VistaRegistrar_Usuario extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         txt_persona = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel1.setText("Cédula:");
@@ -63,8 +63,10 @@ public class VistaRegistrar_Usuario extends javax.swing.JInternalFrame {
         jconfirm_pass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         bt_registrar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/crear1.png"))); // NOI18N
         bt_registrar.setText("Registrar Usuario");
-        bt_registrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_registrar.setFocusPainted(false);
+        bt_registrar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jpass.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         jpass.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -133,10 +135,10 @@ public class VistaRegistrar_Usuario extends javax.swing.JInternalFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jconfirm_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(39, 39, 39)
-                        .addComponent(bt_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addComponent(jconfirm_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(27, 27, 27)
+                .addComponent(bt_registrar)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();

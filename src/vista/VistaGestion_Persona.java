@@ -104,16 +104,22 @@ public class VistaGestion_Persona extends javax.swing.JInternalFrame {
         jLabel2.setText("Buscar:");
 
         bt_verificar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_verificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/verify.png"))); // NOI18N
         bt_verificar.setText("Verificar");
-        bt_verificar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_verificar.setFocusPainted(false);
+        bt_verificar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         bt_eliminar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_eliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/remove1.png"))); // NOI18N
         bt_eliminar.setText("Eliminar");
-        bt_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_eliminar.setFocusPainted(false);
+        bt_eliminar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         bt_imprimir.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/print.png"))); // NOI18N
         bt_imprimir.setText("Imprimir");
-        bt_imprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_imprimir.setFocusPainted(false);
+        bt_imprimir.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -127,7 +133,7 @@ public class VistaGestion_Persona extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(bt_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(bt_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(32, 32, 32)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,28 +142,29 @@ public class VistaGestion_Persona extends javax.swing.JInternalFrame {
                                 .addComponent(jLabel2)
                                 .addGap(18, 18, 18)
                                 .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                                .addComponent(bt_verificar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(bt_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(33, 33, 33))
+                                .addGap(18, 18, 18)
+                                .addComponent(bt_verificar, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(bt_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))))
+                .addGap(31, 31, 31))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(30, Short.MAX_VALUE)
+                .addContainerGap(33, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(30, 30, 30)
+                .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txt_buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_verificar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_eliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bt_verificar)
+                    .addComponent(bt_eliminar))
                 .addGap(41, 41, 41)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(bt_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(bt_imprimir)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();

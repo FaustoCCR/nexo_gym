@@ -39,11 +39,13 @@ public class VistaActualizar_Producto extends javax.swing.JInternalFrame{
         jlfoto = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         bt_actualizar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/editar1.png"))); // NOI18N
         bt_actualizar.setText("Actualizar Producto");
-        bt_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_actualizar.setFocusPainted(false);
+        bt_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel5.setText("Producto:");
@@ -214,8 +216,8 @@ public class VistaActualizar_Producto extends javax.swing.JInternalFrame{
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bt_cargar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(bt_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(52, Short.MAX_VALUE))
+                        .addComponent(bt_actualizar)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();

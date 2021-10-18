@@ -113,7 +113,7 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -180,7 +180,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="bt_retirar" min="-2" pref="41" max="-2" attributes="0"/>
@@ -188,8 +188,8 @@
                   </Group>
               </Group>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="bt_imprimir" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="bt_actualizarventa" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="bt_imprimir" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bt_actualizarventa" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txt_total" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
               </Group>
@@ -291,8 +291,12 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="16" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/vista/img/print.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Imprimir"/>
-        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
+        <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="bt_actualizarventa">
@@ -300,8 +304,12 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="16" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/vista/img/editar1.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Actualizar Venta"/>
-        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
+        <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel13">
@@ -346,8 +354,12 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="16" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/vista/img/agregar.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Agregar"/>
-        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
+        <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txt_persona">
@@ -370,8 +382,12 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Trebuchet MS" size="16" style="0"/>
         </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/vista/img/quitar.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Retirar"/>
-        <Property name="horizontalTextPosition" type="int" value="0"/>
+        <Property name="focusPainted" type="boolean" value="false"/>
+        <Property name="horizontalTextPosition" type="int" value="4"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel7">

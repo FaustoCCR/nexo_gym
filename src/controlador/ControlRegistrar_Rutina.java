@@ -1,5 +1,7 @@
 package controlador;
 
+import controlador.validaciones.VCampoParticular;
+import controlador.validaciones.VTxtArea;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -22,8 +24,8 @@ public class ControlRegistrar_Rutina {
         vista.setVisible(true);
         vista.setTitle("Registro de Rutina - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -31,6 +33,9 @@ public class ControlRegistrar_Rutina {
     }
 
     public void funcionalidad() {
+        /*-- validaciones --*/
+        vista.getTxtNombre().addKeyListener(new VCampoParticular(vista.getTxtNombre(), 17));
+        vista.getTxtDescripcion().addKeyListener(new VTxtArea(vista.getTxtDescripcion(), 95));
 
         vista.getBt_registrar().addActionListener(l -> registrarRutina());
 

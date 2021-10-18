@@ -97,12 +97,16 @@ public class VistaEditar_Venta extends javax.swing.JInternalFrame {
         );
 
         bt_imprimir.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_imprimir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/print.png"))); // NOI18N
         bt_imprimir.setText("Imprimir");
-        bt_imprimir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_imprimir.setFocusPainted(false);
+        bt_imprimir.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         bt_actualizarventa.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_actualizarventa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/editar1.png"))); // NOI18N
         bt_actualizarventa.setText("Actualizar Venta");
-        bt_actualizarventa.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_actualizarventa.setFocusPainted(false);
+        bt_actualizarventa.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel13.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel13.setText("Total:");
@@ -115,16 +119,20 @@ public class VistaEditar_Venta extends javax.swing.JInternalFrame {
         txt_codproducto.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         bt_agregar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_agregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/agregar.png"))); // NOI18N
         bt_agregar.setText("Agregar");
-        bt_agregar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_agregar.setFocusPainted(false);
+        bt_agregar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         txt_persona.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         txt_persona.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         txt_persona.setEnabled(false);
 
         bt_retirar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_retirar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/quitar.png"))); // NOI18N
         bt_retirar.setText("Retirar");
-        bt_retirar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_retirar.setFocusPainted(false);
+        bt_retirar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel7.setText("Cliente:");
@@ -292,7 +300,7 @@ public class VistaEditar_Venta extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
+                .addGap(12, 12, 12)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -345,13 +353,13 @@ public class VistaEditar_Venta extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(bt_retirar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(121, 121, 121)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bt_imprimir, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bt_actualizarventa, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bt_imprimir)
+                    .addComponent(bt_actualizarventa)
                     .addComponent(jLabel13)
                     .addComponent(txt_total, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(23, Short.MAX_VALUE))

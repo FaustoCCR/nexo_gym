@@ -67,7 +67,6 @@ public class VistaActualizar_Empleado extends javax.swing.JInternalFrame {
         txt_cedula = new javax.swing.JTextField();
         txt_persona = new javax.swing.JTextField();
         lblTitulo = new javax.swing.JLabel();
-        bt_actualizar = new javax.swing.JButton();
         lblCedula = new javax.swing.JLabel();
         lblPersona = new javax.swing.JLabel();
         lblCargo = new javax.swing.JLabel();
@@ -75,8 +74,9 @@ public class VistaActualizar_Empleado extends javax.swing.JInternalFrame {
         lblSueldo = new javax.swing.JLabel();
         txtSueldo = new javax.swing.JTextField();
         jd_fechacontrato = new com.toedter.calendar.JDateChooser();
+        bt_actualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         cb_cargo.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         cb_cargo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -90,10 +90,6 @@ public class VistaActualizar_Empleado extends javax.swing.JInternalFrame {
 
         lblTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         lblTitulo.setText("Información del Empleado");
-
-        bt_actualizar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
-        bt_actualizar.setText("Actualizar Empleado");
-        bt_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         lblCedula.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         lblCedula.setText("Cédula:");
@@ -119,6 +115,12 @@ public class VistaActualizar_Empleado extends javax.swing.JInternalFrame {
 
         jd_fechacontrato.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
 
+        bt_actualizar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/editar1.png"))); // NOI18N
+        bt_actualizar.setText("Actualizar Empleado");
+        bt_actualizar.setFocusPainted(false);
+        bt_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,12 +136,13 @@ public class VistaActualizar_Empleado extends javax.swing.JInternalFrame {
                     .addComponent(lblCargo)
                     .addComponent(cb_cargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblFecha)
-                    .addComponent(jd_fechacontrato, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                    .addComponent(lblSueldo)
-                    .addComponent(txtSueldo)
-                    .addComponent(bt_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(lblFecha)
+                        .addComponent(jd_fechacontrato, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                        .addComponent(lblSueldo)
+                        .addComponent(txtSueldo))
+                    .addComponent(bt_actualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 242, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
@@ -165,11 +168,15 @@ public class VistaActualizar_Empleado extends javax.swing.JInternalFrame {
                     .addComponent(txtSueldo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(lblCargo)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cb_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(bt_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_cargo, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(82, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(bt_actualizar)
+                        .addGap(27, 27, 27))))
         );
 
         pack();

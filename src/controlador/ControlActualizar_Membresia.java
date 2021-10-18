@@ -1,5 +1,7 @@
 package controlador;
 
+import controlador.validaciones.VCampoParticular;
+import controlador.validaciones.VDecimales;
 import java.awt.Color;
 import java.util.function.Predicate;
 import javax.swing.JFrame;
@@ -37,6 +39,10 @@ public class ControlActualizar_Membresia {
     }
 
     public void funcionalidad() {
+        /*--- validaciones ---  */
+        vista.getTxt_nombre().addKeyListener(new VCampoParticular(vista.getTxt_nombre(), 17));
+        vista.getTxt_descripcion().addKeyListener(new VCampoParticular(vista.getTxt_descripcion(), 45));
+        vista.getTxt_descuento().addKeyListener(new VDecimales(vista.getTxt_descuento()));
 
         vista.getBt_actualizar().addActionListener(l -> actualizarMembresia());
 

@@ -1,5 +1,7 @@
 package controlador;
 
+import controlador.validaciones.VCampoParticular;
+import controlador.validaciones.VNumeros;
 import java.awt.Color;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -14,7 +16,7 @@ public class ControlRegistrar_Proveedor {
     private ProveedorDao modelo;
     private VistaRegistrar_Proveedor vista;
     private Border origin_border = new LineBorder(Color.gray, 1);
-    
+
     public ControlRegistrar_Proveedor(ProveedorDao modelo, VistaRegistrar_Proveedor vista) {
         this.modelo = modelo;
         this.vista = vista;
@@ -22,8 +24,8 @@ public class ControlRegistrar_Proveedor {
         vista.setVisible(true);
         vista.setTitle("Registro de Proveedores - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -31,12 +33,17 @@ public class ControlRegistrar_Proveedor {
 
     public void funcionalidad() {
 
+        /* ----validaciones ----*/
+        vista.getTxt_ruc().addKeyListener(new VNumeros(vista.getTxt_ruc(), 13));
+        vista.getTxt_nombre().addKeyListener(new VCampoParticular(vista.getTxt_nombre(), 17));
+        vista.getTxt_contacto().addKeyListener(new VCampoParticular(vista.getTxt_contacto(), 45));
+
         vista.getBt_registrar().addActionListener(l -> registrarProveedor());
 
     }
 
     private boolean validarRegistro() {
-        
+
         String ruc = vista.getTxt_ruc().getText();
         String nombre = vista.getTxt_nombre().getText();
         String contacto = vista.getTxt_contacto().getText();
@@ -57,11 +64,11 @@ public class ControlRegistrar_Proveedor {
     }
 
     private void sentenciaInsert() {
-        
+
         String ruc = vista.getTxt_ruc().getText();
         String nombre = vista.getTxt_nombre().getText().trim();
         String contacto = vista.getTxt_contacto().getText().trim();
-        
+
         modelo.setId_proveedor(ruc);
         modelo.setNombre(nombre);
         modelo.setContacto(contacto);
@@ -75,7 +82,7 @@ public class ControlRegistrar_Proveedor {
     }
 
     private void reiniciarCampos() {
-       
+
         vista.getTxt_ruc().setText("");
         vista.getTxt_nombre().setText("");
         vista.getTxt_contacto().setText("");

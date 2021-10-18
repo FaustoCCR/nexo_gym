@@ -1,7 +1,7 @@
-
 package controlador;
 
-
+import controlador.validaciones.VCampoParticular;
+import controlador.validaciones.VLetras;
 import java.awt.Color;
 import java.util.function.Predicate;
 import javax.swing.JFrame;
@@ -13,14 +13,13 @@ import modelo.vo.CargoVo;
 import vista.VistaActualizar_Cargo;
 import vista.VistaAdministrador;
 
-
 public class ControlActualizar_Cargo {
-    
+
     private CargoDao modelo_cargo;
     private VistaActualizar_Cargo vista;
     private int id_cargo;
     private Border origin_border = new LineBorder(Color.gray, 1);
-    
+
     public ControlActualizar_Cargo(CargoDao modelo_cargo, VistaActualizar_Cargo vista) {
         this.modelo_cargo = modelo_cargo;
         this.vista = vista;
@@ -29,24 +28,31 @@ public class ControlActualizar_Cargo {
         vista.setVisible(true);
         vista.setTitle("Actualizar Cargo - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation(611, 159);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarDatosCargo();
     }
-    
+
     public void funcionalidad() {
+        /*--validaciones----  */
+        vista.getTxt_nombre().addKeyListener(new VLetras(vista.getTxt_nombre(), 17));
+        vista.getTxt_descripcion().addKeyListener(new VCampoParticular(vista.getTxt_descripcion(), 45));
+        
         vista.getBt_actualizar().addActionListener(l -> actualizarCargo());
+
     }
-    
+
     private void cargarDatosCargo() {
         modelo_cargo.mostrarDatos(id_cargo).forEach((m) -> {
             vista.getTxt_nombre().setText(m.getNombre());
             vista.getTxt_descripcion().setText(m.getDescripcion());
         });
+
     }
-    
+
     private boolean validacionRegistro() {
 
         String nombre = vista.getTxt_nombre().getText();
@@ -57,7 +63,7 @@ public class ControlActualizar_Cargo {
         }
         return validacion;
     }
-    
+
     private boolean verificarCargo(String nombre, int id) {
         Predicate<CargoVo> condicion1 = mem -> mem.getNombre().equalsIgnoreCase(nombre);
         Predicate<CargoVo> condicion2 = mem -> mem.getId_cargo() != id;
@@ -69,7 +75,7 @@ public class ControlActualizar_Cargo {
         }
         return resp;
     }
-    
+
     private void restaurarCampos() {
         vista.getTxt_nombre().setBorder(origin_border);
 
@@ -87,7 +93,7 @@ public class ControlActualizar_Cargo {
             JOptionPane.showMessageDialog(vista, "Error al Actualizar");
         }
     }
-    
+
     private void actualizarCargo() {
         if (validacionRegistro()) {
             if (verificarCargo(vista.getTxt_nombre().getText(), id_cargo)) {

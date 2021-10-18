@@ -38,7 +38,7 @@ public class VistaRegistrar_Cliente extends javax.swing.JInternalFrame {
         jLabel10 = new javax.swing.JLabel();
         bt_pagar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel5.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel5.setText("Nº Meses:");
@@ -47,8 +47,10 @@ public class VistaRegistrar_Cliente extends javax.swing.JInternalFrame {
         jLabel6.setText("Precio:");
 
         bt_registrar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_registrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/crear1.png"))); // NOI18N
         bt_registrar.setText("Registrar Cliente");
-        bt_registrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_registrar.setFocusPainted(false);
+        bt_registrar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel1.setText("Cedula:");
@@ -107,8 +109,10 @@ public class VistaRegistrar_Cliente extends javax.swing.JInternalFrame {
 
         bt_pagar.setBackground(new java.awt.Color(153, 204, 255));
         bt_pagar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_pagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/pagar1.png"))); // NOI18N
         bt_pagar.setText("Pagar");
-        bt_pagar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_pagar.setFocusPainted(false);
+        bt_pagar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -195,10 +199,10 @@ public class VistaRegistrar_Cliente extends javax.swing.JInternalFrame {
                     .addComponent(txt_desc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txt_total, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
-                .addComponent(bt_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(bt_registrar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                .addComponent(bt_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_registrar)
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();

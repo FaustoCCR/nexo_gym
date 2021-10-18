@@ -90,11 +90,13 @@ public class VistaActualizar_Usuario extends javax.swing.JInternalFrame {
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         bt_actualizar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/editar1.png"))); // NOI18N
         bt_actualizar.setText("Actualizar Usuario");
-        bt_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_actualizar.setFocusPainted(false);
+        bt_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jLabel7.setFont(new java.awt.Font("Trebuchet MS", 1, 16)); // NOI18N
         jLabel7.setText("Persona:");
@@ -131,8 +133,10 @@ public class VistaActualizar_Usuario extends javax.swing.JInternalFrame {
         cb_estado.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         bt_restaurarpass.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_restaurarpass.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/contraseña1.png"))); // NOI18N
         bt_restaurarpass.setText("Restaurar Contraseña");
-        bt_restaurarpass.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_restaurarpass.setFocusPainted(false);
+        bt_restaurarpass.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -186,11 +190,11 @@ public class VistaActualizar_Usuario extends javax.swing.JInternalFrame {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cb_estado, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(65, 65, 65)
-                        .addComponent(bt_restaurarpass, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)
+                        .addComponent(bt_restaurarpass)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(bt_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(29, Short.MAX_VALUE))
+                        .addComponent(bt_actualizar)))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         pack();

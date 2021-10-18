@@ -58,7 +58,7 @@ public class VistaActualizar_Proveedores extends javax.swing.JInternalFrame{
         txt_contacto = new javax.swing.JTextField();
         bt_actualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         jLabel1.setText("Información del proveedor");
@@ -79,7 +79,9 @@ public class VistaActualizar_Proveedores extends javax.swing.JInternalFrame{
         txt_contacto.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
 
         bt_actualizar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/editar1.png"))); // NOI18N
         bt_actualizar.setText("Actualizar Proveedor");
+        bt_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -118,9 +120,9 @@ public class VistaActualizar_Proveedores extends javax.swing.JInternalFrame{
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
                 .addComponent(txt_contacto, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(bt_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(21, 21, 21))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(bt_actualizar)
+                .addGap(27, 27, 27))
         );
 
         pack();

@@ -1,26 +1,24 @@
-
 package controlador;
 
+import controlador.validaciones.VCampoParticular;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.util.function.Predicate;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
 import modelo.dao.Ctg_ProductoDao;
-import modelo.vo.Ctg_ProductoVo;
 import vista.VistaActualizar_CtgProducto;
 import vista.VistaAdministrador;
 
-
 public class ControlActualizar_CtgProducto {
+
     private Ctg_ProductoDao modelo_ctgp;
     private VistaActualizar_CtgProducto vista_ctgp;
     private int id_ctgp;
     private Border origin_border = new LineBorder(Color.gray, 1);
-    
+
     public ControlActualizar_CtgProducto(Ctg_ProductoDao modelo_ctgp, VistaActualizar_CtgProducto vista_ctgp) {
         this.modelo_ctgp = modelo_ctgp;
         this.vista_ctgp = vista_ctgp;
@@ -30,16 +28,20 @@ public class ControlActualizar_CtgProducto {
         vista_ctgp.setVisible(true);
         vista_ctgp.setTitle("Actualizar Rutina - Nexo Gym");
         vista_ctgp.setResizable(false);
-        vista_ctgp.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_ctgp.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_ctgp.getHeight())/2);
+        vista_ctgp.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_ctgp.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_ctgp.getHeight()) / 2);
         vista_ctgp.setClosable(true);
         vista_ctgp.setIconifiable(true);
         vista_ctgp.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         cargarDatosCtgProducto();
 
     }
-    
+
     public void funcionalidad() {
+        /* validaciones */
+        vista_ctgp.getTxt_nombre().addKeyListener(new VCampoParticular(vista_ctgp.getTxt_nombre(), 17));
+        vista_ctgp.getTxt_descripcion().addKeyListener(new VCampoParticular(vista_ctgp.getTxt_descripcion(), 45));
+
         vista_ctgp.getTxt_nombre().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -48,8 +50,9 @@ public class ControlActualizar_CtgProducto {
 
         });
         vista_ctgp.getBt_actualizar().addActionListener(l -> actualizarCtgProducto());
+
     }
-    
+
     private void cargarDatosCtgProducto() {
 
         modelo_ctgp.mostrarDatosJoin(id_ctgp).stream().forEach((us) -> {
@@ -60,7 +63,7 @@ public class ControlActualizar_CtgProducto {
         });
 
     }
-    
+
     private boolean validarRegistro() {
 
         String nombre = vista_ctgp.getTxt_nombre().getText();
@@ -75,7 +78,7 @@ public class ControlActualizar_CtgProducto {
         return validacion;
 
     }
-    
+
     private boolean verificarCtgProducto(String nombre) {
 
         boolean busqueda = Validar_Categoria_Nueva();
@@ -92,7 +95,7 @@ public class ControlActualizar_CtgProducto {
             return false;
         }
     }
-    
+
     private void sentenciaUpdate() {
 
         String nombre = vista_ctgp.getTxt_nombre().getText().trim();
@@ -110,7 +113,7 @@ public class ControlActualizar_CtgProducto {
         }
 
     }
-    
+
     private void restaurarBordes() {
 
         vista_ctgp.getTxt_nombre().setBorder(origin_border);
@@ -129,13 +132,12 @@ public class ControlActualizar_CtgProducto {
                 JOptionPane.showMessageDialog(vista_ctgp, " Categoría no disponible", "Advertencia", JOptionPane.ERROR_MESSAGE);
                 vista_ctgp.getTxt_nombre().grabFocus();
             }
-        }else {
+        } else {
             JOptionPane.showMessageDialog(vista_ctgp, "Rellenar todos los campos ", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
 
     }
-    
-    
+
     private int verificarCategoria(String nombre) {
 
         int cont = modelo_ctgp.contadorCtg(nombre);
@@ -143,7 +145,7 @@ public class ControlActualizar_CtgProducto {
         return cont;
 
     }
-    
+
     private int campoId_Categoria(String nombre) {
 
         int id_ctg;
@@ -151,7 +153,7 @@ public class ControlActualizar_CtgProducto {
         return id_ctg;
 
     }
-    
+
     private boolean Validar_Categoria_Nueva() {
 
         String nombre2 = vista_ctgp.getTxt_nombre().getText();
@@ -169,5 +171,4 @@ public class ControlActualizar_CtgProducto {
 
     }
 
-    
 }

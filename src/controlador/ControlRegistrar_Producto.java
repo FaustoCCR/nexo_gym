@@ -1,5 +1,8 @@
 package controlador;
 
+import controlador.validaciones.VCampoParticular;
+import controlador.validaciones.VDecimales;
+import controlador.validaciones.VNumeros;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
@@ -40,8 +43,8 @@ public class ControlRegistrar_Producto {
         vista_producto.setVisible(true);
         vista_producto.setTitle("Registro de Productos - Nexo Gym");
         vista_producto.setResizable(false);
-        vista_producto.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_producto.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_producto.getHeight())/2);
+        vista_producto.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_producto.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_producto.getHeight()) / 2);
         vista_producto.setClosable(true);
         vista_producto.setIconifiable(true);
         vista_producto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -50,6 +53,12 @@ public class ControlRegistrar_Producto {
     }
 
     public void funcionalidad() {
+
+        /*-------validaciones------------*/
+        vista_producto.getTxt_ruc().addKeyListener(new VNumeros(vista_producto.getTxt_ruc(), 13));
+        vista_producto.getTxt_producto().addKeyListener(new VCampoParticular(vista_producto.getTxt_producto(), 17));
+        vista_producto.getTxt_descripcion().addKeyListener(new VCampoParticular(vista_producto.getTxt_descripcion(), 45));
+        vista_producto.getTxt_preciou().addKeyListener(new VDecimales(vista_producto.getTxt_preciou()));
 
         vista_producto.getTxt_ruc().addKeyListener(new KeyAdapter() {
             @Override

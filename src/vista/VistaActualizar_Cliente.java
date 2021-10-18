@@ -64,8 +64,9 @@ public class VistaActualizar_Cliente extends javax.swing.JInternalFrame {
         jspinner_meses.setModel(new javax.swing.SpinnerNumberModel());
 
         bt_actualzar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_actualzar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/editar1.png"))); // NOI18N
         bt_actualzar.setText("Actualizar Cliente");
-        bt_actualzar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_actualzar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jdate_inicio.setForeground(new java.awt.Color(153, 153, 255));
         jdate_inicio.setFont(new java.awt.Font("Trebuchet MS", 0, 15)); // NOI18N
@@ -114,8 +115,10 @@ public class VistaActualizar_Cliente extends javax.swing.JInternalFrame {
         cb_membresia.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         bt_pagar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_pagar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/pagar1.png"))); // NOI18N
         bt_pagar.setText("Pagar");
-        bt_pagar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_pagar.setFocusPainted(false);
+        bt_pagar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         txt_diasfaltantes.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
         txt_diasfaltantes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
@@ -235,12 +238,12 @@ public class VistaActualizar_Cliente extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_estadopago, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(38, 38, 38)
-                        .addComponent(bt_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(bt_actualzar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(23, Short.MAX_VALUE))
+                                .addComponent(txt_estadopago, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(bt_pagar, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bt_actualzar, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         pack();

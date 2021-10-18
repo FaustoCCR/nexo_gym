@@ -1,6 +1,8 @@
 package controlador;
 
 import controlador.cifrado.Hash;
+import controlador.validaciones.VCampoParticular;
+import controlador.validaciones.VCedula;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -32,18 +34,21 @@ public class ControlRegistrar_Usuario {
         vista.setVisible(true);
         vista.setTitle("Registro de Usuarios - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        
 
         cargarRoles();
 
     }
 
     public void funcionalidad() {
+
+        /* validaciones */
+        vista.getTxt_cedula().addKeyListener(new VCedula(vista.getTxt_cedula()));
+        vista.getTxt_user().addKeyListener(new VCampoParticular(vista.getTxt_user(), 17));
 
         JPasswordField[] claves = {vista.getJpass(), vista.getJconfirm_pass()};
 

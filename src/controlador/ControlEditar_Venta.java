@@ -1,5 +1,7 @@
 package controlador;
 
+import controlador.validaciones.VCedula;
+import controlador.validaciones.VNumeros;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
@@ -20,6 +22,8 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.WindowConstants;
 import javax.swing.border.Border;
 import javax.swing.border.LineBorder;
+import javax.swing.event.InternalFrameAdapter;
+import javax.swing.event.InternalFrameEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.xml.ws.Holder;
 import modelo.conexion.PGConexion;
@@ -76,6 +80,10 @@ public class ControlEditar_Venta {
     }
 
     public void funcionalidad() {
+        
+        /*validaciones*/
+        vista.getTxt_cedula().addKeyListener(new VCedula(vista.getTxt_cedula()));
+        vista.getTxt_codproducto().addKeyListener(new VNumeros(vista.getTxt_codproducto(), 5));
 
         vista.getBt_retirar().addActionListener(l -> retirarProducto());
         vista.getTxt_cedula().addKeyListener(new KeyAdapter() {
@@ -95,7 +103,28 @@ public class ControlEditar_Venta {
         });
         vista.getBt_agregar().addActionListener(l -> agregarProducto());
         vista.getBt_actualizarventa().addActionListener(l -> realizarVenta());
-        vista.getBt_imprimir().addActionListener(l->imprimirReporte());
+        vista.getBt_imprimir().addActionListener(l -> imprimirReporte());
+
+        vista.addInternalFrameListener(new InternalFrameAdapter() {
+            @Override
+            public void internalFrameClosing(InternalFrameEvent e) {
+
+                confirmarSalida();
+            }
+
+        });
+
+    }
+
+    public void confirmarSalida() {
+        
+        /*Elimina los datos de una venta en el caso de que
+        estos queden si productos o detalle adicionado*/
+        
+        if (vista.getTb_detalleventa().getRowCount() <=0) {
+            JOptionPane.showMessageDialog(vista, "Esta venta quedará eliminada debido a que "+"\nno se realizo ninguna venta","Aviso",JOptionPane.INFORMATION_MESSAGE);
+            modeloecb_venta.eliminar(id_ecb);
+        }
 
     }
 
@@ -301,7 +330,7 @@ public class ControlEditar_Venta {
                 calcularTotal();
 
             } else {
-                int resp = JOptionPane.showConfirmDialog(vista, "Se retirara este producto de esta venta", "Confirmación", JOptionPane.YES_NO_OPTION);
+                int resp = JOptionPane.showConfirmDialog(vista, "Se retirará este producto que ya se encontraba \nregistrado en esta venta", "Confirmación", JOptionPane.YES_NO_OPTION);
                 if (resp == JOptionPane.YES_OPTION) {
                     devolucionStock(seleccion);
                     eliminarProductoDetalle(seleccion);

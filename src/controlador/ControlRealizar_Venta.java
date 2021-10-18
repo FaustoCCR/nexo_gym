@@ -1,5 +1,7 @@
 package controlador;
 
+import controlador.validaciones.VCedula;
+import controlador.validaciones.VNumeros;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.KeyAdapter;
@@ -77,6 +79,10 @@ public class ControlRealizar_Venta {
 
     public void funcionalidad() {
 
+        /*validaciones*/
+        vista.getTxt_cedula().addKeyListener(new VCedula(vista.getTxt_cedula()));
+        vista.getTxt_codproducto().addKeyListener(new VNumeros(vista.getTxt_codproducto(), 5));
+
         vista.getTxt_cedula().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -96,7 +102,6 @@ public class ControlRealizar_Venta {
         vista.getBt_agregar().addActionListener(l -> agregarProducto());
         vista.getBt_generarventa().addActionListener((e) -> {
             realizarVenta();
-            solicitarFactura();
         });
 
         vista.getBt_cancelar().addActionListener(l -> reiniciarCampos());
@@ -209,7 +214,7 @@ public class ControlRealizar_Venta {
                 int id = Integer.parseInt(vista.getTxt_codproducto().getText());
                 int cantidad = (int) vista.getJspinner_cantidad().getValue();
                 double precio_u = Double.parseDouble(vista.getTxt_preciou().getText());
-                double total = Math.round((cantidad * precio_u)*100.0)/100.0;
+                double total = Math.round((cantidad * precio_u) * 100.0) / 100.0;
                 if (cantidad > 0) {
 
                     Object[] filas = {item, id, producto, cantidad, precio_u, total};
@@ -371,6 +376,7 @@ public class ControlRealizar_Venta {
                     sentenciaInsert_CuerpoVenta();
                     actualizarStock();
                     JOptionPane.showMessageDialog(vista, "Venta realizada exitosamente", "Mensaje", 1);
+                    solicitarFactura();//---> preguntas la factura o comprobante
                     reiniciarCampos();
 
                 } else {
@@ -385,11 +391,12 @@ public class ControlRealizar_Venta {
         }
 
     }
-    private void solicitarFactura(){
-        
-        int opc = JOptionPane.showConfirmDialog(vista, "¿Desea la factura de la venta?", "Confirmación",JOptionPane.YES_NO_OPTION);
-        if (opc ==JOptionPane.YES_OPTION) {
-            imprimirReporte(); 
+
+    private void solicitarFactura() {
+
+        int opc = JOptionPane.showConfirmDialog(vista, "¿Desea la factura de la venta?", "Confirmación", JOptionPane.YES_NO_OPTION);
+        if (opc == JOptionPane.YES_OPTION) {
+            imprimirReporte();
         }
     }
 

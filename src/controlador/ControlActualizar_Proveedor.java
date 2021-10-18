@@ -1,5 +1,7 @@
 package controlador;
 
+import controlador.validaciones.VCampoParticular;
+import controlador.validaciones.VNumeros;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -29,8 +31,8 @@ public class ControlActualizar_Proveedor {
         vista_proveedor.setVisible(true);
         vista_proveedor.setTitle("Actualizar Rutina - Nexo Gym");
         vista_proveedor.setResizable(false);
-        vista_proveedor.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_proveedor.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_proveedor.getHeight())/2);
+        vista_proveedor.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_proveedor.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_proveedor.getHeight()) / 2);
         vista_proveedor.setClosable(true);
         vista_proveedor.setIconifiable(true);
         vista_proveedor.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -38,6 +40,12 @@ public class ControlActualizar_Proveedor {
     }
 
     public void funcionalidad() {
+
+        /* ----validaciones ----*/
+        vista_proveedor.getTxt_ruc().addKeyListener(new VNumeros(vista_proveedor.getTxt_ruc(), 13));
+        vista_proveedor.getTxt_nombre().addKeyListener(new VCampoParticular(vista_proveedor.getTxt_nombre(), 17));
+        vista_proveedor.getTxt_contacto().addKeyListener(new VCampoParticular(vista_proveedor.getTxt_contacto(), 45));
+        
         vista_proveedor.getTxt_ruc().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -46,6 +54,7 @@ public class ControlActualizar_Proveedor {
 
         });
         vista_proveedor.getBt_actualizar().addActionListener(l -> actualizarProveedor());
+
     }
 
     private void cargarDatosProveedor() {

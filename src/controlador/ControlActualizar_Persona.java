@@ -1,5 +1,10 @@
 package controlador;
 
+import controlador.validaciones.VCedula;
+import controlador.validaciones.VCorreo;
+import controlador.validaciones.VDireccion;
+import controlador.validaciones.VLetras;
+import controlador.validaciones.VTelefono;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -35,8 +40,8 @@ public class ControlActualizar_Persona {
         vista_persona.setVisible(true);
         vista_persona.setTitle("Actualizar Persona - Nexo Gym");
         vista_persona.setResizable(false);
-        vista_persona.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_persona.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_persona.getHeight())/2);
+        vista_persona.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_persona.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_persona.getHeight()) / 2);
         vista_persona.setClosable(true);
         vista_persona.setIconifiable(true);
         vista_persona.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -46,6 +51,14 @@ public class ControlActualizar_Persona {
 
     public void funcionalidad() {
 
+        /* -----------validaciones--------------*/
+        vista_persona.getTxt_cedula().addKeyListener(new VCedula(vista_persona.getTxt_cedula()));
+        vista_persona.getTxt_nombre().addKeyListener(new VLetras(vista_persona.getTxt_nombre(), 17));
+        vista_persona.getTxt_apellido().addKeyListener(new VLetras(vista_persona.getTxt_apellido(), 17));
+        vista_persona.getTxt_correo().addKeyListener(new VCorreo(vista_persona.getTxt_correo()));
+        vista_persona.getTxt_telefono().addKeyListener(new VTelefono(vista_persona.getTxt_telefono()));
+        vista_persona.getTxt_direccion().addKeyListener(new VDireccion(vista_persona.getTxt_direccion()));
+        
         vista_persona.getTxt_cedula().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {

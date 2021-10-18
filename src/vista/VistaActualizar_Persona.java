@@ -139,7 +139,7 @@ public class VistaActualizar_Persona extends javax.swing.JInternalFrame {
         bt_actualizar = new javax.swing.JButton();
         jdnacimiento = new com.toedter.calendar.JDateChooser();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblTitulo.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
         lblTitulo.setText("Información de la Persona");
@@ -195,8 +195,10 @@ public class VistaActualizar_Persona extends javax.swing.JInternalFrame {
         txt_telefono.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         bt_actualizar.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
+        bt_actualizar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/vista/img/editar1.png"))); // NOI18N
         bt_actualizar.setText("Actualizar Persona");
-        bt_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bt_actualizar.setFocusPainted(false);
+        bt_actualizar.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         jdnacimiento.setForeground(new java.awt.Color(153, 153, 255));
         jdnacimiento.setFont(new java.awt.Font("Trebuchet MS", 0, 16)); // NOI18N
@@ -288,8 +290,8 @@ public class VistaActualizar_Persona extends javax.swing.JInternalFrame {
                         .addComponent(lblCedula6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(txt_telefono, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                        .addComponent(bt_actualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                        .addComponent(bt_actualizar)
                         .addGap(26, 26, 26))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)

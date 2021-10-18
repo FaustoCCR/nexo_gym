@@ -1,5 +1,7 @@
 package controlador;
 
+import controlador.validaciones.VCampoParticular;
+import controlador.validaciones.VTxtArea;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -27,8 +29,8 @@ public class ControlActualizar_Rutina {
         vista_rutina.setVisible(true);
         vista_rutina.setTitle("Actualizar Rutina - Nexo Gym");
         vista_rutina.setResizable(false);
-        vista_rutina.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_rutina.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_rutina.getHeight())/2);
+        vista_rutina.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista_rutina.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista_rutina.getHeight()) / 2);
         vista_rutina.setClosable(true);
         vista_rutina.setIconifiable(true);
         vista_rutina.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -37,6 +39,10 @@ public class ControlActualizar_Rutina {
     }
 
     public void funcionalidad() {
+        /*-- validaciones --*/
+        vista_rutina.getTxt_nombre().addKeyListener(new VCampoParticular(vista_rutina.getTxt_nombre(), 17));
+        vista_rutina.getTxt_descripcion().addKeyListener(new VTxtArea(vista_rutina.getTxt_descripcion(), 95));
+
         vista_rutina.getTxt_nombre().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -45,6 +51,7 @@ public class ControlActualizar_Rutina {
 
         });
         vista_rutina.getBt_actualizar().addActionListener(l -> actualizarRutina());
+
     }
 
     private void cargarDatosRutina() {
@@ -126,7 +133,7 @@ public class ControlActualizar_Rutina {
                 JOptionPane.showMessageDialog(vista_rutina, " Rutina no disponible", "Advertencia", JOptionPane.ERROR_MESSAGE);
                 vista_rutina.getTxt_nombre().grabFocus();
             }
-        }else {
+        } else {
             JOptionPane.showMessageDialog(vista_rutina, "Rellenar todos los campos ", "Mensaje", JOptionPane.ERROR_MESSAGE);
         }
 

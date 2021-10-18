@@ -1,5 +1,8 @@
 package controlador;
 
+import controlador.validaciones.VCampoParticular;
+import controlador.validaciones.VDecimales;
+import controlador.validaciones.VNumeros;
 import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.KeyAdapter;
@@ -44,8 +47,8 @@ public class ControlActualizar_Producto {
         vista.setVisible(true);
         vista.setTitle("Actualizar Productos - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -55,6 +58,12 @@ public class ControlActualizar_Producto {
     }
 
     public void funcionalidad() {
+
+        /*-------validaciones------------*/
+        vista_producto.getTxt_ruc().addKeyListener(new VNumeros(vista_producto.getTxt_ruc(), 13));
+        vista_producto.getTxt_producto().addKeyListener(new VCampoParticular(vista_producto.getTxt_producto(), 17));
+        vista_producto.getTxt_descripcion().addKeyListener(new VCampoParticular(vista_producto.getTxt_descripcion(), 45));
+        vista_producto.getTxt_preciou().addKeyListener(new VDecimales(vista_producto.getTxt_preciou()));
 
         vista_producto.getTxt_ruc().addKeyListener(new KeyAdapter() {
             @Override
@@ -73,6 +82,7 @@ public class ControlActualizar_Producto {
 
         vista_producto.getBt_cargar().addActionListener(l -> buscarFoto());
         vista_producto.getBt_actualizar().addActionListener(l -> actualizarProducto());
+
     }
 
     private void cargarDatosProducto() {
@@ -117,7 +127,7 @@ public class ControlActualizar_Producto {
 
             }
             return respuesta;
-        }else{
+        } else {
             vista_producto.getTxt_producto().setBorder(new LineBorder(Color.decode("#C33529"), 2));
             return false;
         }

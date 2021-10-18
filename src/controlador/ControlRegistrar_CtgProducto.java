@@ -1,5 +1,6 @@
 package controlador;
 
+import controlador.validaciones.VCampoParticular;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import modelo.dao.Ctg_ProductoDao;
@@ -18,8 +19,8 @@ public class ControlRegistrar_CtgProducto {
         vista.setVisible(true);
         vista.setTitle("Registro Categorias Productos - Nexo Gym");
         vista.setResizable(false);
-        vista.setLocation((int)(VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth())/2,
-                (int)(VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight())/2);
+        vista.setLocation((int) (VistaAdministrador.getjDesktopPanePrincipal().getWidth() - vista.getWidth()) / 2,
+                (int) (VistaAdministrador.getjDesktopPanePrincipal().getHeight() - vista.getHeight()) / 2);
         vista.setClosable(true);
         vista.setIconifiable(true);
         vista.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -27,8 +28,12 @@ public class ControlRegistrar_CtgProducto {
     }
 
     public void funcionalidad() {
-        
-        vista.getBt_registrar().addActionListener(l->registrarCategoria());
+
+        /* validaciones */
+        vista.getTxt_nombre().addKeyListener(new VCampoParticular(vista.getTxt_nombre(), 17));
+        vista.getTxt_descripcion().addKeyListener(new VCampoParticular(vista.getTxt_descripcion(), 45));
+
+        vista.getBt_registrar().addActionListener(l -> registrarCategoria());
 
     }
 

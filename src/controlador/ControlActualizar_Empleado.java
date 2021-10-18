@@ -1,5 +1,7 @@
 package controlador;
 
+import controlador.validaciones.VCedula;
+import controlador.validaciones.VDecimales;
 import java.awt.Color;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
@@ -49,6 +51,10 @@ public class ControlActualizar_Empleado {
     }
 
     public void funcionalidad() {
+
+        /* validaciones */
+        vista.getTxt_cedula().addKeyListener(new VCedula(vista.getTxt_cedula()));
+        vista.getTxtSueldo().addKeyListener(new VDecimales(vista.getTxtSueldo()));
 
         vista.getTxt_cedula().addKeyListener(new KeyAdapter() {
             @Override

@@ -52,6 +52,14 @@ public class ControlRegistrar_Persona {
 
     public void funcionalidad() {
 
+        /*--- validaciones ---*/
+        vista_persona.getTxt_cedula().addKeyListener(new VCedula(vista_persona.getTxt_cedula()));
+        vista_persona.getTxt_nombre().addKeyListener(new VLetras(vista_persona.getTxt_nombre(), 17));
+        vista_persona.getTxt_apellido().addKeyListener(new VLetras(vista_persona.getTxt_apellido(), 17));
+        vista_persona.getTxt_correo().addKeyListener(new VCorreo(vista_persona.getTxt_correo()));
+        vista_persona.getTxt_telefono().addKeyListener(new VTelefono(vista_persona.getTxt_telefono()));
+        vista_persona.getTxt_direccion().addKeyListener(new VDireccion(vista_persona.getTxt_direccion()));
+
         vista_persona.getTxt_cedula().addKeyListener(new KeyAdapter() {
             @Override
             public void keyReleased(KeyEvent e) {
@@ -59,13 +67,7 @@ public class ControlRegistrar_Persona {
             }
 
         });
-        vista_persona.getTxt_cedula().addKeyListener(new VCedula(vista_persona.getTxt_cedula()));
-        vista_persona.getTxt_nombre().addKeyListener(new VLetras(vista_persona.getTxt_nombre()));
-        vista_persona.getTxt_apellido().addKeyListener(new VLetras(vista_persona.getTxt_apellido()));
-        vista_persona.getTxt_correo().addKeyListener(new VCorreo(vista_persona.getTxt_correo()));
-        vista_persona.getTxt_telefono().addKeyListener(new VTelefono(vista_persona.getTxt_telefono()));
-        vista_persona.getTxt_direccion().addKeyListener(new VDireccion(vista_persona.getTxt_direccion()));
-        
+
         vista_persona.getBt_registrar().addActionListener(l -> registrarPersona());
 
     }
@@ -178,6 +180,7 @@ public class ControlRegistrar_Persona {
 
                 } else {
                     JOptionPane.showMessageDialog(vista_persona, "Exite un registro con esta cédula", "Mensaje", JOptionPane.ERROR_MESSAGE);
+                    vista_persona.getTxt_cedula().setBorder(new LineBorder(Color.decode("#C33529"), 2));
                     vista_persona.getTxt_cedula().grabFocus();
                 }
             } else {

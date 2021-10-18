@@ -1,22 +1,44 @@
 package controlador.validaciones;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JTextField;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 
 public class VLetras extends KeyAdapter {
 
     private final JTextField txt;
+    private String ingreso;
+    private int lenght;
+    private Border origin_border = new LineBorder(Color.gray, 1);
 
-    public VLetras(JTextField txt) {
+    public VLetras(JTextField txt, int lenght) {
         this.txt = txt;
+        this.lenght = lenght;
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        ingreso = txt.getText().trim();
+
+        if (ingreso.equals("")) {
+
+            txt.setBorder(new LineBorder(Color.decode("#C33529"), 2));
+
+        } else {
+            txt.setBorder(origin_border);
+
+        }
+
     }
 
     @Override
     public void keyTyped(KeyEvent e) {
         char car = e.getKeyChar();
-        if ((!Validar.esLetras(car + "") && car != e.VK_ENTER && car != e.VK_BACK_SPACE) || txt.getText().length() >=17) {
+        if ((!Validar.esLetras(car + "") && car != e.VK_ENTER && car != e.VK_BACK_SPACE) || txt.getText().length() >= lenght) {
             e.consume();
             Toolkit.getDefaultToolkit().beep(); // ---> alerta con sonido
         }
