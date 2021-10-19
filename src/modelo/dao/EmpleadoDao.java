@@ -40,6 +40,11 @@ public class EmpleadoDao extends EmpleadoVo {
                 lista_empleados.add(e1);
             }
             rs.close();//cerramos conexion base.
+            try {
+                super.finalize();
+            } catch (Throwable ex) {
+                Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
+            }
             return lista_empleados;
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
